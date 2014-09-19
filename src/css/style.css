@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+#players{
+    background: #444;
+    margin: 20px;
+    width: 200px;
+}
+#drinks{
+    background: #444;
+    margin: 20px;
+    width: 200px;
+}
+.playerName {
+    float: left;
+    width: 150px;
+}
+.playerPoints {
+    float: left;
+    width: 50px;
+}
+.clear{
+    clear: both;
+}
