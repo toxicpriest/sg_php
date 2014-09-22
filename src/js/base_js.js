@@ -29,4 +29,20 @@ $(document).ready(function () {
         }
         $("#drinks").html(drinkCountHtml);
     });
+    $("#taskBtn").click(function () {
+        $.ajax({
+        url: "task_handler.php",
+        context: document.body
+        }).done(function(data) {
+            $( this ).addClass( "done" );
+        });
+    })
+    $("#actionBtn").click(function () {
+        $.ajax({
+        url: "action_handler.php",
+        context: document.body
+        }).done(function(data) {
+            $( this ).addClass( "done" );
+        });
+    })
 })

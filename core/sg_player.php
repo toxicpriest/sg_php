@@ -36,7 +36,7 @@ class sg_player
     {
         $oDB = new dB();
         if ($this->gameID != null) {
-            $sSql = "UPDATE user SET name=" . $this->sName . ", points=" . $this->iPoints . " WHERE id=" . $this->iPlayerID;
+            $sSql = "UPDATE user SET name='" . $this->sName . "', points='" . $this->iPoints . "' WHERE id='" . $this->iPlayerID."'";
         }
         else {
             $this->gameID = $gameID;

@@ -28,6 +28,16 @@ include_once("core/dB.php");
         <option value="5">5</option>
     </select>
     <div id="drinks"></div>
+    <label>Max Amount per Action :</label>
+    <select name="maxAmount" id="maxAmoiuntDrop">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="15">15</option>
+    </select>
     <label>Points 2 Win the Game :</label>
     <select name="wonAt" id="wonAtDrop">
         <option value="15">15</option>

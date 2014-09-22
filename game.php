@@ -1,4 +1,6 @@
 <link rel="stylesheet" type="text/css" href="src/css/style.css">
+<script language="javascript" type="text/javascript" src="src/js/jquery-1.11.0.min.js"></script>
+<script language="javascript" type="text/javascript" src="src/js/base_js.js"></script>
 <?php
 include_once("core/dB.php");
 include_once("core/sg_game.php");
@@ -10,6 +12,7 @@ if (isset($_COOKIE['gameID'])) {
     $oGame = new sg_game();
     $oGame->load($gameid);
     ?>
+    <div id="gameInformation">
     <div id="players">
         <?php
         foreach ($oGame->playerList as $player) {
@@ -33,5 +36,8 @@ if (isset($_COOKIE['gameID'])) {
         ?>
     <div class="clear"></div>
     </div>
+    </div>
     <div id="taskWidow"></div>
+    <button id="taskBtn">task</button>
+    <button id="actionBtn">action</button>
 <?php } ?>
