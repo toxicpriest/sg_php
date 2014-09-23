@@ -21,5 +21,7 @@ for ($j = 1; $j <= $countPlayers; $j++) {
     $game->addPlayer($oPlayer);
 }
 $game->iMaxAmount=$_POST['maxAmount'];
+$game->iWonAt=$_POST['wonAt'];
+$game->iTaskPercent=$_POST['tasks'];
 $game->save();
 http_redirect("game.php", array("name" => "value"), true, HTTP_REDIRECT_PERM);

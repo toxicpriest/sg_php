@@ -38,6 +38,6 @@ if (isset($_COOKIE['gameID'])) {
     </div>
     </div>
     <div id="taskWidow"></div>
-    <button id="taskBtn">task</button>
-    <button id="actionBtn">action</button>
+    <div id="actions"></div>
+    <div id="ActiveButton"><button id="actionBtn">action</button></div>
 <?php } ?>
