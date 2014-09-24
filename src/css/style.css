@@ -36,3 +36,26 @@ body {
 #gameInformation {
     float: left;
 }
+#actions > div {
+    background: none repeat scroll 0 0 #555;
+    height: 35px;
+    width: 35px;
+    float:left;
+}
+
+.round{
+    background: url(../img/round.png);
+}
+.timer{
+    background: url(../img/timer.png);
+}
+#actions img {
+    height: 35px;
+    width: 35px;
+}
+.hiddenActionInfo {
+    display: none;
+    height: 200px;
+    position: absolute;
+    width: 300px;
+}

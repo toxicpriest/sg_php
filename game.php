@@ -6,6 +6,7 @@ include_once("core/dB.php");
 include_once("core/sg_game.php");
 include_once("core/sg_drink.php");
 include_once("core/sg_player.php");
+include_once("core/sg_task.php");
 
 if (isset($_COOKIE['gameID'])) {
     $gameid = $_COOKIE['gameID'];
@@ -38,6 +39,7 @@ if (isset($_COOKIE['gameID'])) {
     </div>
     </div>
     <div id="taskWidow"></div>
-    <div id="actions"></div>
+    <div class="clear"></div>
+    <div id="actions"><?php echo $oGame->getHtmlActionStates() ?></div>
     <div id="ActiveButton"><button id="actionBtn">action</button></div>
 <?php } ?>

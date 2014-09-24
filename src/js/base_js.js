@@ -40,6 +40,7 @@ $(document).ready(function () {
                     $("#players").html(obj.playerboard);
                     $("#taskWidow").html(obj.task);
                     $("#ActiveButton").html(obj.activeBtn);
+                    $("#actions").html(obj.actions);
                 }
             });
     })
@@ -55,5 +56,20 @@ $(document).ready(function () {
                     $("#ActiveButton").html(obj.activeBtn);
                 }
             });
+    })
+    $('body').delegate('.activeAction', 'mousemove', function(e)
+    {
+       var hiddenInfo= $(this).children(".hiddenActionInfo");
+        hiddenInfo.css( "display", "block" );
+        x = (e.pageX ? e.pageX : window.event.x) + hiddenInfo.offsetParent.scrollLeft - hiddenInfo.offsetParent.offsetLeft;
+        y = (e.pageY ? e.pageY : window.event.y) + hiddenInfo.offsetParent.scrollTop - hiddenInfo.offsetParent.offsetTop;
+        var left = (e.pageX + 20) + "px";
+        var top = (e.pageY) + "px";
+        hiddenInfo.css("left",left);
+        hiddenInfo.css("top",top);
+    })
+    $('body').delegate('.activeAction', 'mouseleave', function(e)
+    {
+        $(this).children(".hiddenActionInfo").css( "display", "none" );
     })
 })

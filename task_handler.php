@@ -11,6 +11,7 @@ $oGame->load($gameid);
 $taskText=$oGame->generateTask();
 $playerBoard= $oGame->getUserHtmlBoard();
 $activeBtn=$oGame->getActiveBtn();
-$data = '{"task":"'.$taskText.'","playerboard":"'.$playerBoard.'","activeBtn":"'.$activeBtn.'"}';
+$actions =$oGame->getHtmlActionStates();
+$data = '{"task":"'.$taskText.'","playerboard":"'.$playerBoard.'","activeBtn":"'.$activeBtn.'","actions":"'.$actions.'"}';
 
 echo $data;

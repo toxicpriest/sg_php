@@ -1,5 +1,6 @@
 <?php
 include_once("core/dB.php");
+include_once("core/sg_task.php");
 include_once("core/sg_drink.php");
 include_once("core/sg_player.php");
 include_once("core/sg_game.php");
@@ -10,5 +11,6 @@ $oGame->load($gameid);
 $action =$oGame->generateAction();
 $playerBoard= $oGame->getUserHtmlBoard();
 $activeBtn=$oGame->getActiveBtn();
-$data = '{"action":"'.$action.'","playerboard":"'.$playerBoard.'","activeBtn":"'.$activeBtn.'"}';
+$actions =$oGame->getHtmlActionStates();
+$data = '{"action":"'.$action.'","playerboard":"'.$playerBoard.'","activeBtn":"'.$activeBtn.'","actions":"'.$actions.'"}';
 echo $data;

@@ -5,7 +5,7 @@ class sg_game
 {
     public $playerList = array();
     public $drinks = array();
-    public $activeActions = array();
+    public $activeTasks = array();
     public $gameID;
     public $gameState;
     public $iWonAt;
@@ -17,7 +17,7 @@ class sg_game
     function __construct()
     {
         $this->gameID = uniqid();
-        $this->bTaskRdy=false;
+        $this->bTaskRdy = false;
     }
 
     public function addPlayer($player)
@@ -28,6 +28,11 @@ class sg_game
     public function addDrink($drink)
     {
         $this->drinks[] = $drink;
+    }
+
+    public function addTask($task)
+    {
+        $this->activeTasks[] = $task;
     }
 
     public function load($gameid)
@@ -43,7 +48,7 @@ class sg_game
         $this->iTaskPercent = $data[0]['taskpercent'];
         $this->loadDrinks();
         $this->loadPlayers();
-
+        $this->loadActiveTasks();
     }
 
     public function loadPlayers()
@@ -70,6 +75,18 @@ class sg_game
         }
     }
 
+    public function loadActiveTasks()
+    {
+        $oDB = new dB();
+        $sSql = "Select id from game2task where gameid='" . $this->gameID . "'";
+        $data = $oDB->getAll($sSql);
+        foreach ($data as $drinksData) {
+            $oTask = new sg_task();
+            $oTask->load($drinksData['id']);
+            $this->addTask($oTask);
+        }
+    }
+
     public function save($setNewCookie = true)
     {
         if ($setNewCookie) {
@@ -87,6 +104,9 @@ class sg_game
         foreach ($this->playerList as $oPLayer) {
             $oPLayer->save($this->gameID);
         }
+        foreach ($this->activeTasks as $oTask) {
+            $oTask->save($this->gameID);
+        }
     }
 
     public function generateTask($id = null)
@@ -99,10 +119,11 @@ class sg_game
         if ($task->iCredits > 0) {
             $randomPlayer->addPoints($task->iCredits);
         }
-        if($task->hasAction()){
-            $this->setActionTask($task);
+        if ($task->hasAction()) {
+            $task->setTaskState($task->iActionParam);
+            $this->addTask($task);
         }
-        $this->bTaskRdy=false;
+        $this->bTaskRdy = false;
         $this->save(false);
         $sTaskText = $randomPlayer->sName . "! " . $task->sText;
 
@@ -136,27 +157,30 @@ class sg_game
         return $html;
     }
 
-    public function isTaskTriggerd(){
-        $taskRandomNumber =  rand(1,100);
-        if($taskRandomNumber<= $this->iTaskPercent){
-            $this->bTaskRdy=true;
+    public function isTaskTriggerd()
+    {
+        $taskRandomNumber = rand(1, 100);
+        if ($taskRandomNumber <= $this->iTaskPercent) {
+            $this->bTaskRdy = true;
         }
     }
 
-    public function getActiveBtn(){
-        if($this->bTaskRdy){
+    public function getActiveBtn()
+    {
+        if ($this->bTaskRdy) {
             return "<button id='taskBtn'>task</button>";
         }
-        else{
+        else {
             return "<button id='actionBtn'>action</button>";
         }
     }
-    public function setActionTask($task){
-        $this->activeActions[]= $task;
-    }
-
-    public function getHtmlActionStates(){
-
+    public function getHtmlActionStates()
+    {
+        $html = "";
+        foreach ($this->activeTasks as $actions) {
+            $html .= "<div class='" . $actions->sAction . " activeAction' title='" . $actions->sName . "'><img src='../src/img/" . $actions->sAction . ".png'><div class='hiddenActionInfo'>".$actions->sText."</div></div>";
+        }
+        return $html;
     }
 
 }
