@@ -1,6 +1,7 @@
 body {
     margin: 0;
     padding: 0;
+    background: #eee;
 }
 .menu {
     background: none repeat scroll 0 0 #000;
@@ -17,27 +18,19 @@ body {
     width: 120px;
     margin: 0 0 15px;
 }
-.topSettings {
-    background: none repeat scroll 0 0 #000;
-    color: white;
-    margin: 0 auto;
-    padding: 10px 0;
-    width: 600px;
-    text-align: center;
-}
 .topSettings select {
     font-family: monospace;
     font-size: 18px;
     height: 20px;
     text-align: center;
-    width: 580px;
+    width: 581px;
+    color: #555;
 }
 .settingsBtn {
-    background: none repeat scroll 0 0 #000;
     margin: 20px auto;
     padding: 20px 0;
     text-align: center;
-    width: 600px;
+    width: 601px;
 }
 .settingsBtn input {
     font-family: monospace;
@@ -52,11 +45,11 @@ body {
 .playerPoints {
     float: left;
     text-align: center;
-    width: 38px;
+    width: 36px;
 }
 .drinkName {
     float: left;
-    width: 120px;
+    width: 206px;
 }
 .drinkAlcohol {
     float: left;
@@ -67,39 +60,26 @@ body {
     text-align: center;
     width: 60px;
 }
-.seetingsMenu {
-    background: none repeat scroll 0 0 #000;
+.settingsMenu {
     margin: 20px auto 0;
-    width: 600px;
-    color:#fff;
+    width: 601px;
 }
-.seetingsMenu input {
+.settingsMenu input {
     height: 25px;
     margin: 5px;
     width: 200px;
 }
-.seetingsMenu #drinks {
+.settingsMenu #drinks {
     float: left;
-    width: 280px;
-    margin: 5px 10px;
+    width: 298px;
 }
-.seetingsMenu #players {
+.settingsMenu #players {
     float: left;
-    width: 280px;
-    margin: 5px 10px;
+    width: 298px;
+    margin-right: 5px;
 }
 .clear{
     clear: both;
-}
-#taskwidow {
-    background: none repeat scroll 0 0 #000;
-    color: #fff;
-    font-family: monospace;
-    font-size: 25px;
-    height: 230px;
-    margin: 20px auto 0;
-    padding: 10px;
-    width: 580px;
 }
 #actions > div {
     background: none repeat scroll 0 0 #fff;
@@ -124,16 +104,12 @@ body {
     width: 300px;
 }
 #playersInfo{
-    background: #000;
-    color:#fff;
     margin: 20px auto;
-    width: 600px;
+    width: 601px;
 }
 #drinksInfo{
-    background: #000;
-    color:#fff;
     margin: 20px auto;
-    width: 600px;
+    width: 601px;
 }
 #activebutton {
     margin: -28px auto 0;
@@ -154,16 +130,95 @@ body {
     height: 0;
 }
 .player.clearfix {
-    border-right: 3px solid #fff;
+    background: none repeat scroll 0 0 #ddd;
+    border: 1px solid #666;
+    color: #333;
     float: left;
-    margin: 0 5px;
+    margin: 0 5px 5px 0;
+    padding: 5px;
+}
+.drink.clearfix{
+    background: none repeat scroll 0 0 #ddd;
+    border: 1px solid #666;
+    color: #333;
+    float: left;
+    margin: 0 5px 5px 0;
+    padding: 5px;
 }
 .player.clearfix.last {
-    border: medium none;
+    margin:0 0 5px 0;
+}
+.drink.clearfix.last {
+    margin:0 0 5px 0;
 }
 #actions {
-    background: none repeat scroll 0 0 #000;
+    background: none repeat scroll 0 0 #ddd;
+    border: 1px solid #666;
+    color: #333;
     height: 40px;
     margin: 0 auto;
-    width: 600px;
+    width: 601px;
+}
+#taskwidow {
+    background: none repeat scroll 0 0 #ddd;
+    color: #333;
+    border: 1px solid #666;
+    font-family: monospace;
+    font-size: 25px;
+    height: 230px;
+    margin: 20px auto 0;
+    padding: 10px;
+    width: 581px;
+}
+.topSettings {
+    background: none repeat scroll 0 0 #ddd;
+    color: #333;
+    border: 1px solid #666;
+    margin: 0 auto;
+    padding: 10px 0;
+    width: 601px;
+    text-align: center;
+}
+#players > div {
+    background: none repeat scroll 0 0 #ddd;
+    color: #333;
+    border: 1px solid #666;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+#drinks > div {
+        background: none repeat scroll 0 0 #ddd;
+        color: #333;
+        border: 1px solid #666;
+        margin-bottom: 5px;
+        padding: 5px;
+}
+.settingsheader > div {
+    color: #333;
+    float: left;
+    text-align: center;
+    text-decoration: underline;
+    width: 300px;
+}
+.header
+{
+        background: none repeat scroll 0 0 #ddd;
+        color: #333;
+        border: 1px solid #666;
+        font-family: monospace;
+        font-size: 20px;
+        text-align: center;
+        margin: 5px auto 0;
+        padding: 10px;
+        width: 581px;
+}
+.menu {
+    background: none repeat scroll 0 0 #ddd;
+    border: 1px solid #666;
+    color: #333;
+    height: 200px;
+    margin: 200px auto;
+    padding: 15px;
+    text-align: center;
+    width: 150px;
 }

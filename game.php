@@ -13,6 +13,7 @@ if (isset($_COOKIE['gameID'])) {
     $oGame = new sg_game();
     $oGame->load($gameid);
     ?>
+    <div class="header">PLAYER</div>
     <div id="playersInfo">
         <?php
         $i=1;
@@ -28,14 +29,19 @@ if (isset($_COOKIE['gameID'])) {
         ?>
         <div class="clear"></div>
     </div>
+    <div class="header">DRINKS</div>
     <div id="drinksInfo">
         <?php
+    	$j=1;
         foreach ($oGame->drinks as $drink) {
-            echo "<div class='drink clearfix'>
+            if($j % 2 == 0){$cssCl="last";}
+            else{$cssCl="";}
+            echo "<div class='drink clearfix ".$cssCl ."'>
                 <div class='drinkName'>" . $drink->sName . "</div>
                 <div class='drinkAlcohol'>" . $drink->iAlcohol . "</div>
                 <div class='drinkAmount'>" . $drink->sAmount . "</div>
             </div>";
+            $j++;
         }
         ?>
     <div class="clear"></div>

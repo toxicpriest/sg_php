@@ -69,7 +69,8 @@ include_once("core/dB.php");
         <option value="100">100</option>
     </select>
     </div>
-    <div class="seetingsMenu">
+    <div class="settingsMenu">
+        <div class="settingsheader"><div>PLAYER</div><div>DRINKS</div></div>
         <div id="players"></div>
         <div id="drinks"></div>
         <div class="clear"></div>
