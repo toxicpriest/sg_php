@@ -16,7 +16,6 @@ class sg_task {
     public $sAction;
     public $iActionParam;
     public $sTaskstate;
-    public $aActionArray = array("dice","timer","round");
 
     public function getTask($id = null){
         $oDB = new dB();
@@ -38,13 +37,9 @@ class sg_task {
         $this->sAction=$task["action"];
         $this->iActionParam=$task["action_param"];
         $this->iCredits=$task["points"];
+
     }
-    public function hasAction(){
-        if(in_array($this->sAction,$this->aActionArray)){
-            return true;
-        }
-        return false;
-    }
+
     public function setTaskState(){
 
     }
@@ -60,6 +55,7 @@ class sg_task {
         $this->iCredits=$data[0]['points'];
         $this->sAction=$data[0]["action"];
         $this->iActionParam=$data[0]["action_param"];
+        $this->sTaskstate=$data[0]["taskparam"];
     }
 
     public function save($gameID)
@@ -72,6 +68,25 @@ class sg_task {
             $this->gameID = $gameID;
             $sSql = "INSERT INTO game2task (gameid,taskid,taskparam) VALUES ('" .$gameID. "','" . $this->iID . "','" . $this->sTaskstate . "') ";
         }
+        $oDB->execute($sSql);
+    }
+    public function update($gameID){
+        if($this->sAction == "round"){
+            $this->sTaskstate = $this->sTaskstate+1;
+            if($this->sTaskstate>$this->iActionParam){
+                $this->delete();
+                return false;
+            }
+            else{
+                $this->save($gameID);
+                return true;
+            }
+        }
+    }
+    public function delete(){
+        $oDB = new dB();
+        $sSql = "Delete from game2task where id='".$this->g2tID."'";
+
         $oDB->execute($sSql);
     }
 

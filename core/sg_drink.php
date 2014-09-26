@@ -37,7 +37,7 @@ class sg_drink {
             $sSql= "UPDATE drinks SET name=".$this->sName.", alcohol=".$this->iAlcohol.",size=".$this->sAmount." WHERE id=".$this->iDrinkID;
         }else{
         $this->gameID=$gameID;
-            $sSql = "INSERT INTO drinks (id,gameid, name ,alcohol,size) VALUES ('".$this->iDrinkID."','".$gameID."','". $this->sName."','20' ,'Liter') ";
+            $sSql = "INSERT INTO drinks (id,gameid, name ,alcohol,size) VALUES ('".$this->iDrinkID."','".$gameID."','". $this->sName."','20' ,'".$this->sAmount."') ";
         }
             $oDB->execute($sSql);
     }

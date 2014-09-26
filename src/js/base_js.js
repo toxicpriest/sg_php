@@ -6,10 +6,10 @@ $(document).ready(function () {
             var playerID = "#Player" + i + " input";
             if ($(playerID).length) {
                 var PlayerName = $(playerID).val();
-                playerCountHtml += "<div id='Player" + i + "'><label>Player: " + i + "</label><input name='Player" + i + "' type='text' value='" + PlayerName + "'></div>";
+                playerCountHtml += "<div id='Player" + i + "'><label>Player: " + i + "</label><input id='playerInput" + i + "'  name='Player" + i + "' type='text' value='" + PlayerName + "'></div>";
             }
             else {
-                playerCountHtml += "<div id='Player" + i + "'><label>Player: " + i + "</label><input name='Player" + i + "' type='text'></div>";
+                playerCountHtml += "<div id='Player" + i + "'><label>Player: " + i + "</label><input id='playerInput" + i + "' name='Player" + i + "' type='text'></div>";
             }
         }
         $("#players").html(playerCountHtml);
@@ -18,13 +18,16 @@ $(document).ready(function () {
         var drinkCount = this.options[this.selectedIndex].text;
         var drinkCountHtml = "";
         for (var i = 1; i <= drinkCount; i++) {
-            var drinkID = "#Drink" + i + " input";
+            var drinkID = "#Drink" + i + " .drinkinput";
+            var test =$(drinkID).val();
+            var drinkAmountID = "#Drink" + i + " .drinkamountinput";
             if ($(drinkID).length) {
                 var drinkName = $(drinkID).val();
-                drinkCountHtml += "<div id='Drink" + i + "'><label>Drink: " + i + "</label><input name='Drink" + i + "' type='text' value='" + drinkName + "'></div>";
+                var drinkAmount = $(drinkAmountID).val();
+                drinkCountHtml += "<div id='Drink" + i + "'><label>Drink: " + i + "</label><input class='drinkinput' id='drinkInput" + i + "' name='Drink" + i + "' type='text' value='" + drinkName + "'><label>Einheit:</label><input class='drinkamountinput' id='drinkAmountInput" + i + "' name='DrinkAmount" + i + "' type='text' value='" + drinkAmount + "'></div>";
             }
             else {
-                drinkCountHtml += "<div id='Drink" + i + "'><label>Drink: " + i + "</label><input name='Drink" + i + "' type='text'></div>";
+                drinkCountHtml += "<div id='Drink" + i + "'><label>Drink: " + i + "</label><input class='drinkinput' id='drinkInput" + i + "' name='Drink" + i + "' type='text'><label>Einheit: </label><input class='drinkamountinput' id='drinkAmountInput" + i + "' name='DrinkAmount" + i + "' type='text'></div></div>";
             }
         }
         $("#drinks").html(drinkCountHtml);
@@ -37,7 +40,7 @@ $(document).ready(function () {
         }).done(function (data) {
                 if (data != "" && data != null) {
                     var obj = $.parseJSON(data);
-                    $("#players").html(obj.playerboard);
+                    $("#playersInfo").html(obj.playerboard);
                     $("#taskWidow").html(obj.task);
                     $("#ActiveButton").html(obj.activeBtn);
                     $("#actions").html(obj.actions);
@@ -51,8 +54,24 @@ $(document).ready(function () {
         }).done(function (data) {
                 if (data != "" && data != null) {
                     var obj = $.parseJSON(data);
-                    $("#players").html(obj.playerboard);
+                    $("#playersInfo").html(obj.playerboard);
                     $("#taskWidow").html(obj.action);
+                    $("#ActiveButton").html(obj.activeBtn);
+                    $("#actions").html(obj.actions);
+                        $.each(obj.endedTasks, function() {
+                            alert(this.text);
+                        })
+                }
+            });
+    })
+    $('body').delegate('#diceBtn', 'click', function(event) {
+        $.ajax({
+            url: "dice_handler.php",
+            context: document.body
+        }).done(function (data) {
+                if (data != "" && data != null) {
+                    var obj = $.parseJSON(data);
+                    alert(obj.randomNumberText);
                     $("#ActiveButton").html(obj.activeBtn);
                 }
             });
@@ -73,3 +92,61 @@ $(document).ready(function () {
         $(this).children(".hiddenActionInfo").css( "display", "none" );
     })
 })
+
+function chkFormular(){
+    var formularSuccess = true;
+    if($("#playerCountDrop").val() == "Please Choose"){
+        $("#playerCountDrop").css("color","red");
+        formularSuccess=false;
+    }
+    if($("#drinkCountDrop").val() == "Please Choose"){
+            $("#drinkCountDrop").css("color","red");
+            formularSuccess=false;
+    }
+    if($("#maxAmountDrop").val() == "Please Choose"){
+        $("#maxAmountDrop").css("color","red");
+        formularSuccess=false;
+    }
+    if($("#wonAtDrop").val() == "Please Choose"){
+        $("#wonAtDrop").css("color","red");
+        formularSuccess=false;
+    }
+    if($("#tasksDrop").val() == "Please Choose"){
+        $("#tasksDrop").css("color","red");
+        formularSuccess=false;
+    }
+    if($("#playerCountDrop").val() != "Please Choose"){
+        var playerCount2=parseInt($("#playerCountDrop").val());
+        for (var i = 1; i <= playerCount2; i++) {
+            var playerInputfield="#playerInput"+i;
+            if($(playerInputfield).val() ==""){
+                $(playerInputfield).css("background","#f00");
+                formularSuccess=false;
+            }
+        }
+    }
+    if($("#drinkCountDrop").val() != "Please Choose"){
+        var drinkCount2=parseInt($("#drinkCountDrop").val());
+        for (var i = 1; i <= drinkCount2; i++) {
+            var drinkInputfield="#drinkInput"+i;
+            if($(drinkInputfield).val() ==""){
+                $(drinkInputfield).css("background","#f00");
+                formularSuccess=false;
+            }
+        }
+    }
+    if($("#drinkCountDrop").val() != "Please Choose"){
+        var drinkCount3=parseInt($("#drinkCountDrop").val());
+        for (var i = 1; i <= drinkCount3; i++) {
+            var drinkAmountInputfield="#drinkAmountInput"+i;
+            if($(drinkAmountInputfield).val() ==""){
+                $(drinkAmountInputfield).css("background","#f00");
+                formularSuccess=false;
+            }
+        }
+    }
+    if(!formularSuccess){
+        return false;
+    }
+
+}

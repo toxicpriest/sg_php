@@ -2,60 +2,168 @@ body {
     margin: 0;
     padding: 0;
 }
-
-
-
-#players{
-    background: #444;
-    margin: 20px;
-    width: 200px;
+.menu {
+    background: none repeat scroll 0 0 #000;
+    height: 200px;
+    margin: 200px auto;
+    padding: 15px;
+    text-align: center;
+    width: 150px;
 }
-#drinks{
-    background: #444;
-    margin: 20px;
-    width: 200px;
+.menu button {
+    font-family: monospace;
+    font-size: 18px;
+    height: 55px;
+    width: 120px;
+    margin: 0 0 15px;
+}
+.topSettings {
+    background: none repeat scroll 0 0 #000;
+    color: white;
+    margin: 0 auto;
+    padding: 10px 0;
+    width: 600px;
+    text-align: center;
+}
+.topSettings select {
+    font-family: monospace;
+    font-size: 18px;
+    height: 20px;
+    text-align: center;
+    width: 580px;
+}
+.settingsBtn {
+    background: none repeat scroll 0 0 #000;
+    margin: 20px auto;
+    padding: 20px 0;
+    text-align: center;
+    width: 600px;
+}
+.settingsBtn input {
+    font-family: monospace;
+    font-size: 18px;
+    height: 55px;
+    width: 120px;
 }
 .playerName {
     float: left;
-    width: 150px;
+    width: 149px;
 }
 .playerPoints {
     float: left;
-    width: 50px;
+    text-align: center;
+    width: 38px;
+}
+.drinkName {
+    float: left;
+    width: 120px;
+}
+.drinkAlcohol {
+    float: left;
+    width: 20px;
+}
+.drinkAmount {
+    float: left;
+    text-align: center;
+    width: 60px;
+}
+.seetingsMenu {
+    background: none repeat scroll 0 0 #000;
+    margin: 20px auto 0;
+    width: 600px;
+    color:#fff;
+}
+.seetingsMenu input {
+    height: 25px;
+    margin: 5px;
+    width: 200px;
+}
+.seetingsMenu #drinks {
+    float: left;
+    width: 280px;
+    margin: 5px 10px;
+}
+.seetingsMenu #players {
+    float: left;
+    width: 280px;
+    margin: 5px 10px;
 }
 .clear{
     clear: both;
 }
 #taskwidow {
-    background: none repeat scroll 0 0 #555;
-    float: left;
+    background: none repeat scroll 0 0 #000;
+    color: #fff;
+    font-family: monospace;
+    font-size: 25px;
     height: 230px;
-    margin-top: 20px;
-    width: 500px;
-}
-#gameInformation {
-    float: left;
+    margin: 20px auto 0;
+    padding: 10px;
+    width: 580px;
 }
 #actions > div {
-    background: none repeat scroll 0 0 #555;
+    background: none repeat scroll 0 0 #fff;
+    float: left;
     height: 35px;
+    margin: 2px;
     width: 35px;
-    float:left;
 }
-
 .round{
     background: url(../img/round.png);
-}
-.timer{
-    background: url(../img/timer.png);
 }
 #actions img {
     height: 35px;
     width: 35px;
 }
 .hiddenActionInfo {
+    background: none repeat scroll 0 0 #000;
+    color: #fff;
     display: none;
     height: 200px;
     position: absolute;
     width: 300px;
+}
+#playersInfo{
+    background: #000;
+    color:#fff;
+    margin: 20px auto;
+    width: 600px;
+}
+#drinksInfo{
+    background: #000;
+    color:#fff;
+    margin: 20px auto;
+    width: 600px;
+}
+#activebutton {
+    margin: -28px auto 0;
+    width: 250px;
+}
+#activebutton button {
+    font-family: monospace;
+    font-size: 30px;
+    height: 55px;
+    width: 250px;
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+.player.clearfix {
+    border-right: 3px solid #fff;
+    float: left;
+    margin: 0 5px;
+}
+.player.clearfix.last {
+    border: medium none;
+}
+#actions {
+    background: none repeat scroll 0 0 #000;
+    height: 40px;
+    margin: 0 auto;
+    width: 600px;
 }

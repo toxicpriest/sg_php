@@ -9,8 +9,10 @@ $game = new sg_game();
 $countDrinks = $_POST['drinkCount'];
 for ($i = 1; $i <= $countDrinks; $i++) {
     $drink = $_POST["Drink" . $i];
+    $drinkAmount = $_POST["DrinkAmount" . $i];
     $oDrink = new sg_drink();
     $oDrink->setAttr("sName", $drink);
+    $oDrink->setAttr("sAmount", $drinkAmount);
     $game->addDrink($oDrink);
 }
 $countPlayers = $_POST['playerCount'];
@@ -24,4 +26,4 @@ $game->iMaxAmount=$_POST['maxAmount'];
 $game->iWonAt=$_POST['wonAt'];
 $game->iTaskPercent=$_POST['tasks'];
 $game->save();
-http_redirect("game.php", array("name" => "value"), true, HTTP_REDIRECT_PERM);
+header("Location: game.php");

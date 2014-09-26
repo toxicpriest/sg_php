@@ -11,6 +11,8 @@ $oGame->load($gameid);
 $action =$oGame->generateAction();
 $playerBoard= $oGame->getUserHtmlBoard();
 $activeBtn=$oGame->getActiveBtn();
+$endedActions = $oGame->buildJsonEndedActions();
 $actions =$oGame->getHtmlActionStates();
-$data = '{"action":"'.$action.'","playerboard":"'.$playerBoard.'","activeBtn":"'.$activeBtn.'","actions":"'.$actions.'"}';
+
+$data = '{"action":"'.$action.'","playerboard":"'.$playerBoard.'","activeBtn":"'.$activeBtn.'","actions":"'.$actions.'"'.$endedActions.'}';
 echo $data;

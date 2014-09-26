@@ -12,12 +12,13 @@ class sg_game
     public $iTaskPercent;
     public $saveKey;
     public $iMaxAmount;
-    public $bTaskRdy;
+    public $sBtnState;
+    public $endedTasks;
 
     function __construct()
     {
         $this->gameID = uniqid();
-        $this->bTaskRdy = false;
+        $this->sBtnState = "default";
     }
 
     public function addPlayer($player)
@@ -80,9 +81,9 @@ class sg_game
         $oDB = new dB();
         $sSql = "Select id from game2task where gameid='" . $this->gameID . "'";
         $data = $oDB->getAll($sSql);
-        foreach ($data as $drinksData) {
+        foreach ($data as $taskData) {
             $oTask = new sg_task();
-            $oTask->load($drinksData['id']);
+            $oTask->load($taskData['id']);
             $this->addTask($oTask);
         }
     }
@@ -119,13 +120,19 @@ class sg_game
         if ($task->iCredits > 0) {
             $randomPlayer->addPoints($task->iCredits);
         }
-        if ($task->hasAction()) {
+        if ($task->sAction=="round") {
             $task->setTaskState($task->iActionParam);
+            $task->sTaskstate=0;
             $this->addTask($task);
         }
-        $this->bTaskRdy = false;
+
+        if($task->sAction=="dice"){
+            $this->sBtnState = "dice";
+        }else{
+            $this->sBtnState = "default";
+        }
         $this->save(false);
-        $sTaskText = $randomPlayer->sName . "! " . $task->sText;
+        $sTaskText = $randomPlayer->sName.", ".$task->sName . "!<br>" . $task->sText;
 
 
         return $sTaskText;
@@ -133,27 +140,39 @@ class sg_game
 
     public function generateAction()
     {
+        $this->endedTasks=array();
         $playerCount = count($this->playerList) - 1;
         $drinkCount = count($this->drinks) - 1;
         $randomplayerNumber = rand(0, $playerCount);
         $randomPlayer = $this->playerList[$randomplayerNumber];
         $randomDrink = $this->drinks[rand(0, $drinkCount)];
         $randomAmount = rand(1, $this->iMaxAmount);
-        $sActionText = $randomPlayer->sName . " muss " . $randomAmount . "x " . $randomDrink->sName . " trinken!";
+        $sActionText = $randomPlayer->sName . " muss " . $randomAmount . "x" .$randomDrink->sAmount." ".$randomDrink->sName . " trinken!";
         $randomPlayer->addPoints($randomAmount);
-        $this->isTaskTriggerd();
-        $this->save(false);
 
+        $this->updateActions();
+        $this->isTaskTriggerd();
+        if($randomPlayer->iPoints >= $this->iWonAt){
+            $this->sBtnState = "won";
+            $sActionText.="<br>".$randomPlayer->sName."<br> hat danach das Spiel GEWONNEN!";
+            $this->delete();
+        }else{
+            $this->save(false);
+        }
         return $sActionText;
     }
 
     public function getUserHtmlBoard()
     {
         $html = "";
+        $i=1;
         foreach ($this->playerList as $player) {
-            $html .= "<div class='player'><div class='playerName'>" . $player->sName . "</div><div class='playerPoints'>" . $player->iPoints . "</div></div>";
+            if($i % 3 == 0){$cssCl="last";}
+            else{$cssCl="";}
+            $html .= "<div class='player clearfix ".$cssCl ."'><div class='playerName'>" . $player->sName . "</div><div class='playerPoints'>" . $player->iPoints . "</div></div>";
+            $i++;
         }
-        $html .= "<div class='clear'></div>";
+        $html .= "<div class='clear''></div>";
         return $html;
     }
 
@@ -161,26 +180,71 @@ class sg_game
     {
         $taskRandomNumber = rand(1, 100);
         if ($taskRandomNumber <= $this->iTaskPercent) {
-            $this->bTaskRdy = true;
+            $this->sBtnState = "task";
         }
     }
 
     public function getActiveBtn()
     {
-        if ($this->bTaskRdy) {
-            return "<button id='taskBtn'>task</button>";
+        if ($this->sBtnState == "task") {
+            return "<button id='taskBtn'>Aufgabe</button>";
         }
-        else {
-            return "<button id='actionBtn'>action</button>";
+        elseif($this->sBtnState == "default") {
+            return "<button id='actionBtn'>!SAUFEN!</button>";
+        }
+        elseif($this->sBtnState == "dice") {
+            return "<button id='diceBtn'>Würfeln</button>";
+        }
+        elseif($this->sBtnState == "won") {
+            return "<a href='index.php'><button id='wonBtn'>WON</button></a>";
         }
     }
     public function getHtmlActionStates()
     {
         $html = "";
         foreach ($this->activeTasks as $actions) {
-            $html .= "<div class='" . $actions->sAction . " activeAction' title='" . $actions->sName . "'><img src='../src/img/" . $actions->sAction . ".png'><div class='hiddenActionInfo'>".$actions->sText."</div></div>";
+            $html .= "<div class='" . $actions->sAction . " activeAction' title='" . $actions->sName . "'><img src='../src/img/" . $actions->sAction . ".png'><div class='hiddenActionInfo'>Runden: ".$actions->sTaskstate."/".$actions->iActionParam."<br>".$actions->sText."</div></div>";
         }
         return $html;
     }
+    public function updateActions(){
+        $endedActions=array();
+        $i=0;
+        foreach ($this->activeTasks as $oTask) {
+            if(!$oTask->update($this->gameID)){
+                $endedActions[]="Die Aufgabe: ".$oTask->sText." ist jetzt beendet!";
+                unset($this->activeTasks[$i]);
+            }
+            $i++;
+        }
+        $this->endedTasks= $endedActions;
+    }
+    public function buildJsonEndedActions(){
+        $jsonString=',"endedTasks" : [';
+        foreach($this->endedTasks as $endedTask){
+            $jsonString.= '{"text":"'.$endedTask.'"} ,';
+        }
+        if(count($this->endedTasks) >=1){
+            $jsonString=substr($jsonString,0,strlen($jsonString)-1);
+        }
+        $jsonString.="]";
+        return $jsonString;
+    }
+    public function delete(){
+        $oDB= new dB();
+        $sSqlGame="delete from games where id='".$this->gameID."'";
+        $sSqlUser="delete from user where gameid='".$this->gameID."'";
+        $sSqlDrinks="delete from drinks where gameid='".$this->gameID."'";
+        $sSqlG2k="delete from game2task where gameid='".$this->gameID."'";
 
+        $oDB->execute($sSqlGame);
+        $oDB->execute($sSqlUser);
+        $oDB->execute($sSqlDrinks);
+        $oDB->execute($sSqlG2k);
+
+        if (isset($_COOKIE['gameID'])) {
+            unset($_COOKIE['gameID']);
+            setcookie('gameID', '', time() - 3600);
+        }
+    }
 }

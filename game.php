@@ -13,22 +13,25 @@ if (isset($_COOKIE['gameID'])) {
     $oGame = new sg_game();
     $oGame->load($gameid);
     ?>
-    <div id="gameInformation">
-    <div id="players">
+    <div id="playersInfo">
         <?php
+        $i=1;
         foreach ($oGame->playerList as $player) {
-            echo "<div class='player'>
+            if($i % 3 == 0){$cssCl="last";}
+            else{$cssCl="";}
+            echo "<div class='player clearfix ".$cssCl ."'>
                 <div class='playerName'>" . $player->sName . "</div>
                 <div class='playerPoints'>" . $player->iPoints . "</div>
             </div>";
+            $i++;
         }
         ?>
-    <div class="clear"></div>
+        <div class="clear"></div>
     </div>
-    <div id="drinks">
+    <div id="drinksInfo">
         <?php
         foreach ($oGame->drinks as $drink) {
-            echo "<div class='drink'>
+            echo "<div class='drink clearfix'>
                 <div class='drinkName'>" . $drink->sName . "</div>
                 <div class='drinkAlcohol'>" . $drink->iAlcohol . "</div>
                 <div class='drinkAmount'>" . $drink->sAmount . "</div>
@@ -37,9 +40,8 @@ if (isset($_COOKIE['gameID'])) {
         ?>
     <div class="clear"></div>
     </div>
-    </div>
+    <div id="actions" class="clearfix"><?php echo $oGame->getHtmlActionStates() ?></div>
     <div id="taskWidow"></div>
     <div class="clear"></div>
-    <div id="actions"><?php echo $oGame->getHtmlActionStates() ?></div>
-    <div id="ActiveButton"><button id="actionBtn">action</button></div>
+    <div id="ActiveButton"><button id="actionBtn">!SAUFEN!</button></div>
 <?php } ?>

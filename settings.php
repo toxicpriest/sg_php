@@ -1,11 +1,14 @@
 <script src="src/js/jquery-1.11.0.min.js"></script>
 <script src="src/js/base_js.js"></script>
+<link rel="stylesheet" type="text/css" href="src/css/style.css">
 <?php
 include_once("core/dB.php");
 ?>
-<form action="savesettings.php" method="POST">
+<form action="savesettings.php" method="POST" onsubmit="return chkFormular()">
+    <div class="topSettings">
     <label>Number of Players :</label>
     <select name="playerCount" id="playerCountDrop">
+        <option value="Please Choose">Please Choose</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
@@ -18,18 +21,19 @@ include_once("core/dB.php");
         <option value="11">11</option>
         <option value="12">12</option>
     </select>
-    <div id="players"></div>
+
     <label>Number of Drinks :</label>
     <select name="drinkCount" id="drinkCountDrop">
+        <option value="Please Choose">Please Choose</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>
     </select>
-    <div id="drinks"></div>
     <label>Max Amount per Action :</label>
-    <select name="maxAmount" id="maxAmoiuntDrop">
+    <select name="maxAmount" id="maxAmountDrop">
+        <option value="Please Choose">Please Choose</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -40,6 +44,7 @@ include_once("core/dB.php");
     </select>
     <label>Points 2 Win the Game :</label>
     <select name="wonAt" id="wonAtDrop">
+        <option value="Please Choose">Please Choose</option>
         <option value="15">15</option>
         <option value="20">20</option>
         <option value="30">30</option>
@@ -50,6 +55,7 @@ include_once("core/dB.php");
     </select>
     <label>Tasks % :</label>
     <select name="tasks" id="tasksDrop">
+        <option value="Please Choose">Please Choose</option>
         <option value="0">0</option>
         <option value="10">10</option>
         <option value="20">20</option>
@@ -62,6 +68,13 @@ include_once("core/dB.php");
         <option value="90">90</option>
         <option value="100">100</option>
     </select>
-
-    <input type="submit" value="start">
+    </div>
+    <div class="seetingsMenu">
+        <div id="players"></div>
+        <div id="drinks"></div>
+        <div class="clear"></div>
+    </div>
+    <div class="settingsBtn">
+        <input type="submit" value="START">
+    </div>
 </form>
