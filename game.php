@@ -23,6 +23,8 @@ if (isset($_COOKIE['gameID'])) {
             echo "<div class='player clearfix ".$cssCl ."'>
                 <div class='playerName'>" . $player->sName . "</div>
                 <div class='playerPoints'>" . $player->iPoints . "</div>
+                <div class='playerEdit' onclick='editPlayer(\"".$player->iPlayerID."\");'></div>
+                <div class='playerDelete' onclick='deletePlayer(\"".$player->iPlayerID."\");'></div>
             </div>";
             $i++;
         }
@@ -40,6 +42,8 @@ if (isset($_COOKIE['gameID'])) {
                 <div class='drinkName'>" . $drink->sName . "</div>
                 <div class='drinkAlcohol'>" . $drink->iAlcohol . "</div>
                 <div class='drinkAmount'>" . $drink->sAmount . "</div>
+                <div class='drinkEdit' onclick='editDrink(\"".$drink->iDrinkID."\");'></div>
+                <div class='drinkDelete' onclick='deleteDrink(\"".$drink->iDrinkID."\");'></div>
             </div>";
             $j++;
         }

@@ -92,6 +92,56 @@ $(document).ready(function () {
         $(this).children(".hiddenActionInfo").css( "display", "none" );
     })
 })
+function deleteDrink(sOiD){
+    alert("deleteDrink "+sOiD);
+    $.ajax({
+        url: "drink_handler.php",
+        context: document.body,
+        data: {drinkID: sOiD},
+        type: "POST"
+        }).done(function (data) {
+            if (data != "" && data != null) {
+                var obj = $.parseJSON(data);
+                $("#drinksInfo").html(obj.drinkboard);
+            }
+        });
+}
+function editDrink(sOiD){
+    alert("editDrink "+sOiD);
+    $.ajax({
+        url: "drink_handler.php",
+        context: document.body
+        }).done(function (data) {
+            if (data != "" && data != null) {
+                var obj = $.parseJSON(data);
+            }
+        });
+}
+function deletePlayer(sOiD){
+    alert("deletePlayer "+sOiD);
+    $.ajax({
+        url: "player_handler.php",
+        context: document.body,
+        data: {playerID: sOiD},
+        type: "POST"
+        }).done(function (data) {
+            if (data != "" && data != null) {
+                var obj = $.parseJSON(data);
+                $("#playersInfo").html(obj.playerboard);
+            }
+        });
+}
+function editPlayer(sOiD){
+    alert("editPlayer "+sOiD);
+    $.ajax({
+        url: "player_handler.php",
+        context: document.body
+        }).done(function (data) {
+            if (data != "" && data != null) {
+                var obj = $.parseJSON(data);
+            }
+        });
+}
 
 function chkFormular(){
     var formularSuccess = true;

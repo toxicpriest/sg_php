@@ -29,6 +29,12 @@ class sg_player
         $this->$AttrName = $AttrValue;
     }
 
+    public function delete(){
+        $oDB = new dB();
+        $sql = "delete from user where id ='".$this->iPlayerID."'";
+        $oDB->execute($sql);
+    }
+
     public function addPoints($points){
         $this->iPoints=$this->iPoints+$points;
     }

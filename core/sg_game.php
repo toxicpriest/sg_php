@@ -169,10 +169,24 @@ class sg_game
         foreach ($this->playerList as $player) {
             if($i % 3 == 0){$cssCl="last";}
             else{$cssCl="";}
-            $html .= "<div class='player clearfix ".$cssCl ."'><div class='playerName'>" . $player->sName . "</div><div class='playerPoints'>" . $player->iPoints . "</div></div>";
+            $html .= "<div class='player clearfix ".$cssCl ."'><div class='playerName'>" . $player->sName . "</div><div class='playerPoints'>" . $player->iPoints . "</div><div class='playerEdit' onclick='editPlayer(&quot;".$player->iPlayerID."&quot;);'></div><div class='playerDelete' onclick='deletePlayer(&quot;".$player->iPlayerID."&quot;);'></div></div>";
             $i++;
         }
-        $html .= "<div class='clear''></div>";
+        $html .= "<div class='clear'></div>";
+        return $html;
+    }
+
+    public function getDrinkHtmlBoard()
+    {
+        $html = "";
+        $i=1;
+        foreach ($this->drinks as $drink) {
+            if($i % 2 == 0){$cssCl="last";}
+            else{$cssCl="";}
+            $html .= "<div class='drink clearfix ".$cssCl ."'><div class='drinkName'>" . $drink->sName . "</div><div class='drinkAlcohol'>" . $drink->iAlcohol . "</div><div class='drinkAmount'>" . $drink->sAmount . "</div><div class='drinkEdit' onclick='editDrink(&quot;".$drink->iDrinkID."&quot;);'></div><div class='drinkDelete' onclick='deleteDrink(&quot;".$drink->iDrinkID."&quot;);'></div></div>";
+            $i++;
+        }
+        $html .= "<div class='clear'></div>";
         return $html;
     }
 
@@ -246,5 +260,29 @@ class sg_game
             unset($_COOKIE['gameID']);
             setcookie('gameID', '', time() - 3600);
         }
+    }
+    public function deletePlayer($playerID){
+        $i=0;
+        foreach($this->playerList as $oPlayer){
+            if($oPlayer->iPlayerID == $playerID){
+                unset($this->playerList[$i]);
+                $oPlayer->delete();
+                return true;
+            }
+            $i++;
+        }
+        return false;
+    }
+    public function deleteDrink($drinkID){
+        $i=0;
+        foreach($this->drinks as $oDrink){
+            if($oDrink->iDrinkID == $drinkID){
+                unset($this->drinks[$i]);
+                $oDrink->delete();
+                return true;
+            }
+            $i++;
+        }
+        return false;
     }
 }

@@ -43,7 +43,9 @@ class sg_drink {
     }
 
     public function delete(){
-
+        $oDB = new dB();
+        $sql = "delete from drinks where id ='".$this->iDrinkID."'";
+        $oDB->execute($sql);
     }
 
 
