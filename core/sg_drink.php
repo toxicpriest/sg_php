@@ -7,7 +7,6 @@
  * To change this template use File | Settings | File Templates.
  */ 
 class sg_drink {
-    public $iAlcohol;
     public $sName;
     public $sAmount;
     public $iDrinkID;
@@ -27,17 +26,16 @@ class sg_drink {
         $this->iDrinkID=$data[0]['id'];
         $this->gameID=$data[0]['gameid'];
         $this->sName=$data[0]['name'];
-        $this->iAlcohol=$data[0]['alcohol'];
         $this->sAmount=$data[0]['size'];
     }
 
     public function save($gameID){
         $oDB= new dB();
         if($this->gameID!=null){
-            $sSql= "UPDATE drinks SET name=".$this->sName.", alcohol=".$this->iAlcohol.",size=".$this->sAmount." WHERE id=".$this->iDrinkID;
+            $sSql= "UPDATE drinks SET name=".$this->sName.",size=".$this->sAmount." WHERE id=".$this->iDrinkID;
         }else{
         $this->gameID=$gameID;
-            $sSql = "INSERT INTO drinks (id,gameid, name ,alcohol,size) VALUES ('".$this->iDrinkID."','".$gameID."','". $this->sName."','20' ,'".$this->sAmount."') ";
+            $sSql = "INSERT INTO drinks (id,gameid, name ,size) VALUES ('".$this->iDrinkID."','".$gameID."','". $this->sName."','".$this->sAmount."') ";
         }
             $oDB->execute($sSql);
     }

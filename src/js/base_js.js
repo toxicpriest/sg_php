@@ -108,22 +108,29 @@ function deleteDrink(sOiD){
         });
 }
 function editDrink(sOiD){
-    alert("editDrink "+sOiD);
-    $.ajax({
-        url: "drink_handler.php",
-        context: document.body
-        }).done(function (data) {
-            if (data != "" && data != null) {
-                var obj = $.parseJSON(data);
-            }
-        });
+    var idName="#drink_"+sOiD;
+    var idAmount ="#amount_"+sOiD;
+    if($(idName).is(':disabled')){
+        $(idAmount).prop("disabled", false);
+        $(idName).prop("disabled", false);
+    }else{
+        var newName = $(idName).val();
+        var newValue = $(idAmount).val();
+        $.ajax({
+            url: "drink_handler.php",
+            context: document.body,
+            data: {drinkID: sOiD, func:"edit",newName:newName,newValue:newValue},
+            type: "POST"
+            })
+        $(idName).prop("disabled", true);
+        $(idAmount).prop("disabled", true);
+    }
 }
 function deletePlayer(sOiD){
-    alert("deletePlayer "+sOiD);
     $.ajax({
         url: "player_handler.php",
         context: document.body,
-        data: {playerID: sOiD},
+        data: {playerID: sOiD, func:"delete"},
         type: "POST"
         }).done(function (data) {
             if (data != "" && data != null) {
@@ -134,15 +141,19 @@ function deletePlayer(sOiD){
         });
 }
 function editPlayer(sOiD){
-    alert("editPlayer "+sOiD);
-    $.ajax({
-        url: "player_handler.php",
-        context: document.body
-        }).done(function (data) {
-            if (data != "" && data != null) {
-                var obj = $.parseJSON(data);
-            }
-        });
+    var id="#player_"+sOiD;
+    if($(id).is(':disabled')){
+        $(id).prop("disabled", false);
+    }else{
+        var newName = $(id).val();
+        $.ajax({
+            url: "player_handler.php",
+            context: document.body,
+            data: {playerID: sOiD, func:"edit",newName:newName},
+            type: "POST"
+            })
+        $(id).prop("disabled", true);
+    }
 }
 
 function chkFormular(){

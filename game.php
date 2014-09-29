@@ -21,7 +21,7 @@ if (isset($_COOKIE['gameID'])) {
             if($i % 3 == 0){$cssCl="last";}
             else{$cssCl="";}
             echo "<div class='player clearfix ".$cssCl ."'>
-                <div class='playerName'>" . $player->sName . "</div>
+                <div class='playerName'><input type='text' id='player_".$player->iPlayerID."' value='" . $player->sName . "' disabled='disabled'></div>
                 <div class='playerPoints'>" . $player->iPoints . "</div>
                 <div class='playerEdit' onclick='editPlayer(\"".$player->iPlayerID."\");'></div>
                 <div class='playerDelete' onclick='deletePlayer(\"".$player->iPlayerID."\");'></div>
@@ -39,9 +39,8 @@ if (isset($_COOKIE['gameID'])) {
             if($j % 2 == 0){$cssCl="last";}
             else{$cssCl="";}
             echo "<div class='drink clearfix ".$cssCl ."'>
-                <div class='drinkName'>" . $drink->sName . "</div>
-                <div class='drinkAlcohol'>" . $drink->iAlcohol . "</div>
-                <div class='drinkAmount'>" . $drink->sAmount . "</div>
+                <div class='drinkName'><input type='text' id='drink_".$drink->iDrinkID."' value='" . $drink->sName . "' disabled='disabled'></div>
+                <div class='drinkAmount'><input type='text' id='amount_".$drink->iDrinkID."' value='" . $drink->sAmount . "' disabled='disabled'></div>
                 <div class='drinkEdit' onclick='editDrink(\"".$drink->iDrinkID."\");'></div>
                 <div class='drinkDelete' onclick='deleteDrink(\"".$drink->iDrinkID."\");'></div>
             </div>";

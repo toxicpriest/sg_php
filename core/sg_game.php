@@ -266,13 +266,23 @@ class sg_game
         foreach($this->playerList as $oPlayer){
             if($oPlayer->iPlayerID == $playerID){
                 unset($this->playerList[$i]);
-                $oPlayer->delete();
-                return true;
+                return $oPlayer->delete();
             }
             $i++;
         }
         return false;
     }
+    public function editPlayer($playerID,$newPlayerName){
+        $i=0;
+        foreach($this->playerList as $oPlayer){
+            if($oPlayer->iPlayerID == $playerID){
+                $oPlayer->sName = $newPlayerName;
+                $oPlayer->save();
+            }
+            $i++;
+        }
+    }
+
     public function deleteDrink($drinkID){
         $i=0;
         foreach($this->drinks as $oDrink){
@@ -284,5 +294,16 @@ class sg_game
             $i++;
         }
         return false;
+    }
+    public function editDrink($drinkID,$newDrinkName,$newDrinkAmount){
+        $i=0;
+        foreach($this->drinks as $oDrink){
+            if($oDrink->iDrinkID == $drinkID){
+                $oDrink->sName = $newDrinkName;
+                $oDrink->sAmount =$newDrinkAmount;
+                $oDrink->save();
+            }
+            $i++;
+        }
     }
 }

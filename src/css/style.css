@@ -3,7 +3,18 @@ body {
     padding: 0;
     background: #eee;
 }
-
+.drinkEdit {
+    float: left;
+    height: 20px;
+    width: 20px;
+    background: url("../img/edit.png") no-repeat;
+}
+.drinkDelete {
+    float: left;
+    height: 20px;
+    width: 20px;
+    background: url("../img/delete.png") no-repeat;
+}
 .menu button {
     font-family: monospace;
     font-size: 18px;
@@ -51,19 +62,30 @@ body {
     float: left;
     height: 20px;
     width: 20px;
-    background: url("../img/black_edit.png") no-repeat;
+    background: url("../img/edit.png") no-repeat;
 }
 .playerDelete {
     float: left;
     height: 20px;
     width: 20px;
-    background: url("../img/delete_grey.png") no-repeat;
+    background: url("../img/delete.png") no-repeat;
 }
 
 .drinkName {
     float: left;
     width: 166px;
 }
+.drinkName > input {
+    width: 166px;
+    color:#333;
+    background: #fff;
+    border: none;
+}
+.drinkName input:disabled {
+    color : #333;
+    font-style: italic;
+    background: #ddd;
+}​
 
 .drinkAlcohol {
     float: left;
@@ -73,21 +95,19 @@ body {
 .drinkAmount {
     float: left;
     text-align: center;
-    width: 60px;
+    width: 80px;
 }
-.drinkEdit {
-    float: left;
-    height: 20px;
-    width: 20px;
-    background: url("../img/edit.png") no-repeat;
+.drinkAmount input{
+    width: 75px;
+    color:#333;
+    background: #fff;
+    border: none;
 }
-.drinkDelete {
-    float: left;
-    height: 20px;
-    width: 20px;
-    background: url("../img/delete.png") no-repeat;
-}
-
+.drinkAmount input:disabled {
+   color : #333;
+   font-style: italic;
+   background: #ddd;
+}​
 .settingsMenu {
     margin: 20px auto 0;
     width: 601px;
@@ -286,3 +306,15 @@ body {
     position: absolute;
     box-shadow: 7px 8px 7px 0 #888;
 }
+
+.playerName input {
+    width: 110px;
+    color:#333;
+    background: #fff;
+    border: none;
+}
+.playerName input:disabled {
+    color : #333;
+    font-style: italic;
+    background: #ddd;
+}​
