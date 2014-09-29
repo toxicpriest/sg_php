@@ -10,9 +10,14 @@ $gameid = $_COOKIE['gameID'];
 $playerID = $_POST['playerID'];
 $oGame = new sg_game();
 $oGame->load($gameid);
-$oGame->deletePlayer($playerID);
+if(count($oGame->playerList) > 2){
+    $oGame->deletePlayer($playerID);
+    $msg="Spieler gelöscht";
+}else{
+    $msg="Spieler kann nicht gelöscht werden (Min. Spieleranzahl)";
+}
 $playerBoard=$oGame->getUserHtmlBoard();
 
-$data = '{"playerboard":"'.$playerBoard.'"}';
+$data = '{"playerboard":"'.$playerBoard.'","msg":"'.$msg.'"}';
 
 echo $data;

@@ -103,6 +103,7 @@ function deleteDrink(sOiD){
             if (data != "" && data != null) {
                 var obj = $.parseJSON(data);
                 $("#drinksInfo").html(obj.drinkboard);
+                alert(obj.msg);
             }
         });
 }
@@ -128,6 +129,7 @@ function deletePlayer(sOiD){
             if (data != "" && data != null) {
                 var obj = $.parseJSON(data);
                 $("#playersInfo").html(obj.playerboard);
+                alert(obj.msg);
             }
         });
 }
