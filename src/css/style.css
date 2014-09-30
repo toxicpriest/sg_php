@@ -82,3 +82,4 @@ body {margin: 0;padding: 0;    background: #eee;}
 .drinkSave {background: url("../img/save.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);    float: right;    height: 20px;    width: 20px;}
 .drinkCancel {background: url("../img/cancel.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);    float: right;    height: 20px;    width: 20px;}
 #idAddDrink {    width: 286px;}
+#fog { background-color: rgba(80, 80, 80, 0.5);    height: 1200px;    position: absolute;    top: 0;   width: 100%;    display:none;}

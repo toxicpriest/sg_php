@@ -13,6 +13,7 @@ if (isset($_COOKIE['gameID'])) {
     $oGame = new sg_game();
     $oGame->load($gameid);
     ?>
+    <div id="fog"></div>
     <div class="header">PLAYER</div>
     <div id="playersInfo">
         <?php
