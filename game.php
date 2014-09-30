@@ -28,6 +28,9 @@ if (isset($_COOKIE['gameID'])) {
             </div>";
             $i++;
         }
+        if($i % 3 == 0){$cssCl="last";}
+        else{$cssCl="";}
+        echo "<div id='idAddPlayer' class='player clearfix ".$cssCl ."'><div class='addPlayer'  onclick='addPlayer();'><img src='src/img/add.png'></div></div>";
         ?>
         <div class="clear"></div>
     </div>
@@ -46,6 +49,9 @@ if (isset($_COOKIE['gameID'])) {
             </div>";
             $j++;
         }
+        if($j % 2 == 0){$cssCl="last";}
+        else{$cssCl="";}
+        echo "<div  id='idAddDrink' class='drink clearfix ".$cssCl ."'><div class='addDrink'  onclick='addDrink();'><img src='src/img/add.png'></div></div>";
         ?>
     <div class="clear"></div>
     </div>

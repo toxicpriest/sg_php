@@ -7,12 +7,12 @@
 
 
     $gameid = $_COOKIE['gameID'];
-    $drinkID = $_POST['drinkID'];
     $oGame = new sg_game();
     $oGame->load($gameid);
     $func = $_POST['func'];
 
     if ($func == "delete") {
+        $drinkID = $_POST['drinkID'];
         if (count($oGame->drinks) > 1) {
             $oGame->deleteDrink($drinkID);
             $msg = "Drink gelöscht";
@@ -27,7 +27,21 @@
         echo $data;
     }
     elseif($func == "edit"){
+            $drinkID = $_POST['drinkID'];
             $newName = $_POST['newName'];
             $newValue = $_POST['newValue'];
             $oGame->editDrink($drinkID, $newName,$newValue);
+    }
+    elseif($func == "add"){
+        $sNewDrinkName = $_POST['newName'];
+        $sNewDrinkAmount = $_POST['newAmount'];
+        $oNewDrink = new sg_drink();
+        $oNewDrink->sName = $sNewDrinkName;
+        $oNewDrink->sAmount=$sNewDrinkAmount;
+        $oGame->addDrink($oNewDrink);
+        $oGame->save();
+        $drinkBoard = $oGame->getDrinkHtmlBoard();
+        $data='{"drinkboard":"' . $drinkBoard . '"}';
+
+        echo $data;
     }

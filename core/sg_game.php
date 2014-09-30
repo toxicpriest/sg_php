@@ -169,9 +169,12 @@ class sg_game
         foreach ($this->playerList as $player) {
             if($i % 3 == 0){$cssCl="last";}
             else{$cssCl="";}
-            $html .= "<div class='player clearfix ".$cssCl ."'><div class='playerName'>" . $player->sName . "</div><div class='playerPoints'>" . $player->iPoints . "</div><div class='playerEdit' onclick='editPlayer(&quot;".$player->iPlayerID."&quot;);'></div><div class='playerDelete' onclick='deletePlayer(&quot;".$player->iPlayerID."&quot;);'></div></div>";
+            $html .= "<div class='player clearfix ".$cssCl ."'><div class='playerName'><input type='text' id='player_".$player->iPlayerID."' value='" . $player->sName . "' disabled='disabled'></div><div class='playerPoints'>" . $player->iPoints . "</div><div class='playerEdit' onclick='editPlayer(&quot;".$player->iPlayerID."&quot;);'></div><div class='playerDelete' onclick='deletePlayer(&quot;".$player->iPlayerID."&quot;);'></div></div>";
             $i++;
         }
+        if($i % 3 == 0){$cssCl="last";}
+        else{$cssCl="";}
+        $html .= "<div id='idAddPlayer' class='player clearfix ".$cssCl ."'><div class='addPlayer' onclick='addPlayer();'><img src='src/img/add.png'></div></div>";
         $html .= "<div class='clear'></div>";
         return $html;
     }
@@ -183,9 +186,12 @@ class sg_game
         foreach ($this->drinks as $drink) {
             if($i % 2 == 0){$cssCl="last";}
             else{$cssCl="";}
-            $html .= "<div class='drink clearfix ".$cssCl ."'><div class='drinkName'>" . $drink->sName . "</div><div class='drinkAlcohol'>" . $drink->iAlcohol . "</div><div class='drinkAmount'>" . $drink->sAmount . "</div><div class='drinkEdit' onclick='editDrink(&quot;".$drink->iDrinkID."&quot;);'></div><div class='drinkDelete' onclick='deleteDrink(&quot;".$drink->iDrinkID."&quot;);'></div></div>";
+            $html .= "<div class='drink clearfix ".$cssCl ."'><div class='drinkName'><input type='text' id='drink_".$drink->iDrinkID."' value='" . $drink->sName . "' disabled='disabled'></div><div class='drinkAmount'><input type='text' id='amount_".$drink->iDrinkID."' value='" . $drink->sAmount . "' disabled='disabled'></div><div class='drinkEdit' onclick='editDrink(&quot;".$drink->iDrinkID."&quot;);'></div><div class='drinkDelete' onclick='deleteDrink(&quot;".$drink->iDrinkID."&quot;);'></div></div>";
             $i++;
         }
+        if($i % 2 == 0){$cssCl="last";}
+        else{$cssCl="";}
+        $html.= "<div id='idAddDrink' class='drink clearfix ".$cssCl ."'><div class='addDrink'><img src='src/img/add.png'></div></div>";
         $html .= "<div class='clear'></div>";
         return $html;
     }
@@ -288,8 +294,7 @@ class sg_game
         foreach($this->drinks as $oDrink){
             if($oDrink->iDrinkID == $drinkID){
                 unset($this->drinks[$i]);
-                $oDrink->delete();
-                return true;
+                return $oDrink->delete();
             }
             $i++;
         }

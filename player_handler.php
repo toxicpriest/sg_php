@@ -7,12 +7,12 @@ include_once("core/sg_task.php");
 
 
 $gameid = $_COOKIE['gameID'];
-$playerID = $_POST['playerID'];
 $oGame = new sg_game();
 $oGame->load($gameid);
 $func = $_POST['func'];
 
 if ($func == "delete") {
+    $playerID = $_POST['playerID'];
     if (count($oGame->playerList) > 2) {
         $msg = $oGame->deletePlayer($playerID);
     }
@@ -26,6 +26,18 @@ if ($func == "delete") {
     echo $data;
 }
 elseif($func == "edit"){
+    $playerID = $_POST['playerID'];
     $newName = $_POST['newName'];
     $oGame->editPlayer($playerID,$newName);
+}
+elseif($func == "add"){
+    $sNewPlayerName = $_POST['newName'];
+    $oNewPlayer = new sg_player();
+    $oNewPlayer->sName = $sNewPlayerName;
+    $oGame->addPlayer($oNewPlayer);
+    $oGame->save();
+    $playerBoard = $oGame->getUserHtmlBoard();
+    $data='{"playerboard":"' . $playerBoard . '"}';
+
+    echo $data;
 }

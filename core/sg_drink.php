@@ -32,7 +32,7 @@ class sg_drink {
     public function save($gameID){
         $oDB= new dB();
         if($this->gameID!=null){
-            $sSql= "UPDATE drinks SET name=".$this->sName.",size=".$this->sAmount." WHERE id=".$this->iDrinkID;
+            $sSql= "UPDATE drinks SET name='".$this->sName."' ,size='".$this->sAmount."' WHERE id='".$this->iDrinkID."'";
         }else{
         $this->gameID=$gameID;
             $sSql = "INSERT INTO drinks (id,gameid, name ,size) VALUES ('".$this->iDrinkID."','".$gameID."','". $this->sName."','".$this->sAmount."') ";

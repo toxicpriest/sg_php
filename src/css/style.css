@@ -1,320 +1,84 @@
-body {
-    margin: 0;
-    padding: 0;
-    background: #eee;
-}
-.drinkEdit {
-    float: left;
-    height: 20px;
-    width: 20px;
-    background: url("../img/edit.png") no-repeat;
-}
-.drinkDelete {
-    float: left;
-    height: 20px;
-    width: 20px;
-    background: url("../img/delete.png") no-repeat;
-}
-.menu button {
-    font-family: monospace;
-    font-size: 18px;
-    height: 55px;
-    width: 120px;
-    margin: 0 0 15px;
-}
+body {margin: 0;padding: 0;    background: #eee;}
+.drinkEdit {    float: left;    height: 20px;    width: 20px;    background: url("../img/edit.png") no-repeat;}
+.drinkDelete {    float: left;    height: 20px;    width: 20px;    background: url("../img/delete.png") no-repeat;}
+.menu button {    font-family: monospace;    font-size: 18px;    height: 55px;    width: 120px;    margin: 0 0 15px;}
+.topSettings select {    color: #555;    font-family: monospace;    font-size: 18px;    margin: 0 0 10px;    padding: 5px;    text-align: center;    width: 581px;}
+.settingsBtn {    margin: 20px auto;    padding: 20px 0;    text-align: center;    width: 601px;}
+.settingsBtn input {    font-family: monospace;    font-size: 18px;    height: 55px;    width: 120px;}
 
-.topSettings select {
-    color: #555;
-    font-family: monospace;
-    font-size: 18px;
-    margin: 0 0 10px;
-    padding: 5px;
-    text-align: center;
-    width: 581px;
+.playerName {    float: left;    width: 110px;}
 
-}
+.playerPoints {    float: left;    text-align: center;   width: 35px;}
+.playerEdit {    float: left;    height: 20px;    width: 20px;    background: url("../img/edit.png") no-repeat;}
+.playerDelete {    float: left;    height: 20px;    width: 20px;    background: url("../img/delete.png") no-repeat;}
 
-.settingsBtn {
-    margin: 20px auto;
-    padding: 20px 0;
-    text-align: center;
-    width: 601px;
-}
+.drinkName {    float: left;    width: 166px;}
+.drinkName input {    width: 166px;    color:#333;    background: #fff;    border: none;}
+.drinkName input:disabled {    color : #333;    font-style: italic;    background: #ddd;}
 
-.settingsBtn input {
-    font-family: monospace;
-    font-size: 18px;
-    height: 55px;
-    width: 120px;
-}
+.drinkAlcohol {    float: left;    width: 20px;}
 
-.playerName {
-    float: left;
-    width: 110px;
-}
+.drinkAmount {    float: left;    text-align: center;    width: 80px;}
+.drinkAmount input{    width: 75px;   color:#333;    background: #fff;    border: none;}
+.drinkAmount input:disabled {   color : #333;   font-style: italic;   background: #ddd;}
+.settingsMenu {    margin: 20px auto 0;    width: 601px;}
 
-.playerPoints {
-    float: left;
-    text-align: center;
-    width: 35px;
-}
-.playerEdit {
-    float: left;
-    height: 20px;
-    width: 20px;
-    background: url("../img/edit.png") no-repeat;
-}
-.playerDelete {
-    float: left;
-    height: 20px;
-    width: 20px;
-    background: url("../img/delete.png") no-repeat;
-}
+.settingsMenu input {    height: 25px;    margin: 5px;    width: 200px;}
 
-.drinkName {
-    float: left;
-    width: 166px;
-}
-.drinkName > input {
-    width: 166px;
-    color:#333;
-    background: #fff;
-    border: none;
-}
-.drinkName input:disabled {
-    color : #333;
-    font-style: italic;
-    background: #ddd;
-}​
+.settingsMenu #drinks {    float: left;    width: 298px;}
 
-.drinkAlcohol {
-    float: left;
-    width: 20px;
-}
+.settingsMenu #players {    float: left;    width: 298px;    margin-right: 5px;}
 
-.drinkAmount {
-    float: left;
-    text-align: center;
-    width: 80px;
-}
-.drinkAmount input{
-    width: 75px;
-    color:#333;
-    background: #fff;
-    border: none;
-}
-.drinkAmount input:disabled {
-   color : #333;
-   font-style: italic;
-   background: #ddd;
-}​
-.settingsMenu {
-    margin: 20px auto 0;
-    width: 601px;
-}
+.clear {    clear: both;}
 
-.settingsMenu input {
-    height: 25px;
-    margin: 5px;
-    width: 200px;
-}
+#actions div {    background: none repeat scroll 0 0 #fff;    float: left;    height: 35px;    margin: 2px;    width: 35px;}
 
-.settingsMenu #drinks {
-    float: left;
-    width: 298px;
-}
+.round {    background: url(../img/round.png);}
 
-.settingsMenu #players {
-    float: left;
-    width: 298px;
-    margin-right: 5px;
-}
+#actions img {    height: 35px;    width: 35px;}
 
-.clear {
-    clear: both;
-}
+#actions div.hiddenActionInfo { box-shadow: 7px 8px 7px 0 #888;padding:10px; border: 1px solid #666;  background: none repeat scroll 0 0 #ddd;    color: #333;    display: none;    height: 200px;    position: absolute;    width: 300px;}
 
-#actions > div {
-    background: none repeat scroll 0 0 #fff;
-    float: left;
-    height: 35px;
-    margin: 2px;
-    width: 35px;
-}
+#playersInfo {    margin: 20px auto;    width: 601px;}
 
-.round {
-    background: url(../img/round.png);
-}
+#drinksInfo {    margin: 20px auto;    width: 601px;}
 
-#actions img {
-    height: 35px;
-    width: 35px;
-}
+#activebutton {    margin: -28px auto 0;    width: 250px;}
 
-.hiddenActionInfo {
-    background: none repeat scroll 0 0 #000;
-    color: #fff;
-    display: none;
-    height: 200px;
-    position: absolute;
-    width: 300px;
-}
+#activebutton button {    font-family: monospace;    font-size: 30px;    height: 55px;    width: 250px;}
 
-#playersInfo {
-    margin: 20px auto;
-    width: 601px;
-}
+.clearfix:after {    content: ".";    display: block;    clear: both;    visibility: hidden;    line-height: 0;    height: 0;}
 
-#drinksInfo {
-    margin: 20px auto;
-    width: 601px;
-}
+.player.clearfix {    background: none repeat scroll 0 0 #ddd;    border: 1px solid #666;    color: #333;    float: left;    margin: 0 5px 5px 0;    padding: 5px;    box-shadow: 7px 8px 8px -4px #888;}
 
-#activebutton {
-    margin: -28px auto 0;
-    width: 250px;
-}
+.drink.clearfix {    background: none repeat scroll 0 0 #ddd;    border: 1px solid #666;    color: #333;    float: left;    margin: 0 5px 5px 0;    padding: 5px;    box-shadow: 7px 8px 8px -4px #888;}
 
-#activebutton button {
-    font-family: monospace;
-    font-size: 30px;
-    height: 55px;
-    width: 250px;
-}
+.player.clearfix.last {   margin: 0 0 5px 0;}
 
-.clearfix:after {
-    content: ".";
-    display: block;
-    clear: both;
-    visibility: hidden;
-    line-height: 0;
-    height: 0;
-}
+.drink.clearfix.last {    margin: 0 0 5px 0;}
 
-.player.clearfix {
-    background: none repeat scroll 0 0 #ddd;
-    border: 1px solid #666;
-    color: #333;
-    float: left;
-    margin: 0 5px 5px 0;
-    padding: 5px;
-    box-shadow: 7px 8px 8px -4px #888;
-}
+#actions {    background: none repeat scroll 0 0 #ddd;    border: 1px solid #666;    color: #333;    height: 40px;    margin: 0 auto;    width: 601px;    box-shadow: 7px 8px 7px 0 #888;}
 
-.drink.clearfix {
-    background: none repeat scroll 0 0 #ddd;
-    border: 1px solid #666;
-    color: #333;
-    float: left;
-    margin: 0 5px 5px 0;
-    padding: 5px;
-    box-shadow: 7px 8px 8px -4px #888;
-}
+#taskwidow {    background: none repeat scroll 0 0 #ddd;    color: #333;    border: 1px solid #666;    font-family: monospace;    font-size: 25px;    height: 230px;    margin: 20px auto 0;    padding: 10px;    width: 581px;    box-shadow: 7px 8px 7px 0 #888;}
 
-.player.clearfix.last {
-    margin: 0 0 5px 0;
-}
+.topSettings {    background: none repeat scroll 0 0 #ddd;    color: #333;    border: 1px solid #666;    margin: 0 auto;    padding: 10px 0;    width: 601px;    text-align: center;    box-shadow: 7px 8px 7px 0 #888;}
 
-.drink.clearfix.last {
-    margin: 0 0 5px 0;
-}
+#players div {    background: none repeat scroll 0 0 #ddd;    color: #333;    border: 1px solid #666;    margin-bottom: 5px;    padding: 5px;    box-shadow: 7px 8px 7px 0 #888;}
 
-#actions {
-    background: none repeat scroll 0 0 #ddd;
-    border: 1px solid #666;
-    color: #333;
-    height: 40px;
-    margin: 0 auto;
-    width: 601px;
-    box-shadow: 7px 8px 7px 0 #888;
-}
+#drinks div {    background: none repeat scroll 0 0 #ddd;    color: #333;    border: 1px solid #666;    margin-bottom: 5px;    padding: 5px;    box-shadow: 7px 8px 7px 0 #888;}
 
-#taskwidow {
-    background: none repeat scroll 0 0 #ddd;
-    color: #333;
-    border: 1px solid #666;
-    font-family: monospace;
-    font-size: 25px;
-    height: 230px;
-    margin: 20px auto 0;
-    padding: 10px;
-    width: 581px;
-    box-shadow: 7px 8px 7px 0 #888;
-}
+.settingsheader div {    color: #333;    float: left;    text-align: center;    text-decoration: underline;    width: 300px;}
 
-.topSettings {
-    background: none repeat scroll 0 0 #ddd;
-    color: #333;
-    border: 1px solid #666;
-    margin: 0 auto;
-    padding: 10px 0;
-    width: 601px;
-    text-align: center;
-    box-shadow: 7px 8px 7px 0 #888;
-}
+.header {    background: none repeat scroll 0 0 #ddd;    color: #333;    border: 1px solid #666;    font-family: monospace;    font-size: 20px;    text-align: center;    margin: 5px auto 0;    padding: 10px;    width: 581px;    box-shadow: 7px 8px 7px 0 #888;}
 
-#players > div {
-    background: none repeat scroll 0 0 #ddd;
-    color: #333;
-    border: 1px solid #666;
-    margin-bottom: 5px;
-    padding: 5px;
-    box-shadow: 7px 8px 7px 0 #888;
-}
-
-#drinks > div {
-    background: none repeat scroll 0 0 #ddd;
-    color: #333;
-    border: 1px solid #666;
-    margin-bottom: 5px;
-    padding: 5px;
-    box-shadow: 7px 8px 7px 0 #888;
-}
-
-.settingsheader > div {
-    color: #333;
-    float: left;
-    text-align: center;
-    text-decoration: underline;
-    width: 300px;
-}
-
-.header {
-    background: none repeat scroll 0 0 #ddd;
-    color: #333;
-    border: 1px solid #666;
-    font-family: monospace;
-    font-size: 20px;
-    text-align: center;
-    margin: 5px auto 0;
-    padding: 10px;
-    width: 581px;
-    box-shadow: 7px 8px 7px 0 #888;
-}
-
-.menu {
-    background: none repeat scroll 0 0 #ddd;
-    border: 1px solid #666;
-    color: #333;
-    height: 200px;
-    left: 50%;
-    top: 50%;
-    margin: -75px 0 0 -100px;
-    padding: 15px;
-    text-align: center;
-    width: 150px;
-    position: absolute;
-    box-shadow: 7px 8px 7px 0 #888;
-}
-
-.playerName input {
-    width: 110px;
-    color:#333;
-    background: #fff;
-    border: none;
-}
-.playerName input:disabled {
-    color : #333;
-    font-style: italic;
-    background: #ddd;
-}​
+.menu {    background: none repeat scroll 0 0 #ddd;    border: 1px solid #666;    color: #333;    height: 200px;    left: 50%;    top: 50%;    margin: -75px 0 0 -100px;    padding: 15px;    text-align: center;    width: 150px;    position: absolute;    box-shadow: 7px 8px 7px 0 #888;}
+.playerName input {    width: 110px;    color:#333;    background: #fff;    border: none;}
+.playerName input:disabled {    color : #333;    font-style: italic;    background: #ddd;}
+.addPlayer {    height: 20px;    text-align: center;    width: 185px;}
+.addDrink {    height: 20px;    text-align: center;    width: 286px;}
+.playerSave {background: url("../img/save.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);    float: right;    height: 20px;    width: 20px;}
+.playerCancel {background: url("../img/cancel.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);    float: right;    height: 20px;    width: 20px;}
+#idAddPlayer {    width: 185px;}
+.drinkSave {background: url("../img/save.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);    float: right;    height: 20px;    width: 20px;}
+.drinkCancel {background: url("../img/cancel.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);    float: right;    height: 20px;    width: 20px;}
+#idAddDrink {    width: 286px;}

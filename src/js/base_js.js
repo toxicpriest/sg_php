@@ -97,7 +97,7 @@ function deleteDrink(sOiD){
     $.ajax({
         url: "drink_handler.php",
         context: document.body,
-        data: {drinkID: sOiD},
+        data: {drinkID: sOiD, func:"delete"},
         type: "POST"
         }).done(function (data) {
             if (data != "" && data != null) {
@@ -155,6 +155,52 @@ function editPlayer(sOiD){
         $(id).prop("disabled", true);
     }
 }
+function addDrink(){
+  var addHtml = " <div class='drinkName'><input type='text' id='drink_added' value=''></div><div class='drinkAmount'><input type='text' id='drink_amount_added'></div><div class='drinkSave' onclick='drinkSave();'></div><div class='drinkCancel' onclick='drinkCancel();'></div>";
+    $("#idAddDrink").html(addHtml);
+}
+function addPlayer(){
+  var addHtml = " <div class='playerName'><input type='text' id='player_added' value=''></div><div class='playerSave' onclick='playerSave();'></div><div class='playerCancel' onclick='playerCancel();'></div>";
+    $("#idAddPlayer").html(addHtml);
+}
+function drinkCancel(){
+    var addHtml = "<div class='addDrink' onclick='addDrink();'><img src='src/img/add.png'></div>";
+    $("#idAddDrink").html(addHtml);
+}
+function playerCancel(){
+    var addHtml = "<div class='addPlayer' onclick='addPlayer();'><img src='src/img/add.png'></div>";
+    $("#idAddPlayer").html(addHtml);
+}
+function drinkSave(){
+        var newName = $("#drink_added").val();
+        var newAmount = $("#drink_amount_added").val();
+        $.ajax({
+            url: "drink_handler.php",
+            context: document.body,
+            data: {func:"add",newName:newName,newAmount:newAmount},
+            type: "POST"
+            }).done(function (data) {
+                        if (data != "" && data != null) {
+                            var obj = $.parseJSON(data);
+                            $("#drinksInfo").html(obj.drinkboard);
+                        }
+                    });
+}
+
+function playerSave(){
+        var newName = $("#player_added").val();
+        $.ajax({
+            url: "player_handler.php",
+            context: document.body,
+            data: {func:"add",newName:newName},
+            type: "POST"
+            }).done(function (data) {
+                        if (data != "" && data != null) {
+                            var obj = $.parseJSON(data);
+                            $("#playersInfo").html(obj.playerboard);
+                        }
+                    });
+}
 
 function chkFormular(){
     var formularSuccess = true;
@@ -211,5 +257,4 @@ function chkFormular(){
     if(!formularSuccess){
         return false;
     }
-
 }
