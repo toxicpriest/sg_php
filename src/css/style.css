@@ -35,7 +35,7 @@ body {margin: 0;padding: 0;    background: #eee;}
 
 .round {    background: url(../img/round.png);}
 
-#actions img {    height: 35px;    width: 35px;}
+#actions img {    height: 35px;    width: 35px;  box-shadow: 2px 2px 2px 0 #888;}
 
 #actions div.hiddenActionInfo { box-shadow: 7px 8px 7px 0 #888;padding:10px; border: 1px solid #666;  background: none repeat scroll 0 0 #ddd;    color: #333;    display: none;    height: 200px;    position: absolute;    width: 300px;}
 

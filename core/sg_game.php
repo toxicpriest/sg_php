@@ -191,7 +191,7 @@ class sg_game
         }
         if($i % 2 == 0){$cssCl="last";}
         else{$cssCl="";}
-        $html.= "<div id='idAddDrink' class='drink clearfix ".$cssCl ."'><div class='addDrink'><img src='src/img/add.png'></div></div>";
+        $html.= "<div id='idAddDrink' class='drink clearfix ".$cssCl ."'><div class='addDrink'  onclick='addDrink();'><img src='src/img/add.png'></div></div>";
         $html .= "<div class='clear'></div>";
         return $html;
     }
@@ -223,7 +223,7 @@ class sg_game
     {
         $html = "";
         foreach ($this->activeTasks as $actions) {
-            $html .= "<div class='" . $actions->sAction . " activeAction' title='" . $actions->sName . "'><img src='../src/img/" . $actions->sAction . ".png'><div class='hiddenActionInfo'>Runden: ".$actions->sTaskstate."/".$actions->iActionParam."<br>".$actions->sText."</div></div>";
+            $html .= "<div class='" . $actions->sAction . " activeAction' title='" . $actions->sName . "'><img src='../src/img/" . $actions->sAction . ".png'><div class='hiddenActionInfo'>Runden: ".$actions->sTaskstate."/".$actions->iActionParam."<br>".$actions->sName."<br>".$actions->sText."</div></div>";
         }
         return $html;
     }
