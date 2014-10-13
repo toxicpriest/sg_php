@@ -1,3 +1,6 @@
+<?php
+header("Content-Type: text/html; charset=utf-8");
+?>
 <script src="src/js/jquery-1.11.0.min.js"></script>
 <script src="src/js/base_js.js"></script>
 <link rel="stylesheet" type="text/css" href="src/css/style.css">

@@ -25,7 +25,7 @@ class dB {
     }
 
     public function execute($sSql){
-        $result = mysql_query($sSql,$this->dbConn);
+        $result = mysql_query(utf8_encode($sSql),$this->dbConn);
         return $result;
     }
     public function getAll($sSql){
