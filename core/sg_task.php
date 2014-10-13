@@ -56,7 +56,7 @@ class sg_task {
         $this->iActionParam=$data[0]["action_param"];
         $this->sTaskstate=$data[0]["taskparam"];
         $this->isPlayerTask=$data[0]["isPlayerTask"];
-        $this->taskplayerID=$data[0]["taskplayername"];
+        $this->taskplayername=$data[0]["taskplayername"];
 
     }
 
