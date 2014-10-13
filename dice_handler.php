@@ -13,7 +13,7 @@ $oGame->sBtnState="default";
 $activeBtn=$oGame->getActiveBtn();
 $oDice = new sg_dice();
 $number = $oDice->rollDice();
-$randomNumberText = "Es wurde eine ".$number." gewürfelt!";
+$randomNumberText = "<center>Es wurde eine ".$number." gewürfelt!<br><img src='src/img/".$number.".png' height='90'></center>";
 $data = '{"randomNumberText":"'.$randomNumberText.'","activeBtn":"'.$activeBtn.'"}';
 
 echo $data;
