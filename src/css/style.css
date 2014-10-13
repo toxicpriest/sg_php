@@ -67,7 +67,7 @@ body {margin: 0;padding: 0;    background: #eee;background: url("../img/dark-bg.
 
 #drinks div {    background: none repeat scroll 0 0 #ddd;    color: #333;    border: 1px solid #666;    margin-bottom: 5px;    padding: 5px;    box-shadow: 7px 8px 7px 0 #333;}
 
-.settingsheader div {    color: #333;    float: left;    text-align: center;    text-decoration: underline;    width: 300px;}
+.settingsheader div {    color: #eee;    float: left;    text-align: center;    text-decoration: underline;    width: 300px;    font-family: monospace;    font-size: 22px;}
 
 .header {    background: none repeat scroll 0 0 #ddd;    color: #333;    border: 1px solid #666;    font-family: monospace;    font-size: 20px;    text-align: center;    margin: 5px auto 0;    padding: 10px;    width: 581px;    box-shadow: 7px 8px 7px 0 #333;}
 
