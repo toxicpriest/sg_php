@@ -13,6 +13,11 @@ if (isset($_COOKIE['gameID'])) {
     $oGame = new sg_game();
     $oGame->load($gameid);
     ?>
+    <div id="gameboard">
+    <div id="messageboard">
+        <div id="scrollpane"><div id="msg_messageboard"></div></div>
+        <div id="msgOkayButton"><button onclick="hideAlert();">OKAY</button></div>
+    </div>
     <div id="fog"></div>
     <div class="header">PLAYER</div>
     <div id="playersInfo">
@@ -60,4 +65,5 @@ if (isset($_COOKIE['gameID'])) {
     <div id="taskWidow"></div>
     <div class="clear"></div>
     <div id="ActiveButton"><button id="actionBtn">!SAUFEN!</button></div>
+    </div>
 <?php } ?>

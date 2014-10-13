@@ -58,9 +58,13 @@ $(document).ready(function () {
                     $("#taskWidow").html(obj.action);
                     $("#ActiveButton").html(obj.activeBtn);
                     $("#actions").html(obj.actions);
-                        $.each(obj.endedTasks, function() {
-                            alert(this.text);
-                        })
+                    var wholeTask="";
+                    $.each(obj.endedTasks, function() {
+                        wholeTask+=this.text+"<br>";
+                    })
+                    if(wholeTask != ""){
+                        messageAlert(wholeTask);
+                    }
                 }
             });
     })
@@ -71,7 +75,7 @@ $(document).ready(function () {
         }).done(function (data) {
                 if (data != "" && data != null) {
                     var obj = $.parseJSON(data);
-                    alert(obj.randomNumberText);
+                    messageAlert(obj.randomNumberText);
                     $("#ActiveButton").html(obj.activeBtn);
                 }
             });
@@ -93,7 +97,7 @@ $(document).ready(function () {
     })
 })
 function deleteDrink(sOiD){
-    alert("deleteDrink "+sOiD);
+    messageAlert("deleteDrink "+sOiD);
     $.ajax({
         url: "drink_handler.php",
         context: document.body,
@@ -103,7 +107,7 @@ function deleteDrink(sOiD){
             if (data != "" && data != null) {
                 var obj = $.parseJSON(data);
                 $("#drinksInfo").html(obj.drinkboard);
-                alert(obj.msg);
+                messageAlert(obj.msg);
             }
         });
 }
@@ -136,7 +140,7 @@ function deletePlayer(sOiD){
             if (data != "" && data != null) {
                 var obj = $.parseJSON(data);
                 $("#playersInfo").html(obj.playerboard);
-                alert(obj.msg);
+                messageAlert(obj.msg);
             }
         });
 }
@@ -257,4 +261,19 @@ function chkFormular(){
     if(!formularSuccess){
         return false;
     }
+}
+function messageAlert(msg){
+    var scrollTop =$(window).scrollTop();
+    scrollTop=scrollTop-80;
+    $("body").css("overflow","hidden");
+    $("#msg_messageboard").html(msg);
+    $("#fog").css("display","block");
+    $("#messageboard").css("display","block");
+    $("#messageboard").css("margin-top",scrollTop+"px");
+
+}
+function hideAlert(){
+    $("#fog").css("display","none");
+    $("#messageboard").css("display","none");
+    $("body").css("overflow","visible");
 }

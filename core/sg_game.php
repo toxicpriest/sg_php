@@ -121,7 +121,7 @@ class sg_game
             $randomPlayer->addPoints($task->iCredits);
         }
         if ($task->sAction=="round") {
-            $task->setTaskState($task->iActionParam);
+            $task->taskplayername=$randomPlayer->sName;
             $task->sTaskstate=0;
             $this->addTask($task);
         }
@@ -132,9 +132,12 @@ class sg_game
             $this->sBtnState = "default";
         }
         $this->save(false);
-        $sTaskText = $randomPlayer->sName.", ".$task->sName . "!<br>" . $task->sText;
-
-
+        if(!$task->isPlayerTask){
+            $sTaskText = $task->sName . "!<br>" . $task->sText;
+        }
+        else{
+            $sTaskText = $randomPlayer->sName.", ".$task->sName . "!<br>" . $task->sText;
+        }
         return $sTaskText;
     }
 
@@ -223,7 +226,13 @@ class sg_game
     {
         $html = "";
         foreach ($this->activeTasks as $actions) {
-            $html .= "<div class='" . $actions->sAction . " activeAction' title='" . $actions->sName . "'><img src='../src/img/" . $actions->sAction . ".png'><div class='hiddenActionInfo'>Runden: ".$actions->sTaskstate."/".$actions->iActionParam."<br>".$actions->sName."<br>".$actions->sText."</div></div>";
+            if($actions->isPlayerTask){
+               $taskplayer="Aktiver Spieler:".$actions->taskplayername."<br>";
+            }
+            else{
+                $taskplayer="";
+            }
+            $html .= "<div class='" . $actions->sAction . " activeAction' title='" . $actions->sName . "'><img src='../src/img/" . $actions->sAction . ".png'><div class='hiddenActionInfo'>Runden: ".$actions->sTaskstate."/".$actions->iActionParam."<br>".$taskplayer.$actions->sName."<br>".$actions->sText."</div></div>";
         }
         return $html;
     }
@@ -232,7 +241,7 @@ class sg_game
         $i=0;
         foreach ($this->activeTasks as $oTask) {
             if(!$oTask->update($this->gameID)){
-                $endedActions[]="Die Aufgabe: ".$oTask->sText." ist jetzt beendet!";
+                $endedActions[]="Die Aufgabe:<br> ".$oTask->sText." <br>ist jetzt beendet!<br>";
                 unset($this->activeTasks[$i]);
             }
             $i++;

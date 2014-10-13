@@ -16,6 +16,8 @@ class sg_task {
     public $sAction;
     public $iActionParam;
     public $sTaskstate;
+    public $isPlayerTask=false;
+    public $taskplayername;
 
     public function getTask($id = null){
         $oDB = new dB();
@@ -37,12 +39,9 @@ class sg_task {
         $this->sAction=$task["action"];
         $this->iActionParam=$task["action_param"];
         $this->iCredits=$task["points"];
-
+        $this->isPlayerTask=$task["isPlayerTask"];
     }
 
-    public function setTaskState(){
-
-    }
     public function load($id){
         $oDB = new dB();
         $sSql="Select * from game2task join tasks on  game2task.taskid=tasks.id where game2task.id=".$id;
@@ -56,6 +55,9 @@ class sg_task {
         $this->sAction=$data[0]["action"];
         $this->iActionParam=$data[0]["action_param"];
         $this->sTaskstate=$data[0]["taskparam"];
+        $this->isPlayerTask=$data[0]["isPlayerTask"];
+        $this->taskplayerID=$data[0]["taskplayername"];
+
     }
 
     public function save($gameID)
@@ -66,7 +68,7 @@ class sg_task {
         }
         else {
             $this->gameID = $gameID;
-            $sSql = "INSERT INTO game2task (gameid,taskid,taskparam) VALUES ('" .$gameID. "','" . $this->iID . "','" . $this->sTaskstate . "') ";
+            $sSql = "INSERT INTO game2task (gameid,taskid,taskparam,taskplayer,taskplayername) VALUES ('" .$gameID. "','" . $this->iID . "','" . $this->sTaskstate . "','".$this->isPlayerTask."','".$this->taskplayername."') ";
         }
         $oDB->execute($sSql);
     }
