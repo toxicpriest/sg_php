@@ -34,6 +34,7 @@ $(document).ready(function () {
     });
 
     $('body').delegate('#taskBtn', 'click', function(event) {
+        showFog();
         $.ajax({
             url: "task_handler.php",
             context: document.body
@@ -46,8 +47,10 @@ $(document).ready(function () {
                     $("#actions").html(obj.actions);
                 }
             });
+        hideFog();
     })
     $('body').delegate('#actionBtn', 'click', function(event) {
+        showFog();
         $.ajax({
             url: "action_handler.php",
             context: document.body
@@ -67,8 +70,10 @@ $(document).ready(function () {
                     }
                 }
             });
+        hideFog();
     })
     $('body').delegate('#diceBtn', 'click', function(event) {
+        showFog();
         $.ajax({
             url: "dice_handler.php",
             context: document.body
@@ -79,6 +84,7 @@ $(document).ready(function () {
                     $("#ActiveButton").html(obj.activeBtn);
                 }
             });
+        hideFog();
     })
     $('body').delegate('.activeAction', 'mousemove', function(e)
     {
@@ -276,4 +282,11 @@ function hideAlert(){
     $("#fog").css("display","none");
     $("#messageboard").css("display","none");
     $("body").css("overflow","visible");
+}
+
+function showFog(){
+    $("#fog").css("display","block");
+}
+function hideFog(){
+    $("#fog").css("display","none");
 }
