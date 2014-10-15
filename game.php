@@ -53,29 +53,15 @@ if (isset($_COOKIE['gameID'])) {
         <div class="header">DRINKS</div>
         <div id="drinksInfo">
             <?php
-            $j = 1;
             foreach ($oGame->drinks as $drink) {
-                if ($j % 2 == 0) {
-                    $cssCl = "last";
-                }
-                else {
-                    $cssCl = "";
-                }
-                echo "<div class='drink clearfix " . $cssCl . "'>
+                echo "<div class='drink clearfix'>
                 <div class='drinkName'><input type='text' id='drink_" . $drink->iDrinkID . "' value='" . $drink->sName . "' disabled='disabled'></div>
                 <div class='drinkAmount'><input type='text' id='amount_" . $drink->iDrinkID . "' value='" . $drink->sAmount . "' disabled='disabled'></div>
                 <div class='drinkEdit' onclick='editDrink(\"" . $drink->iDrinkID . "\");'></div>
                 <div class='drinkDelete' onclick='deleteDrink(\"" . $drink->iDrinkID . "\");'></div>
             </div>";
-                $j++;
             }
-            if ($j % 2 == 0) {
-                $cssCl = "last";
-            }
-            else {
-                $cssCl = "";
-            }
-            echo "<div  id='idAddDrink' class='drink clearfix " . $cssCl . "'><div class='addDrink'  onclick='addDrink();'><img src='src/img/add.png'></div></div>";
+            echo "<div  id='idAddDrink' class='drink clearfix'><div class='addDrink'  onclick='addDrink();'><img src='src/img/add.png'></div></div>";
             ?>
             <div class="clear"></div>
         </div>

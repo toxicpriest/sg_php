@@ -173,17 +173,11 @@ class sg_game
     public function getUserHtmlBoard()
     {
         $html = "";
-        $i=1;
         foreach ($this->playerList as $player) {
-            if($i % 3 == 0){$cssCl="last";}
-            else{$cssCl="";}
             $items = $player->getItemHtmlBoard();
-            $html .= "<div class='player clearfix " . $cssCl . "'><div class='playerItems' id='items" . $player->iPlayerID . "'><div class='closeItems'onclick='hideItems(&quot;" . $player->iPlayerID . "&quot;);'><img src='src/img/minus.png'></div><div class='items'>".$items."<div class='clear'></div></div></div><div class='showItems'  onclick='showItems(&quot;" . $player->iPlayerID . "&quot;);'><img src='src/img/add.png'></div><div class='playerName' onclick='showFog();'><input type='text' id='player_" . $player->iPlayerID . "' value='" . $player->sName . "' disabled='disabled'></div><div class='playerPoints'>" . $player->iPoints . "</div><div class='playerEdit' onclick='editPlayer(&quot;" . $player->iPlayerID . "&quot;);'></div><div class='playerDelete' onclick='deletePlayer(&quot;" . $player->iPlayerID . "&quot;);'></div></div>";
-            $i++;
+            $html .= "<div class='player clearfix'><div class='playerItems' id='items" . $player->iPlayerID . "'><div class='closeItems'onclick='hideItems(&quot;" . $player->iPlayerID . "&quot;);'><img src='src/img/minus.png'></div><div class='items'>".$items."<div class='clear'></div></div></div><div class='showItems'  onclick='showItems(&quot;" . $player->iPlayerID . "&quot;);'><img src='src/img/add.png'></div><div class='playerName' onclick='showFog();'><input type='text' id='player_" . $player->iPlayerID . "' value='" . $player->sName . "' disabled='disabled'></div><div class='playerPoints'>" . $player->iPoints . "</div><div class='playerEdit' onclick='editPlayer(&quot;" . $player->iPlayerID . "&quot;);'></div><div class='playerDelete' onclick='deletePlayer(&quot;" . $player->iPlayerID . "&quot;);'></div></div>";
         }
-        if($i % 3 == 0){$cssCl="last";}
-        else{$cssCl="";}
-        $html .= "<div id='idAddPlayer' class='player clearfix ".$cssCl ."'><div class='addPlayer' onclick='addPlayer();'><img src='src/img/add.png'></div></div>";
+        $html .= "<div id='idAddPlayer' class='player clearfix'><div class='addPlayer' onclick='addPlayer();'><img src='src/img/add.png'></div></div>";
         $html .= "<div class='clear'></div>";
         return $html;
     }
@@ -191,16 +185,11 @@ class sg_game
     public function getDrinkHtmlBoard()
     {
         $html = "";
-        $i=1;
+
         foreach ($this->drinks as $drink) {
-            if($i % 2 == 0){$cssCl="last";}
-            else{$cssCl="";}
-            $html .= "<div class='drink clearfix ".$cssCl ."'><div class='drinkName'><input type='text' id='drink_".$drink->iDrinkID."' value='" . $drink->sName . "' disabled='disabled'></div><div class='drinkAmount'><input type='text' id='amount_".$drink->iDrinkID."' value='" . $drink->sAmount . "' disabled='disabled'></div><div class='drinkEdit' onclick='editDrink(&quot;".$drink->iDrinkID."&quot;);'></div><div class='drinkDelete' onclick='deleteDrink(&quot;".$drink->iDrinkID."&quot;);'></div></div>";
-            $i++;
+            $html .= "<div class='drink clearfix'><div class='drinkName'><input type='text' id='drink_".$drink->iDrinkID."' value='" . $drink->sName . "' disabled='disabled'></div><div class='drinkAmount'><input type='text' id='amount_".$drink->iDrinkID."' value='" . $drink->sAmount . "' disabled='disabled'></div><div class='drinkEdit' onclick='editDrink(&quot;".$drink->iDrinkID."&quot;);'></div><div class='drinkDelete' onclick='deleteDrink(&quot;".$drink->iDrinkID."&quot;);'></div></div>";
         }
-        if($i % 2 == 0){$cssCl="last";}
-        else{$cssCl="";}
-        $html.= "<div id='idAddDrink' class='drink clearfix ".$cssCl ."'><div class='addDrink'  onclick='addDrink();'><img src='src/img/add.png'></div></div>";
+        $html.= "<div id='idAddDrink' class='drink clearfix'><div class='addDrink'  onclick='addDrink();'><img src='src/img/add.png'></div></div>";
         $html .= "<div class='clear'></div>";
         return $html;
     }
