@@ -154,7 +154,7 @@ class sg_game
 
         $this->updateActions();
         $itemText="";
-        if($this->isTaskTriggerd() == 5 || $this->isTaskTriggerd() == 1){
+        if($this->isTaskTriggerd() == 4){
             $oItem = new sg_item();
             $oItem->getItem();
             $randomPlayer->addItem($oItem);
@@ -210,7 +210,7 @@ class sg_game
         $taskRandomNumber = rand(1, 100);
         if ($taskRandomNumber <= $this->iTaskPercent) {
             $this->sBtnState = "task";
-            return rand(1, 5);
+            return rand(1, 4);
         }
         return false;
     }

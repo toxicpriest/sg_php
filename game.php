@@ -1,7 +1,7 @@
 <?php
 header("Content-Type: text/html; charset=utf-8");
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
+//error_reporting(E_ALL);
+//ini_set("display_errors", 1);
 ?>
 <link rel="stylesheet" type="text/css" href="src/css/style.css">
 <script language="javascript" type="text/javascript" src="src/js/jquery-1.11.0.min.js"></script>
