@@ -219,7 +219,7 @@ body {
     color: white;
     float: left;
     margin: 0 5px 5px 0;
-    padding: 5px 2px;
+    padding: 5px 2px 5px 7px;
     box-shadow: 7px 8px 8px -4px #333;
 }
 
@@ -460,8 +460,8 @@ body {
     font-family: monospace;
     display: none;
     height: 200px;
-    margin: -6px 0 0 -3px;
-    padding: 5px 2px;
+    margin: -6px 0 0 -8px;
+    padding: 5px 2px 5px 7px;
     position: absolute;
     width: 191px;
     z-index: 3;
