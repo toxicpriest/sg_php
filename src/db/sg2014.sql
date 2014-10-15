@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.27)
 # Datenbank: sg2014
-# Erstellungsdauer: 2014-10-15 09:36:37 +0000
+# Erstellungsdauer: 2014-10-15 09:58:16 +0000
 # ************************************************************
 
 
@@ -95,7 +95,7 @@ LOCK TABLES `game2task` WRITE;
 
 INSERT INTO `game2task` (`id`, `gameid`, `taskid`, `taskparam`, `taskplayer`, `taskplayername`)
 VALUES
-	(345,'543e3f0fc6381','37','1','1','Player 1');
+	(345,'543e3f0fc6381','37','2','1','Player 1');
 
 /*!40000 ALTER TABLE `game2task` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -179,15 +179,15 @@ LOCK TABLES `tasks` WRITE;
 
 INSERT INTO `tasks` (`id`, `name`, `text`, `action`, `action_param`, `points`, `isPlayerTask`)
 VALUES
-	(1,'Kraftprobe','Mache {x} Liegestütze! Für jede so erbrachte Leistung bekommt du einen Finger Bier.','dice',NULL,'2',1),
-	(2,'Razzia','Renne {x} Runden ums Haus/Sofa/... in jeder Runde bekommst du 2 Finger Bier zugesteckt.','dice',NULL,'2',1),
+	(1,'Kraftprobe','Mache X Liegestütze! Für jede so erbrachte Leistung bekommt du einen Finger Bier.','dice',NULL,'2',1),
+	(2,'Razzia','Renne X Runden ums Haus/Sofa/... in jeder Runde bekommst du 2 Finger Bier zugesteckt.','dice',NULL,'2',1),
 	(3,'Beichte','Beichte jemanden ernsthaft das du Alkoholiker bist. Spüle diese wiederliche Lüge mit einem Killer runter.',NULL,NULL,'1',1),
 	(4,'Goldkelchen','Gurgel ein Lied mit 2 Finger Bier. Die anderen dürfen gerne mitmachen!',NULL,NULL,'1',1),
 	(5,'Giftmischer','Mische je eine Einheit aller Getränke und trinke das Gebräu','',NULL,'2',1),
 	(6,'Verhör','Beantworte den anderen eine persönliche Frage. Die Anderen bekommen für die verwerfliche Frage alle 2 Finger Bier.',NULL,NULL,'1',1),
 	(7,'Gib mir Tiernamen','Imitiere ein Tier, das die anderen bestimmen. Bewegung und Geräusche inklusive!',NULL,NULL,'1',1),
 	(8,'Untertauchen','Du heißt ab jetzt Frank! Alle anderen müssen dich so ansprechen, also auch keine Kosenamen.',NULL,NULL,'0',1),
-	(9,'Banküberfall','Schreit alle \"Hände hoch!\" und reißt die Hände hoch. Der letzte bekommt einen Killer und 1 Finger für jeden Ganoven im Raum.',NULL,NULL,NULL,0),
+	(9,'Banküberfall','Schreit alle Hände hoch! und reißt die Hände hoch. Der letzte bekommt einen Killer und 1 Finger für jeden Ganoven im Raum.',NULL,NULL,NULL,0),
 	(10,'Spitzel','Vorsicht! Ein Spitzel ist unter euch! Die nächsten 3 Runden darf keiner etwas sagen.','round',3,NULL,0),
 	(11,'Russisch Roulette','Spiel Schnick-Schnack-Schnuck mit einem beliebigem Spieler. Der Verlierer wird mit einem Killer bestraft.',NULL,NULL,'1',1),
 	(12,'Last but not Least','Alle exen einen Killer! Der letzte bekommt noch einen!',NULL,NULL,NULL,0),
@@ -208,7 +208,7 @@ VALUES
 	(27,'Lungen-Transplatation','Ihr müsst 15 Runden ohne Rauchen auskommen.','round',15,NULL,0),
 	(28,'Nachschubprobleme','Du kannst für 5 Runden ein Getränk durch ein beliebiges anderes zur verfügung stehendes Getränk ersetzen.','round',5,NULL,0),
 	(29,'Killing Spree','Jedes Mal, wenn ihr ein Bier trinken müsst, wird bis zu einem Killer aufgefüllt. 3 Runden.','round',3,NULL,0),
-	(30,'Banküberfall','Schreit alle \"Hände hoch!\" und reißt die Hände hoch. Wers wirklich gemacht hat, bekommt einen Killer.','',NULL,NULL,0),
+	(30,'Banküberfall','Schreit alle Hände hoch! und reißt die Hände hoch. Wers wirklich gemacht hat, bekommt einen Killer.','',NULL,NULL,0),
 	(31,'Tief-Flieger',' Keiner darf den Boden berühren, also Füße hoch! Gilt solange, bis der erste wieder den Boden berührt und mit einem Killer bestraft wird.',NULL,NULL,NULL,0),
 	(32,'Pakt mit dem Teufel','Wenn du willst, kannst du auf der Stelle einen Killer trinken, und musst dafür für die nächsten 3 Runden nichts trinken.','round',3,NULL,1),
 	(33,'Verrückter Zapfhahn','Würfel, wie viele Killer der Zapfhahn ausschenkt. Verteile sie dann im Uhrzeigersinn an die Mitspieler, dein Linker Nachbar bekommt den ersten.','dice',NULL,NULL,1),
@@ -235,7 +235,10 @@ VALUES
 	(54,'Alter Falter','Teile dein Alter durch (3+{x}). Das Ergebnis trinkst du an Fingern Bier.','dice',NULL,'2',1),
 	(55,'Patent','Du darfst dir für die nächsten 3 Runden ein Wort patentieren lassen. Nur du darfst es benutzten. Jeder andere, der es ausspricht, trinkt einen Killer.','round',3,NULL,1),
 	(56,'Patent-Gott','Du darfst dir für die nächsten 3 Runden einen Buchstaben patentieren lassen. Nur du darfst ihn benutzten. Jeder andere, der ihn ausspricht oder benutzt, trinkt einen Killer.','round',3,NULL,1),
-	(57,'Untertauchen','Du heißt ab jetzt Paula! Alle anderen müssen dich so ansprechen, also auch keine Kosenamen.',NULL,NULL,'0',1);
+	(57,'Untertauchen','Du heißt ab jetzt Paula! Alle anderen müssen dich so ansprechen, also auch keine Kosenamen.',NULL,NULL,'0',1),
+	(58,'Unentschlossen','Ihr dürft die nächsten 5 Runden weder Ja oder Nein sagen.','round',5,'0',0),
+	(59,'Akute Piraterietis','für die nächsten 5 Runden muss jeder Satz mit einem Aaaaargh beendet werden.','round',5,'0',0),
+	(60,'Beton-Tod','die anderen suchen dir ein Getränk aus (Eines der eingetragenen) und du trinkst die höchste Einheit dieses Getränks.',NULL,NULL,'3',1);
 
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -259,7 +262,7 @@ LOCK TABLES `user` WRITE;
 
 INSERT INTO `user` (`id`, `name`, `gameid`, `points`)
 VALUES
-	('543e3f0fc63d8','Player 1','543e3f0fc6381',69),
+	('543e3f0fc63d8','Player 1','543e3f0fc6381',75),
 	('543e3f0fc63e7','Player 2','543e3f0fc6381',54);
 
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
@@ -283,11 +286,7 @@ LOCK TABLES `user2item` WRITE;
 
 INSERT INTO `user2item` (`id`, `userid`, `itemid`)
 VALUES
-	(57,'543e3f0fc63e7','2'),
-	(58,'543e3f0fc63d8','3'),
-	(60,'543e3f0fc63e7','6'),
-	(63,'543e3f0fc63d8','4'),
-	(64,'543e3f0fc63d8','1');
+	(65,'543e3f0fc63d8','2');
 
 /*!40000 ALTER TABLE `user2item` ENABLE KEYS */;
 UNLOCK TABLES;
