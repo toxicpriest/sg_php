@@ -125,7 +125,6 @@ class sg_game
             $task->sTaskstate=0;
             $this->addTask($task);
         }
-
         if($task->sAction=="dice"){
             $this->sBtnState = "dice";
         }else{
@@ -154,15 +153,21 @@ class sg_game
         $randomPlayer->addPoints($randomAmount);
 
         $this->updateActions();
-        $this->isTaskTriggerd();
+        $itemText="";
+        if($this->isTaskTriggerd() == 5 || $this->isTaskTriggerd() == 1){
+            $oItem = new sg_item();
+            $oItem->getItem();
+            $randomPlayer->addItem($oItem);
+            $itemText="<br><br>".$randomPlayer->sName." hat das Item: ".$oItem->sName." gefunden!";
+        }
         if($randomPlayer->iPoints >= $this->iWonAt){
             $this->sBtnState = "won";
-            $sActionText.="<br>".$randomPlayer->sName."<br> hat danach das Spiel GEWONNEN!";
+            $sActionText.="<br><br>".$randomPlayer->sName."<br> hat danach das Spiel GEWONNEN!";
             $this->delete();
         }else{
             $this->save(false);
         }
-        return $sActionText;
+        return $sActionText.$itemText;
     }
 
     public function getUserHtmlBoard()
@@ -172,7 +177,8 @@ class sg_game
         foreach ($this->playerList as $player) {
             if($i % 3 == 0){$cssCl="last";}
             else{$cssCl="";}
-            $html .= "<div class='player clearfix ".$cssCl ."'><div class='playerName'><input type='text' id='player_".$player->iPlayerID."' value='" . $player->sName . "' disabled='disabled'></div><div class='playerPoints'>" . $player->iPoints . "</div><div class='playerEdit' onclick='editPlayer(&quot;".$player->iPlayerID."&quot;);'></div><div class='playerDelete' onclick='deletePlayer(&quot;".$player->iPlayerID."&quot;);'></div></div>";
+            $items = $player->getItemHtmlBoard();
+            $html .= "<div class='player clearfix " . $cssCl . "'><div class='playerItems' id='items" . $player->iPlayerID . "'><div class='closeItems'onclick='hideItems(&quot;" . $player->iPlayerID . "&quot;);'><img src='src/img/minus.png'></div><div class='items'>".$items."<div class='clear'></div></div></div><div class='showItems'  onclick='showItems(&quot;" . $player->iPlayerID . "&quot;);'><img src='src/img/add.png'></div><div class='playerName' onclick='showFog();'><input type='text' id='player_" . $player->iPlayerID . "' value='" . $player->sName . "' disabled='disabled'></div><div class='playerPoints'>" . $player->iPoints . "</div><div class='playerEdit' onclick='editPlayer(&quot;" . $player->iPlayerID . "&quot;);'></div><div class='playerDelete' onclick='deletePlayer(&quot;" . $player->iPlayerID . "&quot;);'></div></div>";
             $i++;
         }
         if($i % 3 == 0){$cssCl="last";}
@@ -204,7 +210,9 @@ class sg_game
         $taskRandomNumber = rand(1, 100);
         if ($taskRandomNumber <= $this->iTaskPercent) {
             $this->sBtnState = "task";
+            return rand(1, 5);
         }
+        return false;
     }
 
     public function getActiveBtn()

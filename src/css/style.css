@@ -6,11 +6,11 @@ body {margin: 0;padding: 0;    background: #eee;background: url("../img/dark-bg.
 .settingsBtn {    margin: 20px auto;    padding: 20px 0;    text-align: center;    width: 601px;}
 .settingsBtn input {    font-family: monospace;    font-size: 18px;    height: 55px;    width: 120px;}
 
-.playerName {    float: left;    width: 110px;}
+.playerName {    float: left;    width: 109px;}
 
-.playerPoints {    float: left;    text-align: center;   width: 35px;}
-.playerEdit {    float: left;    height: 20px;    width: 20px;    background: url("../img/edit.png") no-repeat;}
-.playerDelete {    float: left;    height: 20px;    width: 20px;    background: url("../img/delete.png") no-repeat;}
+.playerPoints {    float: left;    text-align: center;   width: 30px;}
+.playerEdit {    float: left;    height: 20px;    width: 18px;    background: url("../img/edit.png") no-repeat;}
+.playerDelete {    float: left;    height: 20px;    width: 18px;    background: url("../img/delete.png") no-repeat;}
 
 .drinkName {    float: left;    width: 166px;}
 .drinkName input {    width: 166px;    color:#333;    background: #fff;    border: none;}
@@ -30,13 +30,9 @@ body {margin: 0;padding: 0;    background: #eee;background: url("../img/dark-bg.
 .settingsMenu #players {    float: left;    width: 298px;    margin-right: 5px;}
 
 .clear {    clear: both;}
-
 #actions div {    background: none repeat scroll 0 0 #fff;    float: left;    height: 35px;    margin: 2px;    width: 35px;}
-
 .round {    background: url(../img/round.png);}
-
 #actions img {    height: 35px;    width: 35px;  box-shadow: 2px 2px 2px 0 #333;}
-
 #actions div.hiddenActionInfo { box-shadow: 7px 8px 7px 0 #333;padding:10px; border: 1px solid #666;  background: none repeat scroll 0 0 #ddd;    color: #333;    display: none;    height: 200px;    position: absolute;    width: 300px;}
 
 #playersInfo {    margin: 20px auto;    width: 601px;}
@@ -49,7 +45,7 @@ body {margin: 0;padding: 0;    background: #eee;background: url("../img/dark-bg.
 
 .clearfix:after {    content: ".";    display: block;    clear: both;    visibility: hidden;    line-height: 0;    height: 0;}
 
-.player.clearfix {    background: none repeat scroll 0 0 #ddd;    border: 1px solid #666;    color: #333;    float: left;    margin: 0 5px 5px 0;    padding: 5px;    box-shadow: 7px 8px 8px -4px #333;}
+.player.clearfix {    background: none repeat scroll 0 0 #ddd;    border: 1px solid #666;    color: #333;    float: left;    margin: 0 5px 5px 0;   padding: 5px 2px;    box-shadow: 7px 8px 8px -4px #333;}
 
 .drink.clearfix {    background: none repeat scroll 0 0 #ddd;    border: 1px solid #666;    color: #333;    float: left;    margin: 0 5px 5px 0;    padding: 5px;    box-shadow: 7px 8px 8px -4px #333;}
 
@@ -72,13 +68,13 @@ body {margin: 0;padding: 0;    background: #eee;background: url("../img/dark-bg.
 .header {    background: none repeat scroll 0 0 #ddd;    color: #333;    border: 1px solid #666;    font-family: monospace;    font-size: 20px;    text-align: center;    margin: 5px auto 0;    padding: 10px;    width: 581px;    box-shadow: 7px 8px 7px 0 #333;}
 
 .menu {    background: none repeat scroll 0 0 #ddd;    border: 1px solid #666;    color: #333;    height: 200px;    left: 50%;    top: 50%;    margin: -75px 0 0 -100px;    padding: 15px;    text-align: center;    width: 150px;    position: absolute;    box-shadow: 7px 8px 7px 0 #333;}
-.playerName input {    width: 110px;    color:#333;    background: #fff;    border: none;}
+.playerName input {    width: 109px;    color:#333;    background: #fff;    border: none;}
 .playerName input:disabled {    color : #333;    font-style: italic;    background: #ddd;}
 .addPlayer {    height: 20px;    text-align: center;    width: 185px;}
 .addDrink {    height: 20px;    text-align: center;    width: 286px;}
 .playerSave {background: url("../img/save.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);    float: right;    height: 20px;    width: 20px;}
 .playerCancel {background: url("../img/cancel.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);    float: right;    height: 20px;    width: 20px;}
-#idAddPlayer {    width: 185px;}
+#idAddPlayer {    width: 191px;}
 .drinkSave {background: url("../img/save.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);    float: right;    height: 20px;    width: 20px;}
 .drinkCancel {background: url("../img/cancel.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);    float: right;    height: 20px;    width: 20px;}
 #idAddDrink {    width: 286px;}
@@ -111,4 +107,43 @@ body {margin: 0;padding: 0;    background: #eee;background: url("../img/dark-bg.
 #scrollpane {
     height: 125px;
     overflow: auto;
+}
+.playerItems {
+    background: none repeat scroll 0 0 #ddd;
+    border: 1px solid #666;
+    box-shadow: 7px 8px 7px 0 #333;
+    display: none;
+    height: 200px;
+    margin: -6px 0 0 -2px;
+    padding: 5px 2px;
+    position: absolute;
+    width: 190px;
+    z-index: 3;
+}
+.showItems {
+    float: left;
+}
+.hiddenItemInfo{
+    background: none repeat scroll 0 0 #ddd;
+        border: 1px solid #666;
+        box-shadow: 7px 8px 7px 0 #333;
+        color: #333;
+        display: none;
+        height:100px;
+        padding: 10px;
+        position: absolute;
+        width: 300px;
+}
+.item.clearfix {
+    float: left;
+    height: 40px;
+    margin: 0 10px 8px 0;
+    width: 40px;
+    background: #888;
+}
+.item.clearfix.last {
+    margin: 0;
+}
+.closeItems {
+    margin-bottom: 10px;
 }

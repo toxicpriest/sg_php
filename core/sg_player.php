@@ -6,11 +6,16 @@ class sg_player
     public $sName = "";
     public $iPoints = 0;
     public $gameID;
+    public $activeItems = array();
 
 
     function __construct()
     {
         $this->iPlayerID = uniqid();
+    }
+    public function addItem($item)
+    {
+        $this->activeItems[] = $item;
     }
 
     public function load($iPlayerID)
@@ -22,6 +27,19 @@ class sg_player
         $this->sName = $data[0]['name'];
         $this->gameID = $data[0]['gameid'];
         $this->iPoints = $data[0]['points'];
+        $this->loadActiveItems();
+    }
+
+    public function loadActiveItems()
+    {
+        $oDB = new dB();
+        $sSql = "Select id from user2item where userid='" . $this->iPlayerID . "'";
+        $data = $oDB->getAll($sSql);
+        foreach ($data as $taskData) {
+            $oItem = new sg_item();
+            $oItem->load($taskData['id']);
+            $this->addItem($oItem);
+        }
     }
 
     public function setAttr($AttrName, $AttrValue)
@@ -67,6 +85,36 @@ class sg_player
             $sSql = "INSERT INTO user (id,gameid,name,points) VALUES ('" . $this->iPlayerID . "','" . $gameID . "','" . $this->sName . "','0') ";
         }
         $oDB->execute($sSql);
+        foreach ($this->activeItems as $oItem) {
+            $oItem->save($this->iPlayerID);
+        }
+    }
+
+    public function getItemHtmlBoard()
+    {
+        $html = "";
+        $i=1;
+        foreach ($this->activeItems as $oItem) {
+            if($i % 4 == 0){$cssCl="last";}
+            else{$cssCl="";}
+            $html .= "<div class='item clearfix ".$cssCl ."' onclick=GetItem(&quot;".$oItem->u2iID."&quot;,&quot;".$this->iPlayerID."&quot;)><div class='hiddenItemInfo'>".$oItem->sName."<br>".$oItem->sText."</div><img src='".$oItem->sPic."'></div>";
+            $i++;
+        }
+        $html .= "<div class='clear'></div>";
+        return $html;
+    }
+    public function useItem($itemID){
+         foreach($this->activeItems as $key => $oItem){
+             if($oItem->u2iID == $itemID){
+                 if($oItem->sAction == "points"){
+                     $this->addPoints($oItem->iActionParam);
+                 }
+                 $oDB = new dB();
+                 $sql = "delete from user2item where id ='" . $itemID . "'";
+                 unset($this->activeItems[$key]);
+                 $oDB->execute($sql);
+             }
+         }
     }
 
 }

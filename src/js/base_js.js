@@ -90,8 +90,6 @@ $(document).ready(function () {
     {
        var hiddenInfo= $(this).children(".hiddenActionInfo");
         hiddenInfo.css( "display", "block" );
-        x = (e.pageX ? e.pageX : window.event.x) + hiddenInfo.offsetParent.scrollLeft - hiddenInfo.offsetParent.offsetLeft;
-        y = (e.pageY ? e.pageY : window.event.y) + hiddenInfo.offsetParent.scrollTop - hiddenInfo.offsetParent.offsetTop;
         var left = (e.pageX + 20) + "px";
         var top = (e.pageY) + "px";
         hiddenInfo.css("left",left);
@@ -100,6 +98,19 @@ $(document).ready(function () {
     $('body').delegate('.activeAction', 'mouseleave', function(e)
     {
         $(this).children(".hiddenActionInfo").css( "display", "none" );
+    })
+    $('body').delegate('.item', 'mouseenter', function()
+    {
+       var hiddenItemInfo= $(this).children(".hiddenItemInfo");
+        hiddenItemInfo.css( "display", "block" );
+        var left = (this.offsetLeft +20) + "px";
+        var top = (this.offsetTop + 20) + "px";
+        hiddenItemInfo.css("left",left);
+        hiddenItemInfo.css("top",top);
+    })
+    $('body').delegate('.item', 'mouseleave', function()
+    {
+        $(this).children(".hiddenItemInfo").css( "display", "none" );
     })
 })
 function deleteDrink(sOiD){
@@ -165,6 +176,20 @@ function editPlayer(sOiD){
         $(id).prop("disabled", true);
     }
 }
+function GetItem(sOiD,playerID){
+        $.ajax({
+            url: "player_handler.php",
+            context: document.body,
+            data: {itemID: sOiD,playerID:playerID, func:"item"},
+            type: "POST"
+            }).done(function (data) {
+                                    if (data != "" && data != null) {
+                                        var obj = $.parseJSON(data);
+                                        $("#playersInfo").html(obj.playerboard);
+                                    }
+                                });
+}
+
 function addDrink(){
   var addHtml = " <div class='drinkName'><input type='text' id='drink_added' value=''></div><div class='drinkAmount'><input type='text' id='drink_amount_added'></div><div class='drinkSave' onclick='drinkSave();'></div><div class='drinkCancel' onclick='drinkCancel();'></div>";
     $("#idAddDrink").html(addHtml);
@@ -289,4 +314,13 @@ function showFog(){
 }
 function hideFog(){
     $("#fog").css("display","none");
+}
+function showItems(playerID){
+    var domName= "#items"+playerID;
+    $(domName).css("display","block");
+
+}
+function hideItems(playerID){
+    var domName= "#items"+playerID;
+    $(domName).css("display","none");
 }

@@ -24,7 +24,7 @@ class sg_task {
         if($id != null){
             $sSql = "Select * from tasks where id='" . $id . "'";
             $data=$oDB->getAll($sSql);
-
+            $task= $data[0];
         }
         else{
             $sSql = "Select * from tasks";

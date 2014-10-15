@@ -4,6 +4,7 @@ include_once("core/sg_game.php");
 include_once("core/sg_player.php");
 include_once("core/sg_drink.php");
 include_once("core/sg_task.php");
+include_once("core/sg_item.php");
 
 
 $gameid = $_COOKIE['gameID'];
@@ -29,6 +30,20 @@ elseif($func == "edit"){
     $playerID = $_POST['playerID'];
     $newName = $_POST['newName'];
     $oGame->editPlayer($playerID,$newName);
+}
+elseif($func == "item"){
+    $itemID = $_POST['itemID'];
+    $playerID = $_POST['playerID'];
+    foreach ($oGame->playerList as $oPlayer){
+        if($oPlayer->iPlayerID ==$playerID){
+            $oPlayer->useItem($itemID);
+        }
+    }
+    $oGame->save();
+    $playerBoard = $oGame->getUserHtmlBoard();
+    $data='{"playerboard":"' . $playerBoard . '"}';
+
+    echo $data;
 }
 elseif($func == "add"){
     $sNewPlayerName = $_POST['newName'];
