@@ -2,7 +2,7 @@ body {
     margin: 0;
     padding: 0;
     background: #eee;
-    background: url("../img/background.jpg") no-repeat;
+    background: url("../img/background.jpg") no-repeat 100%;
 }
 
 .drinkEdit {
@@ -52,7 +52,7 @@ body {
     background-color: darkred;
     border: 1px solid white;
     border-radius: 15px;
-    color: white;
+    color: black;
 }
 
 .playerName {
@@ -87,15 +87,15 @@ body {
 
 .drinkName input {
     width: 166px;
-    color: #333;
+    color: black;
     background: #fff;
     border: none;
 }
 
 .drinkName input:disabled {
-    color: #333;
+    color: white;
     font-style: italic;
-    background: #ddd;
+    background: darkred;
 }
 
 .drinkAlcohol {
@@ -111,15 +111,15 @@ body {
 
 .drinkAmount input {
     width: 75px;
-    color: #333;
+    color: white;
     background: #fff;
     border: none;
 }
 
 .drinkAmount input:disabled {
-    color: #333;
+    color: white;
     font-style: italic;
-    background: #ddd;
+    background: darkred;
 }
 
 .settingsMenu {
@@ -170,8 +170,8 @@ body {
     box-shadow: 7px 8px 7px 0 #333;
     padding: 10px;
     border: 1px solid #666;
-    background: none repeat scroll 0 0 #ddd;
-    color: #333;
+    background: none repeat scroll 0 0 darkred;
+    color: white;
     display: none;
     height: 200px;
     position: absolute;
@@ -185,7 +185,7 @@ body {
 
 #drinksInfo {
     margin: 20px auto;
-    width: 601px;
+    width: 70%;
 }
 
 #activebutton {
@@ -198,6 +198,7 @@ body {
     font-size: 30px;
     height: 55px;
     width: 250px;
+    border-radius: 15px;
 }
 
 .clearfix:after {
@@ -212,6 +213,7 @@ body {
 .player.clearfix {
     background: none repeat scroll 0 0 darkred;
     border: 1px solid white;
+    border-radius: 15px;
     color: white;
     float: left;
     margin: 0 5px 5px 0;
@@ -222,6 +224,7 @@ body {
 .drink.clearfix {
     background: none repeat scroll 0 0 darkred;
     border: 1px solid white;
+    border-radius: 15px;
     color: white;
     float: left;
     margin: 0 5px 5px 0;
@@ -238,25 +241,28 @@ body {
 }
 
 #actions {
-    background: none repeat scroll 0 0 #ddd;
-    border: 1px solid #666;
-    color: #333;
+    background: none repeat scroll 0 0 darkred;
+    border: 1px solid white;
+    border-radius: 15px;
+    color: darkred;
     height: 40px;
     margin: 0 auto;
     width: 601px;
     box-shadow: 7px 8px 7px 0 #333;
+    padding: 4px;
 }
 
 #taskwidow {
-    background: none repeat scroll 0 0 #ddd;
-    color: #333;
-    border: 1px solid #666;
+    background: none repeat scroll 0 0 darkred;
+    color: white;
+    border: 1px solid white;
+    border-radius: 15px;
     font-family: monospace;
     font-size: 25px;
     height: 230px;
     margin: 20px auto 0;
     padding: 10px;
-    width: 581px;
+    width: 65%;
     box-shadow: 7px 8px 7px 0 #333;
 }
 
@@ -321,9 +327,9 @@ body {
 }
 
 .menu {
-    background: none repeat scroll 0 0 #ddd;
+    background: none repeat scroll 0 0 darkred;
     border: 1px solid #666;
-    color: #333;
+    color: white;
     height: 200px;
     left: 50%;
     top: 50%;
@@ -337,15 +343,15 @@ body {
 
 .playerName input {
     width: 109px;
-    color: #333;
+    color: black;
     background: #fff;
     border: none;
 }
 
 .playerName input:disabled {
-    color: #333;
+    color: white;
     font-style: italic;
-    background: #ddd;
+    background: darkred;
 }
 
 .addPlayer {
@@ -413,9 +419,9 @@ body {
     top: 50%;
     width: 400px;
     z-index: 5;
-    background: none repeat scroll 0 0 #ddd;
+    background: none repeat scroll 0 0 darkred;
     border: 1px solid #666;
-    color: #333;
+    color: white;
     box-shadow: 7px 8px 7px 0 #333;
     display: none;
     padding: 10px;
@@ -442,9 +448,11 @@ body {
 }
 
 .playerItems {
-    background: none repeat scroll 0 0 #ddd;
+    background: none repeat scroll 0 0 darkred;
     border: 1px solid #666;
     box-shadow: 7px 8px 7px 0 #333;
+    border-radius: 15px;
+    font-family: monospace;
     display: none;
     height: 200px;
     margin: -6px 0 0 -3px;
@@ -459,10 +467,10 @@ body {
 }
 
 .hiddenItemInfo {
-    background: none repeat scroll 0 0 #ddd;
+    background: none repeat scroll 0 0 darkred;
     border: 1px solid #666;
     box-shadow: 7px 8px 7px 0 #333;
-    color: #333;
+    color: white;
     display: none;
     height: 100px;
     padding: 10px;
