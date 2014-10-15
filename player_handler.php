@@ -36,12 +36,13 @@ elseif($func == "item"){
     $playerID = $_POST['playerID'];
     foreach ($oGame->playerList as $oPlayer){
         if($oPlayer->iPlayerID ==$playerID){
-            $oPlayer->useItem($itemID);
+            $itemtxt=$oPlayer->useItem($itemID);
         }
     }
     $oGame->save();
+
     $playerBoard = $oGame->getUserHtmlBoard();
-    $data='{"playerboard":"' . $playerBoard . '"}';
+    $data='{"playerboard":"' . $playerBoard . '","itemtxt":"' . $itemtxt . '"}';
 
     echo $data;
 }

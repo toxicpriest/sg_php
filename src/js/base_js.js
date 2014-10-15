@@ -185,6 +185,9 @@ function GetItem(sOiD,playerID){
             }).done(function (data) {
                                     if (data != "" && data != null) {
                                         var obj = $.parseJSON(data);
+                                        if(obj.itemtxt != "" && obj.itemtxt != null){
+                                            messageAlert(obj.itemtxt);
+                                        }
                                         $("#playersInfo").html(obj.playerboard);
                                     }
                                 });

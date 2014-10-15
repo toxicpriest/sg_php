@@ -56,7 +56,7 @@ include_once("core/dB.php");
         <option value="50">50</option>
         <option value="75">75</option>
         <option value="100">100</option>
-        <option value="100">150</option>
+        <option value="150">150</option>
     </select>
     <label>Tasks % :</label>
     <select name="tasks" id="tasksDrop">
