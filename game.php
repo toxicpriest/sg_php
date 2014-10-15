@@ -32,16 +32,9 @@ if (isset($_COOKIE['gameID'])) {
         <div class="header">PLAYER</div>
         <div id="playersInfo">
             <?php
-            $i = 1;
             foreach ($oGame->playerList as $player) {
-                if ($i % 3 == 0) {
-                    $cssCl = "last";
-                }
-                else {
-                    $cssCl = "";
-                }
                 $items=$player->getItemHtmlBoard();
-                echo "<div class='player clearfix " . $cssCl . "'>
+                echo "<div class='player clearfix'>
                 <div class='playerItems' id='items" . $player->iPlayerID . "'>
                 <div class='closeItems'onclick='hideItems(\"" . $player->iPlayerID . "\");'><img src='src/img/minus.png'></div>
                 <div class='items'>".$items."<div class='clear'></div></div>
@@ -52,15 +45,8 @@ if (isset($_COOKIE['gameID'])) {
                 <div class='playerEdit' onclick='editPlayer(\"" . $player->iPlayerID . "\");'></div>
                 <div class='playerDelete' onclick='deletePlayer(\"" . $player->iPlayerID . "\");'></div>
             </div>";
-                $i++;
             }
-            if ($i % 3 == 0) {
-                $cssCl = "last";
-            }
-            else {
-                $cssCl = "";
-            }
-            echo "<div id='idAddPlayer' class='player clearfix " . $cssCl . "'><div class='addPlayer'  onclick='addPlayer();'><img src='src/img/add.png'></div></div>";
+            echo "<div id='idAddPlayer' class='player clearfix'><div class='addPlayer'  onclick='addPlayer();'><img src='src/img/add.png'></div></div>";
             ?>
             <div class="clear"></div>
         </div>
