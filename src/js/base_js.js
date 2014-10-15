@@ -27,7 +27,7 @@ $(document).ready(function () {
                 drinkCountHtml += "<div id='Drink" + i + "'><label>Drink: " + i + "</label><input class='drinkinput' id='drinkInput" + i + "' name='Drink" + i + "' type='text' value='" + drinkName + "'><label>Einheit:</label><input class='drinkamountinput' id='drinkAmountInput" + i + "' name='DrinkAmount" + i + "' type='text' value='" + drinkAmount + "'></div>";
             }
             else {
-                drinkCountHtml += "<div id='Drink" + i + "'><label>Drink: " + i + "</label><input class='drinkinput' id='drinkInput" + i + "' name='Drink" + i + "' type='text'><label>Einheit: </label><input class='drinkamountinput' id='drinkAmountInput" + i + "' name='DrinkAmount" + i + "' type='text'></div></div>";
+                drinkCountHtml += "<div id='Drink" + i + "'><label>Drink: " + i + "</label><input class='drinkinput' id='drinkInput" + i + "' name='Drink" + i + "' type='text'><label>Einheit:</label><input class='drinkamountinput' id='drinkAmountInput" + i + "' name='DrinkAmount" + i + "' type='text'></div></div>";
             }
         }
         $("#drinks").html(drinkCountHtml);
