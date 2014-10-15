@@ -176,6 +176,7 @@ body {
     height: 200px;
     position: absolute;
     width: 300px;
+    font-family: monospace;
 }
 
 #playersInfo {
@@ -425,6 +426,7 @@ body {
     box-shadow: 7px 8px 7px 0 #333;
     display: none;
     padding: 10px;
+    font-family: monospace;
 }
 
 #msgOkayButton {
