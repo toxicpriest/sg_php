@@ -114,10 +114,10 @@ body {margin: 0;padding: 0;    background: #eee;background: url("../img/dark-bg.
     box-shadow: 7px 8px 7px 0 #333;
     display: none;
     height: 200px;
-    margin: -6px 0 0 -2px;
+    margin: -6px 0 0 -3px;
     padding: 5px 2px;
     position: absolute;
-    width: 190px;
+    width: 191px;
     z-index: 3;
 }
 .showItems {

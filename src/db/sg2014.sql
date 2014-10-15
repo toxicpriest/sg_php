@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.27)
 # Datenbank: sg2014
-# Erstellungsdauer: 2014-09-23 13:50:17 +0000
+# Erstellungsdauer: 2014-10-15 08:40:07 +0000
 # ************************************************************
 
 
@@ -26,36 +26,60 @@
 DROP TABLE IF EXISTS `drinks`;
 
 CREATE TABLE `drinks` (
-  `id` varchar(255) NOT NULL DEFAULT '',
-  `gameid` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `alcohol` int(11) DEFAULT NULL,
-  `size` varchar(80) DEFAULT NULL,
+  `id` varchar(255) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `gameid` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+  `name` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+  `size` varchar(80) CHARACTER SET latin1 DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-LOCK TABLES `drinks` WRITE;
-/*!40000 ALTER TABLE `drinks` DISABLE KEYS */;
 
-INSERT INTO `drinks` (`id`, `gameid`, `name`, `alcohol`, `size`)
+
+# Export von Tabelle dumb_saying
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `dumb_saying`;
+
+CREATE TABLE `dumb_saying` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `text` varchar(255) DEFAULT NULL,
+  `typ` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `dumb_saying` WRITE;
+/*!40000 ALTER TABLE `dumb_saying` DISABLE KEYS */;
+
+INSERT INTO `dumb_saying` (`id`, `text`, `typ`)
 VALUES
-	('54201864d63fb','542018648628b','Drink 1',20,'Liter'),
-	('54201864d6445','542018648628b','Drink 2',20,'Liter'),
-	('54201864d6477','542018648628b','Drink 3',20,'Liter');
+	(1,'akutes Schamlippenflattern',NULL),
+	(2,'durch DNA vererbte unheilbare Pussyhaftigkeit',NULL),
+	(3,'Arsch-bluten (nicht das eigene Blut)',NULL),
+	(4,'Spontane Über-Geilheit auf Channig Tatum ',NULL),
+	(5,'Dusche *hust*',NULL),
+	(6,'Absichtliches einstuhlen zur Kälteverdrängung',NULL),
+	(7,'Das gelöschte Exemplar ist eine Bartlose Missgeburt der Sufe 3',NULL),
+	(8,'Die hier gelöschte niedere Lebensform hat Existenz-Verbot',NULL),
+	(9,'Termin der eigenen Abtreibung',NULL);
 
-/*!40000 ALTER TABLE `drinks` ENABLE KEYS */;
+/*!40000 ALTER TABLE `dumb_saying` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
-# Export von Tabelle game2status
+# Export von Tabelle game2task
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `game2status`;
+DROP TABLE IF EXISTS `game2task`;
 
-CREATE TABLE `game2status` (
+CREATE TABLE `game2task` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `gameid` varchar(255) NOT NULL DEFAULT '',
+  `taskid` varchar(255) NOT NULL DEFAULT '',
+  `taskparam` varchar(255) NOT NULL DEFAULT '0',
+  `taskplayer` varchar(255) DEFAULT NULL,
+  `taskplayername` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 
@@ -72,29 +96,37 @@ CREATE TABLE `games` (
   `wonat` int(11) NOT NULL DEFAULT '15',
   `taskpercent` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-LOCK TABLES `games` WRITE;
-/*!40000 ALTER TABLE `games` DISABLE KEYS */;
-
-INSERT INTO `games` (`id`, `game_state`, `save_key`, `maxamount`, `wonat`, `taskpercent`)
-VALUES
-	('542018648628b','WAITING','0',4,20,30);
-
-/*!40000 ALTER TABLE `games` ENABLE KEYS */;
-UNLOCK TABLES;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-# Export von Tabelle status
+
+# Export von Tabelle items
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `status`;
+DROP TABLE IF EXISTS `items`;
 
-CREATE TABLE `status` (
+CREATE TABLE `items` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `desc` varchar(255) DEFAULT NULL,
+  `pic` varchar(255) DEFAULT NULL,
+  `action` varchar(55) DEFAULT NULL,
+  `param` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+LOCK TABLES `items` WRITE;
+/*!40000 ALTER TABLE `items` DISABLE KEYS */;
+
+INSERT INTO `items` (`id`, `name`, `desc`, `pic`, `action`, `param`)
+VALUES
+	(1,'Gefängnisfrei Karte','Du musst das nächste Getränk nicht Trinken ','src/img/prison.png',NULL,NULL),
+	(2,'Verdopplungs Karte','Verdoppel ein Getränk eines beliebigen Spielers','src/img/double.png',NULL,NULL),
+	(3,'Gold Karte','Schreibe dir 1 Punkt gut ','src/img/gold.png','points',1),
+	(4,'Diamant Karte','Schreibe dir 3 Punkte gut','src/img/diamond.png','points',3);
+
+/*!40000 ALTER TABLE `items` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle tasks
@@ -104,75 +136,77 @@ DROP TABLE IF EXISTS `tasks`;
 
 CREATE TABLE `tasks` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) CHARACTER SET latin1 NOT NULL DEFAULT '',
+  `name` varchar(255) NOT NULL DEFAULT '',
   `text` varchar(255) NOT NULL DEFAULT '',
-  `action` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
+  `action` varchar(255) DEFAULT NULL,
   `action_param` int(11) DEFAULT NULL,
-  `points` varchar(11) CHARACTER SET latin1 DEFAULT NULL,
+  `points` varchar(11) DEFAULT NULL,
+  `isPlayerTask` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `tasks` WRITE;
 /*!40000 ALTER TABLE `tasks` DISABLE KEYS */;
 
-INSERT INTO `tasks` (`id`, `name`, `text`, `action`, `action_param`, `points`)
+INSERT INTO `tasks` (`id`, `name`, `text`, `action`, `action_param`, `points`, `isPlayerTask`)
 VALUES
-	(1,'Kraftprobe','Mache {x} Liegestütze! Für jede so erbrachte Leistung bekommt du einen Finger Bier.','dice',NULL,'x'),
-	(2,'Razzia','Renne {x} Runden ums Haus/Sofa/... in jeder Runde bekommst du 2 Finger Bier zugesteckt.','dice',NULL,'x'),
-	(3,'Beichte','Rufe jemanden an und beichte ihm, dass du trinkst. Beende das Gespräch mit einem Killer.',NULL,NULL,'1'),
-	(4,'Goldkelchen','Gurgel ein Lied mit 2 Finger Bier. Die anderen dürfen gerne mitmachen!',NULL,NULL,'1'),
-	(5,'Giftmischer','Mische je eine Einheiten {x} Getränks und trinke das Gebräu','dice',NULL,'2'),
-	(6,'Verhör','Beantworte den anderen eine persönliche Frage. Die Anderen bekommen für die verwerfliche Frage alle 2 Finger Bier.',NULL,NULL,'1'),
-	(7,'Gib mir Tiernamen','Imitiere ein Tier, das die anderen bestimmen. Bewegung und Geräusche inklusive!',NULL,NULL,'1'),
-	(8,'Untertauchen','Du heißt aber jetzt Frank! Alle anderen müssen dich so ansprechen, also auch keine Kosenamen.',NULL,NULL,'0'),
-	(9,'Banküberfall','Schreit alle \"Hände hoch!\" und reißt die Hände hoch. Der letzte bekommt einen Killer und 1 Finger für jeden Ganoven im Raum.',NULL,NULL,NULL),
-	(10,'Spitzel','Vorsicht! Ein Spitzel ist unter euch! Die nächsten 3 Minuten darf keiner etwas sagen.','timer',3,NULL),
-	(11,'Russisch Roulette','Spiel Schnick-Schnack-Schnuck mit einem beliebigem Spieler. Der Verlierer wird mit einem Killer bestraft.',NULL,NULL,'1'),
-	(12,'Last but not Least','Alle exen einen Killer! Der letzte bekommt noch einen!',NULL,NULL,NULL),
-	(13,'Achtung, der Chef!','Es darf 5 Runden lang nicht gelacht werden!','round',5,NULL),
-	(14,'Inventur','Legt all euer Geld, was ihr dabei habt, auf den Tisch. Wer am wenigsten hat, bekommt den Killer gratis.',NULL,NULL,NULL),
-	(15,'Angeschossen','Und das an deiner Lieblingshand! Benutze für alles andere darfst du jetzt nur noch die schwache Hand benutzen. Hält 5 Runden.','round',5,'1'),
-	(16,'Casino-Time','Würfel! Bei 1 - 5 Würfelaugen bekommst du entsprechend der Anzahl der Würfelaugen Finger Bier. Bei einer 6 gibt es FULLHOUSE: Alle anderen bekommen einen Killer.','dice',NULL,NULL),
-	(17,'Desateure werden erschossen','Klogänge sind für alle die nächsten 10 Minuten untersagt.','timer',10,NULL),
-	(18,'Amoklauf','Flaschendrehen! Derjenige, auf den die Flasche zeigt, wird erschossen und muss einen Killer trinken. Das wird solange wiederholt, bis die Flasche auf dich zeigt.',NULL,NULL,'1'),
-	(19,'Eine Frage der Ehre','Trinke so viel, wie du möchtest. Die anderen müssen mit dir gleich ziehen.',NULL,NULL,NULL),
-	(20,'Mobbing','Du bist der Buhmann für die nächsten 3 Runden. Du stehst und hälst die Fresse. Damit du das auch schaffst gibts nen Killer.','round',3,NULL),
-	(21,'Molotov','Du brennst! Jeder, den du innerhalb der nächsten 5 Sekunden berührst brennt auch! Löscht euch mit einem Killer.',NULL,NULL,NULL),
-	(22,'Chancengleichhheit','Der Spieler mit den am wenigsten getrunkenen Einheiten darf nun auch mal mit einem Killer seine Lippen benetzen.',NULL,NULL,NULL),
-	(23,'Rotlichmilieu','Trinke für jede Frau am Tisch einen Killer.',NULL,NULL,'2'),
-	(24,'Double Time','Jedes Getränk, was man vor sich stehen hat, wird verdoppelt!',NULL,NULL,NULL),
-	(25,'Bling Bling','Derjenige mit dem wenigstens Schmuck am Körper ist out... und bekommt einen Killer. (Es zählen Ringe, Ohrringe, Ketten, Piercings, ...)',NULL,NULL,NULL),
-	(26,'Bombe','5 Runden lang darf keiner trinken. Sind diese vorbei, müssen alle Getränke, die vor einem stehen, geext werden.','round',5,NULL),
-	(27,'Lungen-Transplatation','Ihr müsst 15 Minuten ohne Rauchen auskommen.','timer',15,NULL),
-	(28,'Nachschubprobleme','Du kannst für ein Getränk ein beliebiges anderes zur verfügung stehendes Getränk ersetzen.','round',3,NULL),
-	(29,'Killing Spree','Jedes Mal, wenn ihr ein Bier trinken müsst, wird zusätzlich ein Killer getrunken.','round',3,NULL),
-	(30,'Banküberfall','Schreit alle \"Hände hoch!\" und reißt die Hände hoch. Wers wirklich gemacht hat, bekommt einen Killer.','',NULL,NULL),
-	(31,'Tief-Flieger',' Keiner darf den Boden berühren, also Füße hoch! Gilt solange, bis der erste wieder den Boden berührt und mit einem Killer bestraft wird.',NULL,NULL,NULL),
-	(32,'Pakt mit dem Teufel','Wenn du willst, kannst du auf der Stelle einen Killer trinken, und musst dafür für die nächsten 3 Runden nichts trinken.','round',3,NULL),
-	(33,'Verrückter Zapfhahn','Würfel, wie viele Killer der Zapfhahn ausschenkt. Verteile sie dann im Uhrzeigersinn an die Mitspieler, dein Linker Nachbar bekommt den ersten.','dice',NULL,NULL),
-	(34,'Elitepartner.de','Halte mit deinem linken und rechten Nachbarn Händchen. Trennungsgrund ist wie immer ein Killer für jeden von euch beiden.',NULL,NULL,NULL),
-	(35,'Stotteranfall','Die nächsten 3 Runden musst du alles, was du sagen willst doppelt sagen! (Bsp. ich trinke = ich ich trinke trinke)','round',3,NULL),
-	(36,'Splash-Damage','Immer, wenn jemand in den nächsten 3 Runden was trinken muss, trinken der linke und rechte Nachbar jeweils die Hälfte mit!','round',3,NULL),
-	(37,'Regel-Pflege','Denke dir eine Regel aus, diese gilt für 5 Runden.','round',5,NULL),
-	(38,'Montags-Maler','Male ein Bild, welches dich an diesen Abend erinnert.',NULL,NULL,'2'),
-	(39,'Pole','Klaue jemanden sein Getränk, was er vor sich stehen hat. Hat keiner ein Getränk vor sich stehen hat, bekommt stattdessen jeder einen Killer.',NULL,NULL,'1'),
-	(40,'Platzhirsch','Tausche mit einem Spieler deiner Wahl die Plätze. Also auch die Getränke, die vor euch stehen.',NULL,NULL,NULL),
-	(41,'Unbändiger Durst','Exe alle deine Getränke, die vor dir stehen.',NULL,NULL,'3'),
-	(42,'Ex und hop','Jeder muss die Getränke, die er ab jezt bekommt DIREKT exen.','round',NULL,'3'),
-	(43,'Medusa','Keiner darf dir direkt in die Augen sehen, ansonsten wird er versteinert und muss sich am Ende der Runde mit einem Killer erlösen.','round',NULL,'1'),
-	(44,'Schau mir in die Augen, Kleines','Du schaust einem Mitspieler deiner Wahl tief in die Augen. Wer als erster zwinktert oder lacht, wird mit einem Killer bestraft.',NULL,NULL,'1'),
-	(45,'Migräne','Eine Hand von dir muss 3 Runden lang deinen Kopf berühren.','round',3,'1'),
-	(46,'Börsen-Crash','Jeder, der 2 oder mehr Getränke vor sich stehen hat, muss so lange Getränke exen, bis er nur noch eins vor sich stehen hat.',NULL,NULL,NULL),
-	(47,'Granate','Du hast eine alte Granate gefunden. Blöd nur, dass sie in 3 Runden explodiert und dem Halter einen Killer spendiert. Die Granate kann einmal pro Runde für 2 Finger Bier an einen beliebigen Nachbarn weitergegeben werden.','round',3,'1'),
-	(48,'Revolverheld','Deine 5 Kugeln in der Trommel haben bisher noch nie ein Ziel verfehlt. Du darfst 5 Finger Bier frei verteilen.',NULL,NULL,NULL),
-	(49,'Schweine Hund','Wenn du willst, kansnt du einen Killer trinken. Hast du dies getan, kannst du würfeln. Jeder andere Spieler muss die Augenzahl an Fingern Bier trinken.','dice',NULL,NULL),
-	(50,'Grobmotoriker','Spiele 3 Runden mit beiden Armen über Kreuz.','round',3,'1'),
-	(51,'Super-GAU','ALLE Mitspieler exen ALLE Getränke, die sie vor sich stehen haben. Danach werden diese wieder aufgefüllt.',NULL,NULL,NULL),
-	(52,'Taktlos','Beleidige einen Mitspieler. Versöhnt euch danach wieder mit je 2 Fingern Bier.',NULL,NULL,'1'),
-	(53,'Rapper','Sag ein Wort. Dein linker Nachbar muss ein Wort sagen, was sich annähernd darauf reimt - danach sein linker Nachbar und so weiter. Wer als erstes kein Wort findet, muss einen Killer trinken.',NULL,NULL,'1'),
-	(54,'Alter Falter','Teile dein Alter durch (3+{x}). Das Ergebnis trinkst du an Fingern Bier.','dice',NULL,'2'),
-	(55,'Patent','Du darfst dir für die nächsten 3 Runden ein Wort patentieren lassen. Nur du darfst es benutzten. Jeder andere, der es ausspricht, trinkt einen Killer.','round',3,NULL),
-	(56,'Patent-Gott','Du darfst dir für die nächsten 3 Runden einen Buchstaben patentieren lassen. Nur du darfst ihn benutzten. Jeder andere, der ihn ausspricht oder benutzt, trinkt einen Killer.','round',3,NULL);
+	(1,'Kraftprobe','Mache {x} Liegestütze! Für jede so erbrachte Leistung bekommt du einen Finger Bier.','dice',NULL,'2',1),
+	(2,'Razzia','Renne {x} Runden ums Haus/Sofa/... in jeder Runde bekommst du 2 Finger Bier zugesteckt.','dice',NULL,'2',1),
+	(3,'Beichte','Beichte jemanden ernsthaft das du Alkoholiker bist. Spüle diese wiederliche Lüge mit einem Killer runter.',NULL,NULL,'1',1),
+	(4,'Goldkelchen','Gurgel ein Lied mit 2 Finger Bier. Die anderen dürfen gerne mitmachen!',NULL,NULL,'1',1),
+	(5,'Giftmischer','Mische je eine Einheit aller Getränke und trinke das Gebräu','',NULL,'2',1),
+	(6,'Verhör','Beantworte den anderen eine persönliche Frage. Die Anderen bekommen für die verwerfliche Frage alle 2 Finger Bier.',NULL,NULL,'1',1),
+	(7,'Gib mir Tiernamen','Imitiere ein Tier, das die anderen bestimmen. Bewegung und Geräusche inklusive!',NULL,NULL,'1',1),
+	(8,'Untertauchen','Du heißt ab jetzt Frank! Alle anderen müssen dich so ansprechen, also auch keine Kosenamen.',NULL,NULL,'0',1),
+	(9,'Banküberfall','Schreit alle \"Hände hoch!\" und reißt die Hände hoch. Der letzte bekommt einen Killer und 1 Finger für jeden Ganoven im Raum.',NULL,NULL,NULL,0),
+	(10,'Spitzel','Vorsicht! Ein Spitzel ist unter euch! Die nächsten 3 Runden darf keiner etwas sagen.','round',3,NULL,0),
+	(11,'Russisch Roulette','Spiel Schnick-Schnack-Schnuck mit einem beliebigem Spieler. Der Verlierer wird mit einem Killer bestraft.',NULL,NULL,'1',1),
+	(12,'Last but not Least','Alle exen einen Killer! Der letzte bekommt noch einen!',NULL,NULL,NULL,0),
+	(13,'Achtung, der Chef!','Es darf 5 Runden lang nicht gelacht werden!','round',5,NULL,0),
+	(14,'Inventur','Legt all euer Geld, was ihr dabei habt, auf den Tisch. Wer am wenigsten hat, bekommt den Killer gratis.',NULL,NULL,NULL,0),
+	(15,'Angeschossen','Und das an deiner Lieblingshand! Benutze für alles andere darfst du jetzt nur noch die schwache Hand benutzen. Hält 5 Runden.','round',5,'1',1),
+	(16,'Casino-Time','Würfel! Bei 1 - 5 Würfelaugen bekommst du entsprechend der Anzahl der Würfelaugen Finger Bier. Bei einer 6 gibt es FULLHOUSE: Alle anderen bekommen einen Killer.','dice',NULL,NULL,1),
+	(17,'Desateure werden erschossen','Klogänge sind für alle die nächsten 10 Runden untersagt.','round',10,NULL,0),
+	(18,'Amoklauf','Flaschendrehen! Derjenige, auf den die Flasche zeigt, wird erschossen und muss einen Killer trinken. Das wird solange wiederholt, bis die Flasche auf dich zeigt.',NULL,NULL,'1',1),
+	(19,'Eine Frage der Ehre','Trinke so viel, wie du möchtest. Die anderen müssen mit dir gleich ziehen.',NULL,NULL,NULL,1),
+	(20,'Mobbing','Du bist der Buhmann für die nächsten 3 Runden. Du stehst und hälst die Fresse. Damit du das auch schaffst gibts nen Killer.','round',3,NULL,1),
+	(21,'Molotov','Du brennst! Jeder, den du innerhalb der nächsten 5 Sekunden berührst brennt auch! Löscht euch mit einem Killer.',NULL,NULL,NULL,1),
+	(22,'Chancengleichhheit','Der Spieler mit den am wenigsten getrunkenen Einheiten darf nun auch mal mit einem Killer seine Lippen benetzen.',NULL,NULL,NULL,0),
+	(23,'Rotlichmilieu','Trinke für jede Frau am Tisch 2 Finger Bier.',NULL,NULL,'1',1),
+	(24,'Double Time','Jedes Getränk, was man vor sich stehen hat, wird verdoppelt!',NULL,NULL,NULL,0),
+	(25,'Bling Bling','Derjenige mit dem wenigstens Schmuck am Körper ist out... und bekommt einen Killer. (Es zählen Ringe, Ohrringe, Ketten, Piercings, ...)',NULL,NULL,NULL,0),
+	(26,'Bombe','5 Runden lang darf keiner trinken. Sind diese vorbei, müssen alle Getränke, die vor einem stehen, geext werden.','round',5,NULL,0),
+	(27,'Lungen-Transplatation','Ihr müsst 15 Runden ohne Rauchen auskommen.','round',15,NULL,0),
+	(28,'Nachschubprobleme','Du kannst für 5 Runden ein Getränk durch ein beliebiges anderes zur verfügung stehendes Getränk ersetzen.','round',5,NULL,0),
+	(29,'Killing Spree','Jedes Mal, wenn ihr ein Bier trinken müsst, wird bis zu einem Killer aufgefüllt. 3 Runden.','round',3,NULL,0),
+	(30,'Banküberfall','Schreit alle \"Hände hoch!\" und reißt die Hände hoch. Wers wirklich gemacht hat, bekommt einen Killer.','',NULL,NULL,0),
+	(31,'Tief-Flieger',' Keiner darf den Boden berühren, also Füße hoch! Gilt solange, bis der erste wieder den Boden berührt und mit einem Killer bestraft wird.',NULL,NULL,NULL,0),
+	(32,'Pakt mit dem Teufel','Wenn du willst, kannst du auf der Stelle einen Killer trinken, und musst dafür für die nächsten 3 Runden nichts trinken.','round',3,NULL,1),
+	(33,'Verrückter Zapfhahn','Würfel, wie viele Killer der Zapfhahn ausschenkt. Verteile sie dann im Uhrzeigersinn an die Mitspieler, dein Linker Nachbar bekommt den ersten.','dice',NULL,NULL,1),
+	(34,'Elitepartner.de','Halte mit deinem linken oder rechten Nachbarn Händchen. Schafft ihr das 10 Runden lang ist es wahre Liebe und alle anderen bekommen einen Killer ansonsten bekommt Ihr einen.','round',10,NULL,1),
+	(35,'Stotteranfall','Die nächsten 3 Runden musst du alles, was du sagen willst doppelt sagen! (Bsp. ich trinke = ich ich trinke trinke)','round',3,NULL,1),
+	(36,'Splash-Damage','Immer, wenn jemand in den nächsten 3 Runden was trinken muss, trinken der linke und rechte Nachbar jeweils die Hälfte mit!','round',3,NULL,0),
+	(37,'Regel-Pflege','Denke dir eine Regel aus, diese gilt für 5 Runden.','round',5,NULL,1),
+	(38,'Montags-Maler','Male ein Bild, welches dich an diesen Abend erinnert.',NULL,NULL,'2',1),
+	(39,'Pole','Klaue jemanden sein Getränk, was er vor sich stehen hat. Hat keiner ein Getränk vor sich stehen hat, bekommt stattdessen jeder einen Killer.',NULL,NULL,'1',1),
+	(40,'Platzhirsch','Tausche mit einem Spieler deiner Wahl die Plätze. Also auch die Getränke, die vor euch stehen.',NULL,NULL,NULL,1),
+	(41,'Unbändiger Durst','Exe alle deine Getränke, die vor dir stehen.',NULL,NULL,'3',1),
+	(42,'Ex und hop','Jeder muss die Getränke, die er ab jezt bekommt DIREKT exen. 3 Runden.','round',3,'',0),
+	(43,'Medusa','Keiner darf dir direkt in die Augen sehen, ansonsten wird er versteinert und muss sich am Ende der Runde mit einem Killer erlösen.','round',1,'1',1),
+	(44,'Schau mir in die Augen, Kleines','Du schaust einem Mitspieler deiner Wahl tief in die Augen. Wer als erster zwinktert oder lacht, wird mit einem Killer bestraft.',NULL,NULL,'1',1),
+	(45,'Migräne','Eine Hand von dir muss 3 Runden lang deinen Kopf berühren.','round',3,'1',1),
+	(46,'Börsen-Crash','Jeder, der 2 oder mehr Getränke vor sich stehen hat, muss so lange Getränke exen, bis er nur noch eins vor sich stehen hat.',NULL,NULL,NULL,0),
+	(47,'Granate','Du hast eine alte Granate gefunden. Blöd nur, dass sie in 3 Runden explodiert und dem Halter einen Killer spendiert. Die Granate kann einmal pro Runde für 2 Finger Bier an einen beliebigen Nachbarn weitergegeben werden.','round',3,'1',1),
+	(48,'Revolverheld','Deine 5 Kugeln in der Trommel haben bisher noch nie ein Ziel verfehlt. Du darfst 5 Finger Bier frei verteilen.',NULL,NULL,NULL,1),
+	(49,'Schweine Hund','Wenn du willst, kansnt du einen Killer trinken. Hast du dies getan, kannst du würfeln. Jeder andere Spieler muss die Augenzahl an Fingern Bier trinken.','dice',NULL,NULL,1),
+	(50,'Grobmotoriker','Spiele 3 Runden mit beiden Armen über Kreuz.','round',3,'1',1),
+	(51,'Super-GAU','ALLE Mitspieler exen ALLE Getränke, die sie vor sich stehen haben. Danach werden diese wieder aufgefüllt.',NULL,NULL,NULL,0),
+	(52,'Taktlos','Beleidige einen Mitspieler. Versöhnt euch danach wieder mit je 2 Fingern Bier.',NULL,NULL,'1',1),
+	(53,'Rapper','Sag ein Wort. Dein linker Nachbar muss ein Wort sagen, was sich annähernd darauf reimt - danach sein linker Nachbar und so weiter. Wer als erstes kein Wort findet, muss einen Killer trinken.',NULL,NULL,'1',1),
+	(54,'Alter Falter','Teile dein Alter durch (3+{x}). Das Ergebnis trinkst du an Fingern Bier.','dice',NULL,'2',1),
+	(55,'Patent','Du darfst dir für die nächsten 3 Runden ein Wort patentieren lassen. Nur du darfst es benutzten. Jeder andere, der es ausspricht, trinkt einen Killer.','round',3,NULL,1),
+	(56,'Patent-Gott','Du darfst dir für die nächsten 3 Runden einen Buchstaben patentieren lassen. Nur du darfst ihn benutzten. Jeder andere, der ihn ausspricht oder benutzt, trinkt einen Killer.','round',3,NULL,1),
+	(57,'Untertauchen','Du heißt ab jetzt Paula! Alle anderen müssen dich so ansprechen, also auch keine Kosenamen.',NULL,NULL,'0',1);
 
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -189,30 +223,21 @@ CREATE TABLE `user` (
   `gameid` varchar(255) DEFAULT NULL,
   `points` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-
-INSERT INTO `user` (`id`, `name`, `gameid`, `points`)
-VALUES
-	('54201864d64a6','Player 1','542018648628b',399),
-	('54201864d64c5','Player 2','542018648628b',457),
-	('54201864d64de','Player 3','542018648628b',460);
-
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
-UNLOCK TABLES;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-# Export von Tabelle user2status
+
+# Export von Tabelle user2item
 # ------------------------------------------------------------
 
-DROP TABLE IF EXISTS `user2status`;
+DROP TABLE IF EXISTS `user2item`;
 
-CREATE TABLE `user2status` (
+CREATE TABLE `user2item` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `userid` varchar(255) NOT NULL DEFAULT '',
+  `itemid` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 
