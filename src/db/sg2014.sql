@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.27)
 # Datenbank: sg2014
-# Erstellungsdauer: 2014-10-15 09:18:25 +0000
+# Erstellungsdauer: 2014-10-15 09:26:58 +0000
 # ************************************************************
 
 
@@ -124,7 +124,8 @@ VALUES
 	(2,'Verdopplungs Karte','Verdoppel ein Getränk eines beliebigen Spielers','src/img/double.png',NULL,NULL),
 	(3,'Gold Karte','Schreibe dir 1 Punkt gut ','src/img/gold.png','points',1),
 	(4,'Diamant Karte','Schreibe dir 3 Punkte gut','src/img/diamond.png','points',3),
-	(5,'Killer!','schicke jemanden einen \"Killer\"! vorbei.','src/img/killer.png',NULL,NULL);
+	(5,'Killer!','schicke jemanden einen \"Killer\"! vorbei.','src/img/killer.png',NULL,NULL),
+	(6,'ComboBreaker','Du darfst gegen bestehende Regeln ohne Bestrafung verstoßen.(3 min)','src/img/fist.png',NULL,NULL);
 
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
