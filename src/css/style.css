@@ -267,6 +267,7 @@ body {
     padding: 10px;
     width: 65%;
     box-shadow: 7px 8px 7px 0 #333;
+    overflow: auto;
 }
 
 .topSettings {
