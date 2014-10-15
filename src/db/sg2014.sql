@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.27)
 # Datenbank: sg2014
-# Erstellungsdauer: 2014-10-15 09:26:58 +0000
+# Erstellungsdauer: 2014-10-15 09:36:37 +0000
 # ************************************************************
 
 
@@ -33,6 +33,15 @@ CREATE TABLE `drinks` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `drinks` WRITE;
+/*!40000 ALTER TABLE `drinks` DISABLE KEYS */;
+
+INSERT INTO `drinks` (`id`, `gameid`, `name`, `size`)
+VALUES
+	('543e3f0fc63b7','543e3f0fc6381','Drink 1','10cl');
+
+/*!40000 ALTER TABLE `drinks` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle dumb_saying
@@ -81,6 +90,15 @@ CREATE TABLE `game2task` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `game2task` WRITE;
+/*!40000 ALTER TABLE `game2task` DISABLE KEYS */;
+
+INSERT INTO `game2task` (`id`, `gameid`, `taskid`, `taskparam`, `taskplayer`, `taskplayername`)
+VALUES
+	(345,'543e3f0fc6381','37','1','1','Player 1');
+
+/*!40000 ALTER TABLE `game2task` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle games
@@ -98,6 +116,15 @@ CREATE TABLE `games` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `games` WRITE;
+/*!40000 ALTER TABLE `games` DISABLE KEYS */;
+
+INSERT INTO `games` (`id`, `game_state`, `save_key`, `maxamount`, `wonat`, `taskpercent`)
+VALUES
+	('543e3f0fc6381','WAITING','0',1,100,90);
+
+/*!40000 ALTER TABLE `games` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle items
@@ -124,7 +151,7 @@ VALUES
 	(2,'Verdopplungs Karte','Verdoppel ein Getränk eines beliebigen Spielers','src/img/double.png',NULL,NULL),
 	(3,'Gold Karte','Schreibe dir 1 Punkt gut ','src/img/gold.png','points',1),
 	(4,'Diamant Karte','Schreibe dir 3 Punkte gut','src/img/diamond.png','points',3),
-	(5,'Killer!','schicke jemanden einen \"Killer\"! vorbei.','src/img/killer.png',NULL,NULL),
+	(5,'Killer!','schicke jemanden einen Killer! vorbei.','src/img/killer.png',NULL,NULL),
 	(6,'ComboBreaker','Du darfst gegen bestehende Regeln ohne Bestrafung verstoßen.(3 min)','src/img/fist.png',NULL,NULL);
 
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
@@ -227,6 +254,16 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+
+INSERT INTO `user` (`id`, `name`, `gameid`, `points`)
+VALUES
+	('543e3f0fc63d8','Player 1','543e3f0fc6381',69),
+	('543e3f0fc63e7','Player 2','543e3f0fc6381',54);
+
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle user2item
@@ -241,6 +278,19 @@ CREATE TABLE `user2item` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `user2item` WRITE;
+/*!40000 ALTER TABLE `user2item` DISABLE KEYS */;
+
+INSERT INTO `user2item` (`id`, `userid`, `itemid`)
+VALUES
+	(57,'543e3f0fc63e7','2'),
+	(58,'543e3f0fc63d8','3'),
+	(60,'543e3f0fc63e7','6'),
+	(63,'543e3f0fc63d8','4'),
+	(64,'543e3f0fc63d8','1');
+
+/*!40000 ALTER TABLE `user2item` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 
