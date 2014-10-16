@@ -76,7 +76,7 @@ include_once("core/dB.php");
     </select>
     </div>
     <div class="settingsMenu">
-        <div class="settingsheader"><div>PLAYER</div><div>DRINKS</div><div class="clear"></div></div>
+        <div class="settingsheader"><div class="clear"></div></div>
         <div id="players"></div>
         <div id="drinks"></div>
         <div class="clear"></div>

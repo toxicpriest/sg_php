@@ -42,7 +42,7 @@ body {
     margin: 20px auto;
     padding: 20px 0;
     text-align: center;
-    width: 601px;
+    width: 70%;
 }
 
 .settingsBtn input {
@@ -126,23 +126,25 @@ body {
 
 .settingsMenu {
     margin: 20px auto 0;
-    width: 601px;
+    width: 70%;
 }
 
 .settingsMenu input {
     height: 25px;
     margin: 5px;
-    width: 200px;
+    width: 65%;
 }
 
 .settingsMenu #drinks {
     float: left;
-    width: 298px;
+    min-width: 296px;
+    width: 49%;
 }
 
 .settingsMenu #players {
     float: left;
-    width: 298px;
+    min-width: 296px;
+    width: 49%;
     margin-right: 5px;
 }
 
@@ -499,4 +501,11 @@ body {
 
 .closeItems {
     margin-bottom: 10px;
+}
+#drinks .clear {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
 }
