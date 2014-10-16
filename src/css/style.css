@@ -35,7 +35,7 @@ body {
     margin: 0 0 10px;
     padding: 5px;
     text-align: center;
-    width: 95%;
+    width: 97%;
 }
 
 .settingsBtn {
@@ -282,10 +282,9 @@ body {
     font-family: monospace;
     margin: 1% auto;
     padding: 10px 0;
-    width: 64%;
+    width: 70%;
     text-align: center;
     box-shadow: 7px 8px 7px 0 #333;
-    max-width: 612px;
 }
 
 #players div {
