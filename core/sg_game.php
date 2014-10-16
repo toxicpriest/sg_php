@@ -88,7 +88,7 @@ class sg_game
         }
     }
 
-    public function save($setNewCookie = true)
+    public function save($setNewCookie = false)
     {
         if ($setNewCookie) {
             setcookie("gameID", $this->gameID, time() + 60 * 60 * 24 * 30);
@@ -165,7 +165,7 @@ class sg_game
             $sActionText.="<br><br>".$randomPlayer->sName."<br> hat danach das Spiel GEWONNEN!";
             $this->delete();
         }else{
-            $this->save(false);
+            $this->save();
         }
         return $sActionText.$itemText;
     }
@@ -175,7 +175,7 @@ class sg_game
         $html = "";
         foreach ($this->playerList as $player) {
             $items = $player->getItemHtmlBoard();
-            $html .= "<div class='player clearfix'><div class='playerItems' id='items" . $player->iPlayerID . "'><div class='closeItems'onclick='hideItems(&quot;" . $player->iPlayerID . "&quot;);'><img src='src/img/minus.png'></div><div class='items'>".$items."<div class='clear'></div></div></div><div class='showItems'  onclick='showItems(&quot;" . $player->iPlayerID . "&quot;);'><img src='src/img/add.png'></div><div class='playerName' onclick='showFog();'><input type='text' id='player_" . $player->iPlayerID . "' value='" . $player->sName . "' disabled='disabled'></div><div class='playerPoints'>" . $player->iPoints . "</div><div class='playerEdit' onclick='editPlayer(&quot;" . $player->iPlayerID . "&quot;);'></div><div class='playerDelete' onclick='deletePlayer(&quot;" . $player->iPlayerID . "&quot;);'></div></div>";
+            $html .= "<div class='player clearfix'><div class='playerItems' id='items" . $player->iPlayerID . "'><div class='closeItems'onclick='hideItems(&quot;" . $player->iPlayerID . "&quot;);'><img src='src/img/minus.png'></div><div class='items'>".$items."<div class='clear'></div></div></div><div class='showItems'  onclick='showItems(&quot;" . $player->iPlayerID . "&quot;);'><img src='src/img/add.png'></div><div class='playerName'><input type='text' id='player_" . $player->iPlayerID . "' value='" . $player->sName . "' disabled='disabled'></div><div class='playerPoints'>" . $player->iPoints . "</div><div class='playerEdit' onclick='editPlayer(&quot;" . $player->iPlayerID . "&quot;);'></div><div class='playerDelete' onclick='deletePlayer(&quot;" . $player->iPlayerID . "&quot;);'></div></div>";
         }
         $html .= "<div id='idAddPlayer' class='player clearfix'><div class='addPlayer' onclick='addPlayer();'><img src='src/img/add.png'></div></div>";
         $html .= "<div class='clear'></div>";
@@ -316,5 +316,28 @@ class sg_game
             }
             $i++;
         }
+    }
+    public function getPlayersWon(){
+    $wonPlayersText="";
+    $i=0;
+        foreach($this->playerList as $oPlayer){
+            if($oPlayer->iPoints >= $this->iWonAt){
+                $i++;
+                if($i >1){
+                    $wonPlayersText.=" & ";
+                }
+                $wonPlayersText.=$oPlayer->sName."  ";
+            }
+        }
+        if($i == 0){}
+        elseif($i >1){$wonPlayersText.=" haben gewonnen!";
+            $this->sBtnState = "won";
+            $this->delete();
+        }
+        elseif($i == 1){$wonPlayersText.=" hat gewonnen!";
+            $this->sBtnState = "won";
+            $this->delete();
+        }
+        return $wonPlayersText;
     }
 }

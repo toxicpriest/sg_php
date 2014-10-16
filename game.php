@@ -40,7 +40,7 @@ if (isset($_COOKIE['gameID'])) {
                 <div class='items'>".$items."<div class='clear'></div></div>
                 </div>
                 <div class='showItems'  onclick='showItems(\"" . $player->iPlayerID . "\");'><img src='src/img/add.png'></div>
-                <div class='playerName' onclick='showFog();'><input type='text' id='player_" . $player->iPlayerID . "' value='" . $player->sName . "' disabled='disabled'></div>
+                <div class='playerName'><input type='text' id='player_" . $player->iPlayerID . "' value='" . $player->sName . "' disabled='disabled'></div>
                 <div class='playerPoints'>" . $player->iPoints . "</div>
                 <div class='playerEdit' onclick='editPlayer(\"" . $player->iPlayerID . "\");'></div>
                 <div class='playerDelete' onclick='deletePlayer(\"" . $player->iPlayerID . "\");'></div>

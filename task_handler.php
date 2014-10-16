@@ -11,8 +11,12 @@ $oGame = new sg_game();
 $oGame->load($gameid);
 $taskText=$oGame->generateTask();
 $playerBoard= $oGame->getUserHtmlBoard();
-$activeBtn=$oGame->getActiveBtn();
 $actions =$oGame->getHtmlActionStates();
+$playersWon= $oGame->getPlayersWon();
+$activeBtn=$oGame->getActiveBtn();
+if($playersWon != ""){
+    $taskText.="<br>".$playersWon;
+}
 $data = '{"task":"'.$taskText.'","playerboard":"'.$playerBoard.'","activeBtn":"'.$activeBtn.'","actions":"'.$actions.'"}';
 
 echo $data;

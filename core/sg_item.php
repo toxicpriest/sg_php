@@ -39,7 +39,7 @@ class sg_item {
     }
     public function load($id){
         $oDB = new dB();
-        $sSql="Select * from user2item join items on user2item.itemid=items.id where user2item.id=".$id;
+        $sSql="Select * from user2item join items on user2item.itemid=items.id where user2item.id='".$id."'";
         $data=$oDB->getAll($sSql);
         $this->iID=$data[0]['itemid'];
         $this->u2iID=$id;
@@ -53,10 +53,12 @@ class sg_item {
     public function save($userID)
     {
         if($this->userID == null){
+            if($this->u2iID == null ){
+                $this->u2iID = uniqid();
+            }
             $this->userID = $userID;
             $oDB = new dB();
-            $sSql = "INSERT INTO user2item (userid,itemid) VALUES ('" . $this->userID . "','" . $this->iID . "') ";
-
+            $sSql = "INSERT INTO user2item (id,userid,itemid) VALUES ('" . $this->u2iID  . "','" . $this->userID . "','" . $this->iID . "') ";
             $oDB->execute($sSql);
         }
     }

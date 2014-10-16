@@ -61,11 +61,11 @@ $(document).ready(function () {
                     $("#taskWidow").html(obj.action);
                     $("#ActiveButton").html(obj.activeBtn);
                     $("#actions").html(obj.actions);
-                    var wholeTask="";
-                    $.each(obj.endedTasks, function() {
-                        wholeTask+=this.text+"<br>";
+                    var wholeTask = "";
+                    $.each(obj.endedTasks, function () {
+                        wholeTask += this.text + "<br>";
                     })
-                    if(wholeTask != ""){
+                    if (wholeTask != "") {
                         messageAlert(wholeTask);
                     }
                 }
@@ -183,14 +183,18 @@ function GetItem(sOiD,playerID){
             data: {itemID: sOiD,playerID:playerID, func:"item"},
             type: "POST"
             }).done(function (data) {
-                                    if (data != "" && data != null) {
-                                        var obj = $.parseJSON(data);
-                                        if(obj.itemtxt != "" && obj.itemtxt != null){
-                                            messageAlert(obj.itemtxt);
-                                        }
-                                        $("#playersInfo").html(obj.playerboard);
-                                    }
-                                });
+               if (data != "" && data != null) {
+                        var obj = $.parseJSON(data);
+                        if(obj.itemtxt != "" && obj.itemtxt != null){
+                            messageAlert(obj.itemtxt);
+                        }
+                        $("#playersInfo").html(obj.playerboard);
+                        if(obj.playersWon != ""){
+                            $("#taskWidow").html(obj.playersWon);
+                        }
+                        $("#ActiveButton").html(obj.activeBtn);
+                    }
+                });
 }
 
 function addDrink(){

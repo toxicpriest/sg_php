@@ -25,12 +25,12 @@ class dB {
     }
 
     public function execute($sSql){
-        $result = mysql_query($sSql,$this->dbConn);
+        $result = mysql_query($sSql,$this->dbConn)or die('Problem in:'.$sSql );
         return $result;
     }
     public function getAll($sSql){
         $aResultArray=array();
-        $result = mysql_query($sSql,$this->dbConn);
+        $result = mysql_query($sSql,$this->dbConn)or die('Problem in:'.$sSql );
         if(!$result) {
             die("Database query failed: " . mysql_error());
         }
@@ -46,7 +46,7 @@ class dB {
     }
     public function getOne($sSql){
         $sSql.=" limit 1";
-        $result = mysql_query($sSql,$this->dbConn);
+        $result = mysql_query($sSql,$this->dbConn)or die('Problem in:'.$sSql );
         $result = mysql_fetch_array($result,MYSQL_NUM);
         if(!is_array($result[0]) && count($result) ==1){
             return $result[0];

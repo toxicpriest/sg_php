@@ -42,7 +42,9 @@ elseif($func == "item"){
     $oGame->save();
 
     $playerBoard = $oGame->getUserHtmlBoard();
-    $data='{"playerboard":"' . $playerBoard . '","itemtxt":"' . $itemtxt . '"}';
+    $playersWon= $oGame->getPlayersWon();
+    $activeBtn=$oGame->getActiveBtn();
+    $data='{"playerboard":"' . $playerBoard . '","itemtxt":"' . $itemtxt . '","activeBtn":"'.$activeBtn.'","playersWon":"'.$playersWon.'"}';
 
     echo $data;
 }

@@ -108,23 +108,20 @@ class sg_player
              if($oItem->u2iID == $itemID){
                  if($oItem->sAction == "points"){
                      $this->addPoints($oItem->iActionParam);
+
                  }
                  elseif($oItem->sAction == "randomplayer"){
                      $oGame = new sg_game();
                      $oGame->load($this->gameID);
-
                      $count = count($oGame->playerList)-1;
                      $randomPlayer = $oGame->playerList[rand(0,$count)];
-                     $oDB = new dB();
-                     $sql = "delete from user2item where id ='" . $itemID . "'";
+                     $oItem->delete();
                      unset($this->activeItems[$key]);
-                     $oDB->execute($sql);
+
                      return "<center>".$randomPlayer->sName."</center>";
                  }
-                 $oDB = new dB();
-                 $sql = "delete from user2item where id ='" . $itemID . "'";
                  unset($this->activeItems[$key]);
-                 $oDB->execute($sql);
+                 $oItem->delete();
              }
          }
     }
