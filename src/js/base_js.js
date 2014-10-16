@@ -331,3 +331,10 @@ function hideItems(playerID){
     var domName= "#items"+playerID;
     $(domName).css("display","none");
 }
+
+function hide_show_players(){
+   $("#playersInfo").toggle("slow")
+}
+function hide_show_drinks(){
+   $("#drinksInfo").toggle("slow")
+}

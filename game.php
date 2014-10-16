@@ -30,7 +30,7 @@ if (isset($_COOKIE['gameID'])) {
             </div>
         </div>
         <div id="fog"></div>
-        <div class="header">PLAYER</div>
+        <div class="header" onclick="hide_show_players();">PLAYER</div>
         <div id="playersInfo">
             <?php
             foreach ($oGame->playerList as $player) {
@@ -51,7 +51,7 @@ if (isset($_COOKIE['gameID'])) {
             ?>
             <div class="clear"></div>
         </div>
-        <div class="header">DRINKS</div>
+        <div class="header" onclick="hide_show_drinks();">DRINKS</div>
         <div id="drinksInfo">
             <?php
             foreach ($oGame->drinks as $drink) {
