@@ -132,18 +132,18 @@ body {
 .settingsMenu input {
     height: 25px;
     margin: 5px;
-    width: 65%;
+    width: 58%;
 }
 
 .settingsMenu #drinks {
     float: left;
-    min-width: 296px;
+    min-width: 216px;
     width: 49%;
 }
 
 .settingsMenu #players {
     float: left;
-    min-width: 296px;
+    min-width: 216px;
     width: 49%;
     margin-right: 5px;
 }
