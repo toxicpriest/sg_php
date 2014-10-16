@@ -3,6 +3,7 @@ header("Content-Type: text/html; charset=utf-8");
 //error_reporting(E_ALL);
 //ini_set("display_errors", 1);
 ?>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <link rel="stylesheet" type="text/css" href="src/css/style.css">
 <script language="javascript" type="text/javascript" src="src/js/jquery-1.11.0.min.js"></script>
 <script language="javascript" type="text/javascript" src="src/js/base_js.js"></script>
