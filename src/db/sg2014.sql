@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.27)
 # Datenbank: sg2014
-# Erstellungsdauer: 2014-10-15 10:47:21 +0000
+# Erstellungsdauer: 2014-10-16 08:49:25 +0000
 # ************************************************************
 
 
@@ -153,10 +153,10 @@ LOCK TABLES `tasks` WRITE;
 
 INSERT INTO `tasks` (`id`, `name`, `text`, `action`, `action_param`, `points`, `isPlayerTask`)
 VALUES
-	(1,'Kraftprobe','Mache X Liegestütze! Für jede so erbrachte Leistung bekommt du einen Finger Bier.','dice',NULL,'2',1),
+	(1,'Kraftprobe','Mache X Liegestütze! Für jede so erbrachte Leistung bekommst du einen Finger Bier.','dice',NULL,'2',1),
 	(2,'Razzia','Renne X Runden ums Haus/Sofa/... in jeder Runde bekommst du 2 Finger Bier zugesteckt.','dice',NULL,'2',1),
-	(3,'Beichte','Beichte jemanden ernsthaft das du Alkoholiker bist. Spüle diese wiederliche Lüge mit einem Killer runter.',NULL,NULL,'1',1),
-	(4,'Goldkelchen','Gurgel ein Lied mit 2 Finger Bier. Die anderen dürfen gerne mitmachen!',NULL,NULL,'1',1),
+	(3,'Beichte','Beichte jemanden ernsthaft das du Alkoholiker bist. Spüle diese widerliche Lüge mit einem Killer runter.',NULL,NULL,'1',1),
+	(4,'Goldkelchen','Gurgel ein Lied mit 2 Fingern Bier. Die anderen dürfen gerne mitmachen!',NULL,NULL,'1',1),
 	(5,'Giftmischer','Mische je eine Einheit aller Getränke und trinke das Gebräu','',NULL,'2',1),
 	(6,'Verhör','Beantworte den anderen eine persönliche Frage. Die Anderen bekommen für die verwerfliche Frage alle 2 Finger Bier.',NULL,NULL,'1',1),
 	(7,'Gib mir Tiernamen','Imitiere ein Tier, das die anderen bestimmen. Bewegung und Geräusche inklusive!',NULL,NULL,'1',1),
@@ -167,8 +167,8 @@ VALUES
 	(12,'Last but not Least','Alle exen einen Killer! Der letzte bekommt noch einen!',NULL,NULL,NULL,0),
 	(13,'Achtung, der Chef!','Es darf 5 Runden lang nicht gelacht werden!','round',5,NULL,0),
 	(14,'Inventur','Legt all euer Geld, was ihr dabei habt, auf den Tisch. Wer am wenigsten hat, bekommt den Killer gratis.',NULL,NULL,NULL,0),
-	(15,'Angeschossen','Und das an deiner Lieblingshand! Benutze für alles andere darfst du jetzt nur noch die schwache Hand benutzen. Hält 5 Runden.','round',5,'1',1),
-	(16,'Casino-Time','Würfel! Bei 1 - 5 Würfelaugen bekommst du entsprechend der Anzahl der Würfelaugen Finger Bier. Bei einer 6 gibt es FULLHOUSE: Alle anderen bekommen einen Killer.','dice',NULL,NULL,1),
+	(15,'Angeschossen','Und das an deiner Lieblingshand! Benutze für alles jetzt nur noch deine schwache Hand. Hält 5 Runden.','round',5,'1',1),
+	(16,'Casino-Time','Würfel! Bei 1 - 5 bekommst du entsprechend der Anzahl Finger Bier. Bei einer 6 gibt es FULLHOUSE: Alle anderen bekommen einen Killer.','dice',NULL,NULL,1),
 	(17,'Desateure werden erschossen','Klogänge sind für alle die nächsten 10 Runden untersagt.','round',10,NULL,0),
 	(18,'Amoklauf','Flaschendrehen! Derjenige, auf den die Flasche zeigt, wird erschossen und muss einen Killer trinken. Das wird solange wiederholt, bis die Flasche auf dich zeigt.',NULL,NULL,'1',1),
 	(19,'Eine Frage der Ehre','Trinke so viel, wie du möchtest. Die anderen müssen mit dir gleich ziehen.',NULL,NULL,NULL,1),
@@ -180,7 +180,7 @@ VALUES
 	(25,'Bling Bling','Derjenige mit dem wenigstens Schmuck am Körper ist out... und bekommt einen Killer. (Es zählen Ringe, Ohrringe, Ketten, Piercings, ...)',NULL,NULL,NULL,0),
 	(26,'Bombe','5 Runden lang darf keiner trinken. Sind diese vorbei, müssen alle Getränke, die vor einem stehen, geext werden.','round',5,NULL,0),
 	(27,'Lungen-Transplatation','Ihr müsst 15 Runden ohne Rauchen auskommen.','round',15,NULL,0),
-	(28,'Nachschubprobleme','Du kannst für 5 Runden ein Getränk durch ein beliebiges anderes zur verfügung stehendes Getränk ersetzen.','round',5,NULL,0),
+	(28,'Nachschubprobleme','Du kannst für 5 Runden ein Getränk durch ein beliebiges anderes zur verfügung stehendes Getränk ersetzen.','round',5,NULL,1),
 	(29,'Killing Spree','Jedes Mal, wenn ihr ein Bier trinken müsst, wird bis zu einem Killer aufgefüllt. 3 Runden.','round',3,NULL,0),
 	(30,'Banküberfall','Schreit alle Hände hoch! und reißt die Hände hoch. Wers wirklich gemacht hat, bekommt einen Killer.','',NULL,NULL,0),
 	(31,'Tief-Flieger',' Keiner darf den Boden berühren, also Füße hoch! Gilt solange, bis der erste wieder den Boden berührt und mit einem Killer bestraft wird.',NULL,NULL,NULL,0),
@@ -239,7 +239,7 @@ CREATE TABLE `user` (
 DROP TABLE IF EXISTS `user2item`;
 
 CREATE TABLE `user2item` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `id` varchar(255) NOT NULL DEFAULT '',
   `userid` varchar(255) NOT NULL DEFAULT '',
   `itemid` varchar(255) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
