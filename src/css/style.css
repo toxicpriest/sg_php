@@ -273,11 +273,7 @@ body {
     box-shadow: 7px 8px 7px 0 #333;
     overflow: auto;
 }
-@media only screen and (min-width: 1200px) {
-    #taskwidow {
-        font-size: 45px;
-    }
-}
+
 
 .topSettings {
     background: none repeat scroll 0 0 darkred;
@@ -512,4 +508,16 @@ body {
     box-shadow: none;
     margin: 0;
     padding: 0;
+}
+@media only screen and (min-width: 1200px) {
+    #taskwidow {
+        font-size: 45px;
+    }
+    .header {
+        font-size: 30px;
+    }
+    .drinkName input {font-size: 20px;}
+    .drinkAmount input {font-size: 20px;}
+    .playerName input {font-size: 20px;}
+
 }
