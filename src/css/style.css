@@ -519,5 +519,5 @@ body {
     .drinkName input {font-size: 20px;}
     .drinkAmount input {font-size: 20px;}
     .playerName input {font-size: 20px;}
-
+    .playerPoints {font-size: 20px;}
 }
