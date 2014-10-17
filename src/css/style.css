@@ -200,11 +200,14 @@ body {
 }
 
 #activebutton button {
+    background-color: darkred;
+    border: 1px solid white;
+    border-radius: 15px;
+    color: #fff;
     font-family: monospace;
     font-size: 30px;
     height: 55px;
     width: 250px;
-    border-radius: 15px;
 }
 
 .clearfix:after {
@@ -532,4 +535,5 @@ body {
     #taskwidow{height:300px}
     #actions div.hiddenActionInfo{font-size: 18px;}
     .hiddenItemInfo{font-size: 18px;}
+    #activebutton button {font-size: 45px;height: 65px;width: 280px;}
 }
