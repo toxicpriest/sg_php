@@ -195,7 +195,7 @@ body {
 }
 
 #activebutton {
-    margin: -28px auto 0;
+    margin: 5px auto 0;
     width: 250px;
 }
 
@@ -528,4 +528,8 @@ body {
     #players label {font-size: 20px;}
     #drinks label {font-size: 20px;}
     .settingsMenu input {font-size: 18px;}
+    #messageboard {font-size: 20px;}
+    #taskwidow{height:300px}
+    #actions div.hiddenActionInfo{font-size: 18px;}
+    .hiddenItemInfo{font-size: 18px;}
 }
