@@ -61,6 +61,10 @@ class sg_player
     {
         $this->iPoints = $this->iPoints + $points;
     }
+    public function stealPoints($points)
+    {
+        $this->iPoints = $this->iPoints - $points;
+    }
 
     public function getDumbSayingForLoosers()
     {
@@ -93,17 +97,13 @@ class sg_player
     public function getItemHtmlBoard()
     {
         $html = "";
-        $i=1;
         foreach ($this->activeItems as $oItem) {
-            if($i % 4 == 0){$cssCl="last";}
-            else{$cssCl="";}
-            $html .= "<div class='item clearfix ".$cssCl ."' onclick=GetItem(&quot;".$oItem->u2iID."&quot;,&quot;".$this->iPlayerID."&quot;)><div class='hiddenItemInfo'>".$oItem->sName."<br>".$oItem->sText."</div><img src='".$oItem->sPic."'></div>";
-            $i++;
+            $html .= "<div class='item clearfix' onclick=GetItem(&quot;".$oItem->u2iID."&quot;,&quot;".$this->iPlayerID."&quot;)><div class='hiddenItemInfo'>".$oItem->sName."<br>".$oItem->sText."</div><img src='".$oItem->sPic."'></div>";
         }
         $html .= "<div class='clear'></div>";
         return $html;
     }
-    public function useItem($itemID){
+    public function useItem($itemID,$oGame){
          foreach($this->activeItems as $key => $oItem){
              if($oItem->u2iID == $itemID){
                  if($oItem->sAction == "points"){
@@ -111,14 +111,26 @@ class sg_player
 
                  }
                  elseif($oItem->sAction == "randomplayer"){
-                     $oGame = new sg_game();
-                     $oGame->load($this->gameID);
                      $count = count($oGame->playerList)-1;
                      $randomPlayer = $oGame->playerList[rand(0,$count)];
                      $oItem->delete();
                      unset($this->activeItems[$key]);
 
                      return "<center>".$randomPlayer->sName."</center>";
+                 }
+                 elseif($oItem->sAction == "randomsteal"){
+                     $playerHS="";
+                     $i=1;
+                     foreach($oGame->playerList as $oPlayer){
+                        if($i==1){
+                            $playerHS =$oPlayer;
+                        }elseif($oPlayer->iPoints > $playerHS->iPoints){
+                            $playerHS=$oPlayer;
+                        }
+                         $i++;
+                     }
+                     $this->addPoints($oItem->iActionParam);
+                     $playerHS->stealPoints($oItem->iActionParam);
                  }
                  unset($this->activeItems[$key]);
                  $oItem->delete();

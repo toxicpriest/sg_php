@@ -36,7 +36,7 @@ elseif($func == "item"){
     $playerID = $_POST['playerID'];
     foreach ($oGame->playerList as $oPlayer){
         if($oPlayer->iPlayerID ==$playerID){
-            $itemtxt=$oPlayer->useItem($itemID);
+            $itemtxt=$oPlayer->useItem($itemID,$oGame);
         }
     }
     $oGame->save();
