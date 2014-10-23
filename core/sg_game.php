@@ -143,7 +143,7 @@ class sg_game
     public function generateAction()
     {
         $this->endedTasks=array();
-        $fairPlayerList=$this->getLowestPlayers($this->getLowestPlayTime(),3);
+        $fairPlayerList=$this->getLowestPlayers($this->getLowestPlayTime(),2);
         $playerCount = count($fairPlayerList) - 1;
         $drinkCount = count($this->drinks) - 1;
         $randomplayerNumber = rand(0, $playerCount);

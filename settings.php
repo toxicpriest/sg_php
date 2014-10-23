@@ -8,6 +8,7 @@ header("Content-Type: text/html; charset=utf-8");
 <?php
 include_once("core/dB.php");
 ?>
+<div id="gameLabel"></div>
 <form action="savesettings.php" method="POST" onsubmit="return chkFormular()">
     <div class="topSettings">
     <label>Number of Players :</label>

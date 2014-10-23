@@ -2,11 +2,21 @@ body {
     margin: 0;
     padding: 0;
     background: #eee;
-    background: url("../img/background.jpg");
+    background: url("../img/bg1.gif");
     background-size: cover;
     font-family: monospace;
 }
-
+#gameLabel {
+    background: none repeat scroll 0 0 darkred;
+    border: 1px solid white;
+    border-radius: 15px;
+    bottom: -12px;
+    color: #fff;
+    height: 100px;
+    left: -12px;
+    position: fixed;
+    width: 100px;
+}
 .drinkEdit {
     float: left;
     height: 20px;
