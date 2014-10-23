@@ -151,7 +151,7 @@ class sg_game
         $randomAmount = rand(1, $this->iMaxAmount);
         $sActionText = $randomPlayer->sName . " muss " . $randomAmount . "x" .$randomDrink->sAmount." ".$randomDrink->sName . " trinken!";
         $randomPlayer->addPoints($randomAmount);
-
+        $randomPlayer->addTimesPlayed(1);
         $this->updateActions();
         $itemText="";
         if($this->isTaskTriggerd() == 4){

@@ -5,6 +5,7 @@ class sg_player
     public $iPlayerID = "";
     public $sName = "";
     public $iPoints = 0;
+    public $timesplayed = 0;
     public $gameID;
     public $activeItems = array();
 
@@ -27,6 +28,7 @@ class sg_player
         $this->sName = $data[0]['name'];
         $this->gameID = $data[0]['gameid'];
         $this->iPoints = $data[0]['points'];
+        $this->timesplayed = $data[0]['timesplayed'];
         $this->loadActiveItems();
     }
 
@@ -61,6 +63,10 @@ class sg_player
     {
         $this->iPoints = $this->iPoints + $points;
     }
+    public function addTimesPlayed($points)
+    {
+        $this->timesplayed = $this->timesplayed + $points;
+    }
     public function stealPoints($points)
     {
         $this->iPoints = $this->iPoints - $points;
@@ -82,7 +88,7 @@ class sg_player
     {
         $oDB = new dB();
         if ($this->gameID != null) {
-            $sSql = "UPDATE user SET name='" . $this->sName . "', points='" . $this->iPoints . "' WHERE id='" . $this->iPlayerID . "'";
+            $sSql = "UPDATE user SET name='" . $this->sName . "', points='" . $this->iPoints . "', timesplayed='" . $this->timesplayed . "' WHERE id='" . $this->iPlayerID . "'";
         }
         else {
             $this->gameID = $gameID;

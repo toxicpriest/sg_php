@@ -64,7 +64,7 @@ class sg_task {
     {
         $oDB = new dB();
         if ($this->g2tID != null) {
-            $sSql = "UPDATE game2task SET taskparam='" . $this->sTaskstate . "' WHERE gameid='" . $gameID."' and taskid='". $this->iID."'";
+            $sSql = "UPDATE game2task SET taskparam='" . $this->sTaskstate . "' WHERE id='". $this->g2tID."'";
         }
         else {
             $this->gameID = $gameID;
