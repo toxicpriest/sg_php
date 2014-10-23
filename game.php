@@ -20,7 +20,7 @@ if (isset($_COOKIE['gameID'])) {
     $oGame = new sg_game();
     $oGame->load($gameid);
     ?>
-    <div id="gameLabel"></div>
+    <div id="gameLabel"><div id="gamelogo"><img src="src/img/sg.gif" width="80"></div></div>
     <div id="gameboard">
         <div id="messageboard">
             <div id="scrollpane">

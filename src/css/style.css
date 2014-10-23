@@ -547,3 +547,9 @@ body {
     .hiddenItemInfo{font-size: 18px;}
     #activebutton button {font-size: 45px;height: 65px;width: 280px;}
 }
+#gamelogo {
+    float: right;
+    height: 80px;
+    margin: 7px;
+    width: 80px;
+}

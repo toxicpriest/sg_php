@@ -4,7 +4,7 @@
 include_once("core/dB.php");
 $db = new dB();
 ?>
-<div id="gameLabel"></div>
+<div id="gameLabel"><div id="gamelogo"><img src="src/img/sg.gif" width="80"></div></div>
 <div class="menu">
     <a href="settings.php">
         <button name="StartNewGame" id="startNew">START</button>
