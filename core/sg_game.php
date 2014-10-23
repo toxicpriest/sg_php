@@ -143,10 +143,11 @@ class sg_game
     public function generateAction()
     {
         $this->endedTasks=array();
-        $playerCount = count($this->playerList) - 1;
+        $fairPlayerList=$this->getLowestPlayers($this->getLowestPlayTime(),3);
+        $playerCount = count($fairPlayerList) - 1;
         $drinkCount = count($this->drinks) - 1;
         $randomplayerNumber = rand(0, $playerCount);
-        $randomPlayer = $this->playerList[$randomplayerNumber];
+        $randomPlayer = $fairPlayerList[$randomplayerNumber];
         $randomDrink = $this->drinks[rand(0, $drinkCount)];
         $randomAmount = rand(1, $this->iMaxAmount);
         $sActionText = $randomPlayer->sName . " muss " . $randomAmount . "x" .$randomDrink->sAmount." ".$randomDrink->sName . " trinken!";
@@ -244,6 +245,29 @@ class sg_game
             $i++;
         }
         $this->endedTasks= $endedActions;
+    }
+    public function getLowestPlayTime(){
+        $i=1;
+        $lowestPlayTime=0;
+        foreach($this->playerList as $player){
+            if($i ==1 ){
+                $lowestPlayTime=$player->timesplayed;
+            }else{
+                if($player->timesplayed < $lowestPlayTime->timesplayed ){
+                    $lowestPlayTime=$player->timesplayed;
+                }
+            }
+        }
+        return $lowestPlayTime;
+    }
+    public function getLowestPlayers($lowestCount,$range){
+        $playerlist=array();
+        foreach($this->playerList as $player){
+            if(($lowestCount+$range) >= $player->timesplayed){
+                $playerlist[]=$player;
+            }
+        }
+        return $playerlist;
     }
     public function buildJsonEndedActions(){
         $jsonString=',"endedTasks" : [';
