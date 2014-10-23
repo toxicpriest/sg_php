@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.27)
 # Datenbank: sg2014
-# Erstellungsdauer: 2014-10-17 10:16:20 +0000
+# Erstellungsdauer: 2014-10-23 11:56:35 +0000
 # ************************************************************
 
 
@@ -229,6 +229,7 @@ CREATE TABLE `user` (
   `name` varchar(255) DEFAULT NULL,
   `gameid` varchar(255) DEFAULT NULL,
   `points` int(11) DEFAULT NULL,
+  `timesplayed` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
