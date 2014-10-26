@@ -49,6 +49,7 @@ $(document).ready(function () {
             });
         hideFog();
     })
+
     $('body').delegate('#actionBtn', 'click', function(event) {
         showFog();
         $.ajax({
@@ -337,4 +338,14 @@ function hide_show_players(){
 }
 function hide_show_drinks(){
    $("#drinksInfo").toggle("slow")
+}
+function showInfo(){
+    if($("#gameLabel").hasClass("popup")){
+        hideFog();
+        $("#gameLabel").removeClass("popup");
+    }
+    else{
+        showFog();
+        $("#gameLabel").addClass("popup");
+    }
 }

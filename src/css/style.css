@@ -553,3 +553,15 @@ body {
     margin: 7px;
     width: 80px;
 }
+#gameLabel.popup {
+    height: 120px;
+    left: 50%;
+    margin-left: -180px;
+    margin-top: -60px;
+    padding: 10px;
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    width: 360px;
+    z-index: 5;
+}
