@@ -61,8 +61,23 @@ include_once("core/dB.php");
         <option value="100">100</option>
         <option value="150">150</option>
     </select>
-    <label>Tasks % :</label>
+    <label>Task-Rate in % :</label>
     <select name="tasks" id="tasksDrop">
+        <option value="Please Choose">Please Choose</option>
+        <option value="0">0</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+        <option value="30">30</option>
+        <option value="40">40</option>
+        <option value="50">50</option>
+        <option value="60">60</option>
+        <option value="70">70</option>
+        <option value="80">80</option>
+        <option value="90">90</option>
+        <option value="100">100</option>
+    </select>
+    <label>Item-Rate in % :</label>
+    <select name="items" id="itemsDrop">
         <option value="Please Choose">Please Choose</option>
         <option value="0">0</option>
         <option value="10">10</option>

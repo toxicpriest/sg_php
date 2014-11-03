@@ -267,6 +267,10 @@ function chkFormular(){
         $("#tasksDrop").css("color","red");
         formularSuccess=false;
     }
+    if($("#itemsDrop").val() == "Please Choose"){
+        $("#itemsDrop").css("color","red");
+        formularSuccess=false;
+    }
     if($("#playerCountDrop").val() != "Please Choose"){
         var playerCount2=parseInt($("#playerCountDrop").val());
         for (var i = 1; i <= playerCount2; i++) {

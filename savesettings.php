@@ -25,5 +25,6 @@ for ($j = 1; $j <= $countPlayers; $j++) {
 $game->iMaxAmount=$_POST['maxAmount'];
 $game->iWonAt=$_POST['wonAt'];
 $game->iTaskPercent=$_POST['tasks'];
+$game->iItemPercent=$_POST['items'];
 $game->save(true);
 header("Location: game.php");

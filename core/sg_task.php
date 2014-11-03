@@ -19,12 +19,19 @@ class sg_task {
     public $isPlayerTask=false;
     public $taskplayername;
 
-    public function getTask($id = null){
+    public function getTask($id = null,$lastTask=null){
         $oDB = new dB();
         if($id != null){
             $sSql = "Select * from tasks where id='" . $id . "'";
             $data=$oDB->getAll($sSql);
             $task= $data[0];
+        }
+        elseif($lastTask != null){
+            $sSql = "Select * from tasks where id not in ".$lastTask;
+            $data=$oDB->getAll($sSql);
+            $count = count($data)-1;
+            $random = rand(0,$count);
+            $task= $data[$random];
         }
         else{
             $sSql = "Select * from tasks";
@@ -41,7 +48,6 @@ class sg_task {
         $this->iCredits=$task["points"];
         $this->isPlayerTask=$task["isPlayerTask"];
     }
-
     public function load($id){
         $oDB = new dB();
         $sSql="Select * from game2task join tasks on  game2task.taskid=tasks.id where game2task.id=".$id;
