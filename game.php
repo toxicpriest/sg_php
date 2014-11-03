@@ -20,7 +20,7 @@ if (isset($_COOKIE['gameID'])) {
     $oGame = new sg_game();
     $oGame->load($gameid);
     ?>
-    <div id="gameLabel" onclick="showInfo();"><div id="gamelogo"><img src="src/img/sg.gif" width="80"></div>Sauf-Generator ver. 2.1<br>Big Thx to:<br>"Flower Dude"<br>"Makrele"<br>"Eure Pestilens"<br>"Big Marv"<br>"Owl-Man"<br>"Oldman"</div>
+    <div id="gameLabel" onclick="showInfo();"><div id="gamelogo"><img src="src/img/sg.gif"></div>Sauf-Generator ver. 2.1<br>Big Thx to:<br>"Flower Dude"<br>"Makrele"<br>"Eure Pestilens"<br>"Big Marv"<br>"Owl-Man"<br>"Oldman"</div>
     <div id="gameboard">
         <div id="messageboard">
             <div id="scrollpane">
