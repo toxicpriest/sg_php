@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.27)
 # Datenbank: sg2014
-# Erstellungsdauer: 2014-10-23 11:56:35 +0000
+# Erstellungsdauer: 2014-11-03 14:36:00 +0000
 # ************************************************************
 
 
@@ -95,6 +95,8 @@ CREATE TABLE `games` (
   `maxamount` int(11) NOT NULL DEFAULT '1',
   `wonat` int(11) NOT NULL DEFAULT '15',
   `taskpercent` int(11) NOT NULL DEFAULT '0',
+  `itempercent` int(11) NOT NULL DEFAULT '0',
+  `lasttask` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -127,7 +129,7 @@ VALUES
 	(5,'Killer!','Schicke jemanden einen Killer! vorbei.','src/img/killer.png',NULL,NULL),
 	(6,'ComboBreaker','Du darfst gegen bestehende Regeln ohne Bestrafung verstoßen.(3 min)','src/img/fist.png',NULL,NULL),
 	(7,'Glücksrad','Weise eine Aufgabe oder ein gerade erhaltenens Getränk einem zufälligen Spieler zu.','src/img/wheel.jpg','randomplayer',NULL),
-	(8,'Dieb','Klaue dem Mitspieler mit den meisten Punkten 2 davon.','src/img/steal.png','randomsteal',2);
+	(8,'Dieb','Klaue dem Spieler mit den meisten Punkten 2 davon.','src/img/steal.png','randomsteal',2);
 
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -230,6 +232,7 @@ CREATE TABLE `user` (
   `gameid` varchar(255) DEFAULT NULL,
   `points` int(11) DEFAULT NULL,
   `timesplayed` int(11) DEFAULT '0',
+  `timestasked` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
