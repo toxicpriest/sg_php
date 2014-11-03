@@ -114,9 +114,11 @@ class sg_game
     {
         $task = new sg_task();
         $task->getTask();
-        $playerCount = count($this->playerList) - 1;
+        $fairPlayerList=$this->getLowestPlayersTask($this->getLowestTaskTime(),2);
+        $playerCount = count($fairPlayerList) - 1;
         $randomplayerNumber = rand(0, $playerCount);
-        $randomPlayer = $this->playerList[$randomplayerNumber];
+        $randomPlayer = $fairPlayerList[$randomplayerNumber];
+        $randomPlayer->addTimesTasked(1);
         if ($task->iCredits > 0) {
             $randomPlayer->addPoints($task->iCredits);
         }
@@ -253,17 +255,42 @@ class sg_game
             if($i ==1 ){
                 $lowestPlayTime=$player->timesplayed;
             }else{
-                if($player->timesplayed < $lowestPlayTime->timesplayed ){
+                if($player->timesplayed < $lowestPlayTime ){
                     $lowestPlayTime=$player->timesplayed;
                 }
             }
+            $i++;
         }
         return $lowestPlayTime;
+    }
+    public function getLowestTaskTime(){
+        $i=1;
+        $lowestTaskTime=0;
+        foreach($this->playerList as $player){
+            if($i ==1 ){
+                $lowestTaskTime=$player->timestasked;
+            }else{
+                if($player->timestasked < $lowestTaskTime ){
+                    $lowestTaskTime=$player->timestasked;
+                }
+            }
+            $i++;
+        }
+        return $lowestTaskTime;
     }
     public function getLowestPlayers($lowestCount,$range){
         $playerlist=array();
         foreach($this->playerList as $player){
             if(($lowestCount+$range) >= $player->timesplayed){
+                $playerlist[]=$player;
+            }
+        }
+        return $playerlist;
+    }
+    public function getLowestPlayersTask($lowestCount,$range){
+        $playerlist=array();
+        foreach($this->playerList as $player){
+            if(($lowestCount+$range) >= $player->timestasked){
                 $playerlist[]=$player;
             }
         }

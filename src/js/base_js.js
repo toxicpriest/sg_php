@@ -343,9 +343,11 @@ function showInfo(){
     if($("#gameLabel").hasClass("popup")){
         hideFog();
         $("#gameLabel").removeClass("popup");
+        $("body").css("overflow","visible");
     }
     else{
         showFog();
         $("#gameLabel").addClass("popup");
+        $("body").css("overflow","hidden");
     }
 }

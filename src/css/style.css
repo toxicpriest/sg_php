@@ -3,7 +3,6 @@ body {
     padding: 0;
     background: #eee;
     background: url("../img/bg1.gif");
-    background-size: cover;
     font-family: monospace;
 }
 #gameLabel {
