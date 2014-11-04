@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.27)
 # Datenbank: sg2014
-# Erstellungsdauer: 2014-11-04 11:41:25 +0000
+# Erstellungsdauer: 2014-11-04 16:30:32 +0000
 # ************************************************************
 
 
@@ -129,7 +129,9 @@ VALUES
 	(5,'Killer!','Schicke jemanden einen Killer! vorbei.','src/img/killer.png',NULL,NULL),
 	(6,'ComboBreaker','Du darfst gegen bestehende Regeln ohne Bestrafung verstoßen.(3 min)','src/img/fist.png',NULL,NULL),
 	(7,'Glücksrad','Weise eine Aufgabe oder ein gerade erhaltenens Getränk einem zufälligen Spieler zu.','src/img/wheel.jpg','randomplayer',NULL),
-	(8,'Dieb','Klaue dem Spieler mit den meisten Punkten 2 davon.','src/img/steal.png','randomsteal',2);
+	(8,'Dieb','Klaue dem Spieler mit den meisten Punkten 2 davon.','src/img/steal.png','randomsteal',2),
+	(9,'Drain','Lasse alle anderen Spieler 1 Punkt verlieren ','src/img/drain.jpg','drain',1),
+	(10,'Ex-ekutieren','Ein Spieler deiner Wahl muss eins seiner Getränke exen','src/img/execute.gif',NULL,NULL);
 
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -171,14 +173,14 @@ VALUES
 	(13,'Achtung, der Chef!','Es darf 5 Runden lang nicht gelacht werden!','round',5,NULL,0),
 	(14,'Inventur','Legt all euer Kleingeld, was ihr dabei habt, auf den Tisch. Wer am wenigsten hat, bekommt den Killer gratis.',NULL,NULL,NULL,0),
 	(15,'Angeschossen','Und das an deiner Lieblingshand! Benutze für alles jetzt nur noch deine schwache Hand. Hält 5 Runden.','round',5,'1',1),
-	(16,'Casino-Time','Würfel! Bei 1 - 5 bekommst du entsprechend der Anzahl Finger Bier. Bei einer 6 gibt es FULLHOUSE: Alle anderen bekommen einen Killer.','dice',NULL,NULL,1),
+	(16,'Casino-Time','Würfel! Bei 1 - 5 bekommst du entsprechend der Anzahl Finger Bier. Bei einer 6 gibt es FULLHOUSE: Alle anderen bekommen einen Killer.','dice',NULL,'2',1),
 	(17,'Desateure werden erschossen','Klogänge sind für alle die nächsten 10 Runden untersagt.','round',10,NULL,0),
 	(18,'Amoklauf','Flaschendrehen! Derjenige, auf den die Flasche zeigt, wird erschossen und muss einen Killer trinken. Das wird solange wiederholt, bis die Flasche auf dich zeigt.',NULL,NULL,'1',1),
 	(19,'Eine Frage der Ehre','Trinke so viel, wie du möchtest. Die anderen müssen mit dir gleich ziehen.',NULL,NULL,NULL,1),
-	(20,'Mobbing','Du bist der Buhmann für die nächsten 3 Runden. Du stehst und hälst die Fresse. Damit du das auch schaffst gibts nen Killer.','round',3,NULL,1),
-	(21,'Molotov','Du brennst! Jeder, den du innerhalb der nächsten 5 Sekunden berührst brennt auch! Löscht euch mit einem Killer.',NULL,NULL,NULL,1),
+	(20,'Mobbing','Du bist der Buhmann für die nächsten 3 Runden. Du stehst und hälst die Fresse. Damit du das auch schaffst gibts nen Killer.','round',3,'3',1),
+	(21,'Molotov','Du brennst! Jeder, den du innerhalb der nächsten 5 Sekunden berührst brennt auch! Löscht euch mit einem Killer.',NULL,NULL,'1',1),
 	(22,'Chancengleichhheit','Der Spieler mit den am wenigsten getrunkenen Einheiten darf nun auch mal mit einem Killer seine Lippen benetzen.',NULL,NULL,NULL,0),
-	(23,'Rotlichmilieu','Trinke für jede Frau am Tisch 2 Finger Bier.',NULL,NULL,'1',1),
+	(23,'Rotlichmilieu','Trinke für jede Frau am Tisch 2 Finger Bier.',NULL,NULL,'2',1),
 	(24,'Double Time','Jedes Getränk, was man vor sich stehen hat, wird verdoppelt!',NULL,NULL,NULL,0),
 	(25,'Bling Bling','Derjenige mit dem wenigstens Schmuck am Körper ist out... und bekommt einen Killer. (Es zählen Ringe, Ohrringe, Ketten, Piercings, ...)',NULL,NULL,NULL,0),
 	(26,'Bombe','5 Runden lang darf keiner trinken. Sind diese vorbei, müssen alle Getränke, die vor einem stehen, geext werden.','round',5,NULL,0),
@@ -189,8 +191,8 @@ VALUES
 	(31,'Tief-Flieger',' Keiner darf den Boden berühren, also Füße hoch! Gilt solange, bis der erste wieder den Boden berührt und mit einem Killer bestraft wird.',NULL,NULL,NULL,0),
 	(32,'Pakt mit dem Teufel','Wenn du willst, kannst du auf der Stelle einen Killer trinken, und musst dafür für die nächsten 3 Runden nichts trinken.','round',3,NULL,1),
 	(33,'Verrückter Zapfhahn','Würfel, wie viele Killer der Zapfhahn ausschenkt. Verteile sie dann im Uhrzeigersinn an die Mitspieler, dein Linker Nachbar bekommt den ersten.','dice',NULL,NULL,1),
-	(34,'Elitepartner.de','Halte mit deinem linken oder rechten Nachbarn Händchen. Schafft ihr das 10 Runden lang ist es wahre Liebe und alle anderen bekommen einen Killer ansonsten bekommt Ihr einen.','round',10,NULL,1),
-	(35,'Stotteranfall','Die nächsten 3 Runden musst du alles, was du sagen willst doppelt sagen! (Bsp. ich trinke = ich ich trinke trinke)','round',3,NULL,1),
+	(34,'Elitepartner.de','Halte mit deinem linken oder rechten Nachbarn Händchen. Schafft ihr das 10 Runden lang ist es wahre Liebe und alle anderen bekommen einen Killer ansonsten bekommt Ihr einen.','round',10,'1',1),
+	(35,'Stotteranfall','Die nächsten 3 Runden musst du alles, was du sagen willst doppelt sagen! (Bsp. ich trinke = ich ich trinke trinke)','round',3,'1',1),
 	(36,'Splash-Damage','Immer, wenn jemand in den nächsten 3 Runden was trinken muss, trinken der linke und rechte Nachbar jeweils die Hälfte mit!','round',3,NULL,0),
 	(37,'Regel-Pflege','Denke dir eine Regel aus, diese gilt für 5 Runden.','round',5,NULL,1),
 	(38,'Montags-Maler','Male ein Bild, welches dich an diesen Abend erinnert.',NULL,NULL,'2',1),

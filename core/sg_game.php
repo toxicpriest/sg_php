@@ -135,7 +135,6 @@ class sg_game
         $playerCount = count($fairPlayerList) - 1;
         $randomplayerNumber = rand(0, $playerCount);
         $randomPlayer = $fairPlayerList[$randomplayerNumber];
-        $randomPlayer->addTimesTasked(1);
         if ($task->iCredits > 0) {
             $randomPlayer->addPoints($task->iCredits);
         }
@@ -149,6 +148,9 @@ class sg_game
         }
         else {
             $this->sBtnState = "default";
+        }
+        if ($task->isPlayerTask) {
+            $randomPlayer->addTimesTasked(1);
         }
         $this->save(false);
         if (!$task->isPlayerTask) {

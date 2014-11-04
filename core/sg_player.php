@@ -76,6 +76,9 @@ class sg_player
     public function stealPoints($points)
     {
         $this->iPoints = $this->iPoints - $points;
+        if($this->iPoints < 0){
+            $this->iPoints=0;
+        }
     }
 
     public function getDumbSayingForLoosers()
@@ -143,6 +146,13 @@ class sg_player
                      }
                      $this->addPoints($oItem->iActionParam);
                      $playerHS->stealPoints($oItem->iActionParam);
+                 }
+                 elseif($oItem->sAction == "drain"){
+                     foreach($oGame->playerList as $oPlayer){
+                        if($oPlayer->iPlayerID != $this->iPlayerID){
+                            $oPlayer->stealPoints($oItem->iActionParam);
+                        }
+                     }
                  }
                  unset($this->activeItems[$key]);
                  $oItem->delete();
