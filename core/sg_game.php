@@ -157,9 +157,38 @@ class sg_game
         else {
             $sTaskText = $randomPlayer->sName . ", " . $task->sName . "!<br>" . $task->sText;
         }
+
+        if ($task->sAction == "random") {
+            $rndArray=$this->generateRandomColorLetter();
+            if($rndArray["style"] == "color"){
+                $sTaskText= $task->sName ." ".$rndArray["rnd"]."! <br> Der Letzte Spieler der etwas ".$rndArray["rnd"]."es berührt trinkt einen Killer!";
+            }
+            elseif($rndArray["style"] == "letter"){
+               $sTaskText= $task->sName ." ".$rndArray["rnd"]."! <br> Der Letzte Spieler der etwas was mit dem Buchstaben ".$rndArray["rnd"]." beginnt berührt trinkt einen Killer!";
+            }
+        }
+
         return $sTaskText;
     }
+    public function generateRandomColorLetter(){
+        $colors =array("schwarz","rot","gelb","blau","grün","weiß");
+        $letters = array("A","B","D","E","F","G","H","I","K","L","M","N","O","R","P","S","T","U","W");
+        $chosenRandom=array();
+        $colorLetter = array("color","letter");
+        $chosen = $colorLetter[rand(0,1)];
+        if($chosen == "color"){
+            $rnd = $colors[rand(0,(count($colors)-1))];
+            $chosenRandom["style"] ="color";
+            $chosenRandom["rnd"] ="$rnd";
+        }
+        elseif($chosen == "letter"){
+            $rnd = $letters[rand(0,(count($letters)-1))];
+            $chosenRandom["style"] ="letter";
+            $chosenRandom["rnd"] ="$rnd";
+        }
 
+        return $chosenRandom;
+    }
     public function generateAction()
     {
         $this->endedTasks = array();

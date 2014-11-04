@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.27)
 # Datenbank: sg2014
-# Erstellungsdauer: 2014-11-03 14:36:00 +0000
+# Erstellungsdauer: 2014-11-04 11:41:25 +0000
 # ************************************************************
 
 
@@ -169,7 +169,7 @@ VALUES
 	(11,'Russisch Roulette','Spiel Schnick-Schnack-Schnuck mit einem beliebigem Spieler. Der Verlierer wird mit einem Killer bestraft.',NULL,NULL,'1',1),
 	(12,'Last but not Least','Alle exen einen Killer! Der letzte bekommt noch einen!',NULL,NULL,NULL,0),
 	(13,'Achtung, der Chef!','Es darf 5 Runden lang nicht gelacht werden!','round',5,NULL,0),
-	(14,'Inventur','Legt all euer Geld, was ihr dabei habt, auf den Tisch. Wer am wenigsten hat, bekommt den Killer gratis.',NULL,NULL,NULL,0),
+	(14,'Inventur','Legt all euer Kleingeld, was ihr dabei habt, auf den Tisch. Wer am wenigsten hat, bekommt den Killer gratis.',NULL,NULL,NULL,0),
 	(15,'Angeschossen','Und das an deiner Lieblingshand! Benutze für alles jetzt nur noch deine schwache Hand. Hält 5 Runden.','round',5,'1',1),
 	(16,'Casino-Time','Würfel! Bei 1 - 5 bekommst du entsprechend der Anzahl Finger Bier. Bei einer 6 gibt es FULLHOUSE: Alle anderen bekommen einen Killer.','dice',NULL,NULL,1),
 	(17,'Desateure werden erschossen','Klogänge sind für alle die nächsten 10 Runden untersagt.','round',10,NULL,0),
@@ -202,7 +202,7 @@ VALUES
 	(44,'Schau mir in die Augen, Kleines','Du schaust einem Mitspieler deiner Wahl tief in die Augen. Wer als erster zwinktert oder lacht, wird mit einem Killer bestraft.',NULL,NULL,'1',1),
 	(45,'Migräne','Eine Hand von dir muss 3 Runden lang deinen Kopf berühren.','round',3,'1',1),
 	(46,'Börsen-Crash','Jeder, der 2 oder mehr Getränke vor sich stehen hat, muss so lange Getränke exen, bis er nur noch eins vor sich stehen hat.',NULL,NULL,NULL,0),
-	(47,'Granate','Du hast eine alte Granate gefunden. Blöd nur, dass sie in 3 Runden explodiert und dem Halter einen Killer spendiert. Die Granate kann einmal pro Runde für 2 Finger Bier an einen beliebigen Nachbarn weitergegeben werden.','round',3,'1',1),
+	(47,'Granate','Du hast eine alte Granate gefunden. Blöd nur, dass sie in 3 Runden explodiert und dem Halter einen Killer spendiert. Die Granate kann einmal pro Spieler in jeder Runde für 2 Finger Bier an einen beliebigen Nachbarn weitergegeben werden.','round',3,'1',1),
 	(48,'Revolverheld','Deine 5 Kugeln in der Trommel haben bisher noch nie ein Ziel verfehlt. Du darfst 5 Finger Bier frei verteilen.',NULL,NULL,NULL,1),
 	(49,'Schweine Hund','Wenn du willst, kansnt du einen Killer trinken. Hast du dies getan, kannst du würfeln. Jeder andere Spieler muss die Augenzahl an Fingern Bier trinken.','dice',NULL,NULL,1),
 	(50,'Grobmotoriker','Spiele 3 Runden mit beiden Armen über Kreuz.','round',3,'1',1),
@@ -215,7 +215,20 @@ VALUES
 	(57,'Untertauchen','Du heißt ab jetzt Paula! Alle anderen müssen dich so ansprechen, also auch keine Kosenamen.',NULL,NULL,'0',1),
 	(58,'Unentschlossen','Ihr dürft die nächsten 5 Runden weder Ja oder Nein sagen.','round',5,'0',0),
 	(59,'Akute Piraterietis','für die nächsten 5 Runden muss jeder Satz mit einem Aaaaargh beendet werden.','round',5,'0',0),
-	(60,'Beton-Tod','die anderen suchen dir ein Getränk aus (Eines der Eingetragenen) und du trinkst die höchste Einheit dieses Getränks.',NULL,NULL,'3',1);
+	(60,'Beton-Tod','die anderen suchen dir ein Getränk aus (Eines der Eingetragenen) und du trinkst die höchste Einheit dieses Getränks.',NULL,NULL,'3',1),
+	(61,'Ab in die Matrix','Der letzte Spieler der den Bildschirm berührt bekommt einen Killer.','',NULL,'0',0),
+	(62,'Stammesbesprechung','Der letzte Spieler der Im Schneidersitz auf dem Boden sitzt bekommt einen Killer.','',NULL,'0',0),
+	(64,'Grabsch','','random',NULL,'0',0),
+	(65,'Melonen Liebhaber','Der letzte Spieler der beide Hände auf seiner Brust hat bekommt einen Killer.','',NULL,'0',0),
+	(66,'Grabsch','','random',NULL,'0',0),
+	(67,'Grabsch','','random',NULL,'0',0),
+	(69,'Auch ein blindes Huhn...','Du musst mit verbundenen Augen einen Gegenstand erraten(ertasten). Schaffst du es nicht gibt es einen Killer. Schaffst du es allerdings bekommen alle anderen einen Killer.',NULL,NULL,'1',1),
+	(70,'Zickenstreit','Wenn deine beiden Nachbarn vom gleichen Geschlecht sind trinken die beiden jeweils einen Killer ansonsten trinkst du einen.',NULL,NULL,'1',1),
+	(71,'Platt-Fuss','Nenne reihum von jedem Mitspieler die Schuhgröße jedesmal wenn du falsch liegst gibt es einen Finger Bier.','',NULL,'2',1),
+	(73,'Little Joe','Der größte Spieler trinkt 2 Finger Bier',NULL,NULL,'0',0),
+	(74,'Wurf-Maschine','Der Spieler mit den meisten Geschwistern trinkt einen Killer.',NULL,NULL,'0',0),
+	(75,'Alles auf Rot','Wähle einen Einsatz von 1-5 Fingern Bier. Wenn du eine 1-3 würfelst darfst den Einsatz frei verteilen. Bei 4-6 musst du ihn selbst trinken.','dice',NULL,'1',1),
+	(76,'Verdammt hell hier','Trinke für jedes Fenster in dem Raum einen Finger Bier (keine Tür = gleiches Zimmer).',NULL,NULL,'2',1);
 
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;
