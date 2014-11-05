@@ -97,7 +97,4 @@ class sg_task {
 
         $oDB->execute($sSql);
     }
-
-
-
 }

@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.27)
 # Datenbank: sg2014
-# Erstellungsdauer: 2014-11-04 16:30:32 +0000
+# Erstellungsdauer: 2014-11-05 15:52:00 +0000
 # ************************************************************
 
 
@@ -159,7 +159,7 @@ LOCK TABLES `tasks` WRITE;
 INSERT INTO `tasks` (`id`, `name`, `text`, `action`, `action_param`, `points`, `isPlayerTask`)
 VALUES
 	(1,'Kraftprobe','Mache X Liegestütze! Für jede so erbrachte Leistung bekommst du einen Finger Bier.','dice',NULL,'2',1),
-	(2,'Razzia','Renne X Runden ums Haus/Sofa/... in jeder Runde bekommst du 2 Finger Bier zugesteckt.','dice',NULL,'2',1),
+	(2,'Razzia','Renne X Runden ums Haus/Sofa/... in jeder Runde bekommst du 1 Finger Bier zugesteckt.','dice',NULL,'2',1),
 	(3,'Beichte','Beichte jemanden ernsthaft das du Alkoholiker bist. Spüle diese widerliche Lüge mit einem Killer runter.',NULL,NULL,'1',1),
 	(4,'Goldkelchen','Gurgel ein Lied mit 2 Fingern Bier. Die anderen dürfen gerne mitmachen!',NULL,NULL,'1',1),
 	(5,'Giftmischer','Mische je eine Einheit aller Getränke und trinke das Gebräu','',NULL,'2',1),
@@ -194,7 +194,7 @@ VALUES
 	(34,'Elitepartner.de','Halte mit deinem linken oder rechten Nachbarn Händchen. Schafft ihr das 10 Runden lang ist es wahre Liebe und alle anderen bekommen einen Killer ansonsten bekommt Ihr einen.','round',10,'1',1),
 	(35,'Stotteranfall','Die nächsten 3 Runden musst du alles, was du sagen willst doppelt sagen! (Bsp. ich trinke = ich ich trinke trinke)','round',3,'1',1),
 	(36,'Splash-Damage','Immer, wenn jemand in den nächsten 3 Runden was trinken muss, trinken der linke und rechte Nachbar jeweils die Hälfte mit!','round',3,NULL,0),
-	(37,'Regel-Pflege','Denke dir eine Regel aus, diese gilt für 5 Runden.','round',5,NULL,1),
+	(37,'Regel-Pflege','Denke dir eine Regel aus, diese gilt für 5 Runden(Die Regel muss alle Spieler gleichermaßen betreffen).','round',5,NULL,1),
 	(38,'Montags-Maler','Male ein Bild, welches dich an diesen Abend erinnert.',NULL,NULL,'2',1),
 	(39,'Pole','Klaue jemanden sein Getränk, was er vor sich stehen hat. Hat keiner ein Getränk vor sich stehen hat, bekommt stattdessen jeder einen Killer.',NULL,NULL,'1',1),
 	(40,'Platzhirsch','Tausche mit einem Spieler deiner Wahl die Plätze. Also auch die Getränke, die vor euch stehen.',NULL,NULL,NULL,1),
@@ -221,16 +221,20 @@ VALUES
 	(61,'Ab in die Matrix','Der letzte Spieler der den Bildschirm berührt bekommt einen Killer.','',NULL,'0',0),
 	(62,'Stammesbesprechung','Der letzte Spieler der Im Schneidersitz auf dem Boden sitzt bekommt einen Killer.','',NULL,'0',0),
 	(64,'Grabsch','','random',NULL,'0',0),
-	(65,'Melonen Liebhaber','Der letzte Spieler der beide Hände auf seiner Brust hat bekommt einen Killer.','',NULL,'0',0),
+	(65,'Grabsch','','random',NULL,'0',0),
 	(66,'Grabsch','','random',NULL,'0',0),
-	(67,'Grabsch','','random',NULL,'0',0),
-	(69,'Auch ein blindes Huhn...','Du musst mit verbundenen Augen einen Gegenstand erraten(ertasten). Schaffst du es nicht gibt es einen Killer. Schaffst du es allerdings bekommen alle anderen einen Killer.',NULL,NULL,'1',1),
+	(67,'Melonen Liebhaber','Der letzte Spieler der beide Hände auf seiner Brust hat bekommt einen Killer.','',NULL,'0',0),
+	(69,'Auch ein blindes Huhn...','Du musst mit verbundenen Augen einen Gegenstand erraten(ertasten). Schaffst du es nicht beim erstenmal gibt es einen Killer. Schaffst du es allerdings bekommen alle anderen einen Killer.',NULL,NULL,'1',1),
 	(70,'Zickenstreit','Wenn deine beiden Nachbarn vom gleichen Geschlecht sind trinken die beiden jeweils einen Killer ansonsten trinkst du einen.',NULL,NULL,'1',1),
 	(71,'Platt-Fuss','Nenne reihum von jedem Mitspieler die Schuhgröße jedesmal wenn du falsch liegst gibt es einen Finger Bier.','',NULL,'2',1),
 	(73,'Little Joe','Der größte Spieler trinkt 2 Finger Bier',NULL,NULL,'0',0),
 	(74,'Wurf-Maschine','Der Spieler mit den meisten Geschwistern trinkt einen Killer.',NULL,NULL,'0',0),
 	(75,'Alles auf Rot','Wähle einen Einsatz von 1-5 Fingern Bier. Wenn du eine 1-3 würfelst darfst den Einsatz frei verteilen. Bei 4-6 musst du ihn selbst trinken.','dice',NULL,'1',1),
-	(76,'Verdammt hell hier','Trinke für jedes Fenster in dem Raum einen Finger Bier (keine Tür = gleiches Zimmer).',NULL,NULL,'2',1);
+	(76,'Verdammt hell hier','Trinke für jedes Fenster in dem Raum einen Finger Bier (keine Tür = gleiches Zimmer).',NULL,NULL,'2',1),
+	(77,'Ultimativer Regulator','Bestimme eine Regel diese gilt für 15 Runden (Die Regel muss alle Spieler gleichermaßen betreffen).','round',15,'0',1),
+	(78,'Notbremse','Derjenige mit den meisten Punkten trinkt einen Killer.','',NULL,'0',0),
+	(79,'Zungen Amputation','Versuche So schnell wie möglich folgeden Satz fehlerfrei vorzutragen gelingt ist trinken alle anderen 1 Killer ansonsten trinkst du 2 Finger Bier. \"Der Whiskeymixer mixt frischen Whiskey\".',NULL,NULL,'2',1),
+	(80,'Zigeuner Fluch','Eine alte Zigeuner Dame hat dich verflucht. Um das ganze rückgängig zu machen spreche deinen Namen 3 x rückwärts aus und trinke danach einen Shot.',NULL,NULL,'2',1);
 
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;

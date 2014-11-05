@@ -68,6 +68,4 @@ class sg_item {
 
         $oDB->execute($sSql);
     }
-
-
 }
