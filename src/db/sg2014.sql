@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.27)
 # Datenbank: sg2014
-# Erstellungsdauer: 2014-11-07 10:24:39 +0000
+# Erstellungsdauer: 2014-11-07 14:08:33 +0000
 # ************************************************************
 
 
@@ -221,20 +221,23 @@ VALUES
 	(60,'Beton-Tod','die anderen suchen dir ein Getränk aus (Eines der Eingetragenen) und du trinkst die höchste Einheit dieses Getränks.',NULL,NULL,'3',1),
 	(61,'Ab in die Matrix','Der letzte Spieler der den Bildschirm berührt bekommt einen Killer.','',NULL,'0',0),
 	(62,'Stammesbesprechung','Der letzte Spieler der Im Schneidersitz auf dem Boden sitzt bekommt einen Killer.','',NULL,'0',0),
+	(63,'Wolverine','Der Spieler mit den längsten Fingernägeln darf 2 Finger Bier verteilen.','',NULL,'0',0),
 	(64,'Grabsch','','random',NULL,'0',0),
 	(65,'Grabsch','','random',NULL,'0',0),
 	(66,'Grabsch','','random',NULL,'0',0),
 	(67,'Melonen Liebhaber','Der letzte Spieler der beide Hände auf seiner Brust hat bekommt einen Killer.','',NULL,'0',0),
+	(68,'Never!','Sag etwas was du noch nie gemacht hast. Alle die es schonmal gemacht haben trinken 2 Finger Bier.',NULL,NULL,'0',1),
 	(69,'Auch ein blindes Huhn...','Du musst mit verbundenen Augen einen Gegenstand erraten(ertasten). Schaffst du es nicht beim erstenmal gibt es einen Killer. Schaffst du es allerdings bekommen alle anderen einen Killer.',NULL,NULL,'1',1),
 	(70,'Zickenstreit','Wenn deine beiden Nachbarn vom gleichen Geschlecht sind trinken die beiden jeweils einen Killer ansonsten trinkst du einen.',NULL,NULL,'1',1),
 	(71,'Platt-Fuss','Nenne reihum von jedem Mitspieler die Schuhgröße jedesmal wenn du falsch liegst gibt es einen Finger Bier.','',NULL,'2',1),
+	(72,'Rapunzel, Rapu…Schnapps.','Der Spieler mit den längsten Haaren trink 2 Finger Bier.','',NULL,'0',0),
 	(73,'Little Joe','Der größte Spieler trinkt 2 Finger Bier',NULL,NULL,'0',0),
 	(74,'Wurf-Maschine','Der Spieler mit den meisten Geschwistern trinkt einen Killer.',NULL,NULL,'0',0),
 	(75,'Alles auf Rot','Wähle einen Einsatz von 1-5 Fingern Bier. Wenn du eine 1-3 würfelst darfst den Einsatz frei verteilen. Bei 4-6 musst du ihn selbst trinken.','dice',NULL,'1',1),
 	(76,'Verdammt hell hier','Trinke für jedes Fenster in dem Raum einen Finger Bier (keine Tür = gleiches Zimmer).',NULL,NULL,'2',1),
 	(77,'Ultimativer Regulator','Bestimme eine Regel diese gilt für 15 Runden (Die Regel muss alle Spieler gleichermaßen betreffen).','round',15,'0',1),
 	(78,'Notbremse','Derjenige mit den meisten Punkten trinkt einen Killer.','',NULL,'0',0),
-	(79,'Zungen Amputation','Versuche So schnell wie möglich folgeden Satz fehlerfrei vorzutragen gelingt ist trinken alle anderen 1 Killer ansonsten trinkst du 2 Finger Bier. \"Der Whiskeymixer mixt frischen Whiskey\".',NULL,NULL,'2',1),
+	(79,'Zungen Amputation','Versuche So schnell wie möglich folgeden Satz fehlerfrei vorzutragen gelingt dies, trinken alle anderen 2 Finger Bier ansonsten trinkst du 2 Finger Bier. \"Der Whiskeymixer mixt frischen Whiskey\".',NULL,NULL,'2',1),
 	(80,'Zigeuner Fluch','Eine alte Zigeuner Dame hat dich verflucht. Spreche deinen Namen 3 x rückwärts aus und trinke danach einen Shot.',NULL,NULL,'2',1),
 	(81,'Opfer!','keiner mag Dich! wenn alle anderen jeweils einen Finger Bier trinken - Bekommst du einen Killer.',NULL,NULL,'2',1),
 	(82,'Kaugummiautomaten  Charme','Trinkt für jedes Accessoire am Körper ein Finger Bier. (Schmuck , Schal, Tücher,… MAX. 5). ',NULL,NULL,NULL,0),
@@ -248,13 +251,13 @@ VALUES
 	(90,'Lady\'s Night','Verteile 3 Finger Bier unter den Frauen.',NULL,NULL,'0',1),
 	(91,'Teamwork','Wähle eine Personen - setzt euch Rücken an Rücken auf den Boden - hakt eure arme ein und versucht aufzustehen - gelingt es dürft ihr je 3 Finger verteilen ansonsten trinkt ihr je 3.',NULL,NULL,'1',1),
 	(92,'Lippenlesen','\"Sag\" ein Wort nur dadurch das du deine Lippen bewegst wer es von den anderen errät darf 2 Finger Bier verteilen außer an dich.',NULL,NULL,'1',1),
-	(93,'Himmel','Der letzte der mit seinem Finger die Decke berührt bekommt einen Killer.',NULL,NULL,'0',0),
+	(93,'Himmel','Der letzte der mit seinem Finger Richtung Himmel zeigt bekommt einen Killer.',NULL,NULL,'0',0),
 	(94,'Hölle','Der letzte der mit seinem Finger den Boden berührt bekommt einen Killer.',NULL,NULL,'0',0),
 	(95,'Wiederholungstäter','Derjenige der zuletzt getrunken hat bekommt nochmal 2 Finger Bier.',NULL,NULL,'0',0),
 	(96,'Karma','Derjenige der zuletzt getrunken hat darf 2 Finger Bier verteilen.',NULL,NULL,'0',0),
 	(97,'Frostbeule','Der Spieler mit den meisten Kleidungsstücken an  - darf sich mit einem Killer wärmen.',NULL,NULL,'0',0),
 	(98,'Sonnengeküsst','Die Person mit der dunkelsten Hautfarbe darf 3 Finger Bier verteilen.',NULL,NULL,'0',0),
-	(99,'Blaue Eier','Die letzte Person die seine Hände im Schritt hat trinkt einen Killer.',NULL,NULL,'0',0),
+	(99,'Blaue Eier','Die letzte Person die, die Hände im Schritt hat trinkt einen Killer.',NULL,NULL,'0',0),
 	(100,'Wer zu spät kommt, den bestraft der Killer','Die Person die als letztes zum \"Treff\" gekommen ist trinkt einen Killer.',NULL,NULL,'0',0);
 
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
