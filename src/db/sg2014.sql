@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.27)
 # Datenbank: sg2014
-# Erstellungsdauer: 2014-11-05 15:52:00 +0000
+# Erstellungsdauer: 2014-11-07 10:24:39 +0000
 # ************************************************************
 
 
@@ -60,7 +60,8 @@ VALUES
 	(6,'Absichtliches einstuhlen zur Kälteverdrängung',NULL),
 	(7,'Das gelöschte Exemplar ist eine Bartlose Missgeburt der Sufe 3',NULL),
 	(8,'Die hier gelöschte niedere Lebensform hat Existenz-Verbot',NULL),
-	(9,'Termin der eigenen Abtreibung',NULL);
+	(9,'Termin der eigenen Abtreibung',NULL),
+	(10,'Winterschlussverkauf im Ebola-Aids-Krebs Store',NULL);
 
 /*!40000 ALTER TABLE `dumb_saying` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -234,7 +235,27 @@ VALUES
 	(77,'Ultimativer Regulator','Bestimme eine Regel diese gilt für 15 Runden (Die Regel muss alle Spieler gleichermaßen betreffen).','round',15,'0',1),
 	(78,'Notbremse','Derjenige mit den meisten Punkten trinkt einen Killer.','',NULL,'0',0),
 	(79,'Zungen Amputation','Versuche So schnell wie möglich folgeden Satz fehlerfrei vorzutragen gelingt ist trinken alle anderen 1 Killer ansonsten trinkst du 2 Finger Bier. \"Der Whiskeymixer mixt frischen Whiskey\".',NULL,NULL,'2',1),
-	(80,'Zigeuner Fluch','Eine alte Zigeuner Dame hat dich verflucht. Um das ganze rückgängig zu machen spreche deinen Namen 3 x rückwärts aus und trinke danach einen Shot.',NULL,NULL,'2',1);
+	(80,'Zigeuner Fluch','Eine alte Zigeuner Dame hat dich verflucht. Spreche deinen Namen 3 x rückwärts aus und trinke danach einen Shot.',NULL,NULL,'2',1),
+	(81,'Opfer!','keiner mag Dich! wenn alle anderen jeweils einen Finger Bier trinken - Bekommst du einen Killer.',NULL,NULL,'2',1),
+	(82,'Kaugummiautomaten  Charme','Trinkt für jedes Accessoire am Körper ein Finger Bier. (Schmuck , Schal, Tücher,… MAX. 5). ',NULL,NULL,NULL,0),
+	(83,'Timing is alles','Ist es nach 22:00 trinke 3 Finger Bier - ist es vor 22:00 darfst du 3 Finger Bier verteilen.',NULL,NULL,'1',1),
+	(84,'PENIS','Der letzte der Penis ruft bekommt nen Killer',NULL,NULL,'0',0),
+	(85,'Happy Birthday','Der Spieler der als nächstes Geburtstag hat darf 3 Finger Bier verteilen.',NULL,NULL,'0',0),
+	(86,'Vertikales Lächeln','Sagt reihum verschiedene Begriffe für das Primäre weibliche Geschlechtsteil. Wer keins mehr weiß bekommt nen Killer.',NULL,NULL,'0',0),
+	(87,'Der kleine Freund','Sagt reihum verschiedene Begriffe für das Primäre männliche Geschlechtsteil. Wer keins mehr weiß bekommt nen Killer.',NULL,NULL,'0',0),
+	(88,'Motorboot','Sagt reihum verschiedene Begriffe für \"Busen\". Wer keins mehr weiß bekommt nen Killer.',NULL,NULL,'0',0),
+	(89,'Gentlemen\'s Club','Verteile 3 Finger Bier unter den Männern.',NULL,NULL,'0',1),
+	(90,'Lady\'s Night','Verteile 3 Finger Bier unter den Frauen.',NULL,NULL,'0',1),
+	(91,'Teamwork','Wähle eine Personen - setzt euch Rücken an Rücken auf den Boden - hakt eure arme ein und versucht aufzustehen - gelingt es dürft ihr je 3 Finger verteilen ansonsten trinkt ihr je 3.',NULL,NULL,'1',1),
+	(92,'Lippenlesen','\"Sag\" ein Wort nur dadurch das du deine Lippen bewegst wer es von den anderen errät darf 2 Finger Bier verteilen außer an dich.',NULL,NULL,'1',1),
+	(93,'Himmel','Der letzte der mit seinem Finger die Decke berührt bekommt einen Killer.',NULL,NULL,'0',0),
+	(94,'Hölle','Der letzte der mit seinem Finger den Boden berührt bekommt einen Killer.',NULL,NULL,'0',0),
+	(95,'Wiederholungstäter','Derjenige der zuletzt getrunken hat bekommt nochmal 2 Finger Bier.',NULL,NULL,'0',0),
+	(96,'Karma','Derjenige der zuletzt getrunken hat darf 2 Finger Bier verteilen.',NULL,NULL,'0',0),
+	(97,'Frostbeule','Der Spieler mit den meisten Kleidungsstücken an  - darf sich mit einem Killer wärmen.',NULL,NULL,'0',0),
+	(98,'Sonnengeküsst','Die Person mit der dunkelsten Hautfarbe darf 3 Finger Bier verteilen.',NULL,NULL,'0',0),
+	(99,'Blaue Eier','Die letzte Person die seine Hände im Schritt hat trinkt einen Killer.',NULL,NULL,'0',0),
+	(100,'Wer zu spät kommt, den bestraft der Killer','Die Person die als letztes zum \"Treff\" gekommen ist trinkt einen Killer.',NULL,NULL,'0',0);
 
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;

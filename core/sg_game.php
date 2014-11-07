@@ -161,23 +161,27 @@ class sg_game
         }
 
         if ($task->sAction == "random") {
-            $rndArray=$this->generateRandomColorLetter();
+            $rndArray=$this->generateRandomColorLetterDirection();
             if($rndArray["style"] == "color"){
-                $sTaskText= $task->sName ." ".$rndArray["rnd"]."! <br> Der Letzte Spieler der etwas ".$rndArray["rnd"]."es berührt trinkt einen Killer!";
+                $sTaskText= $task->sName ." ".$rndArray["rnd"]."! <br> Der Letzte Spieler der etwas ".$rndArray["rnd"]."es berührt - trinkt einen Killer!";
             }
             elseif($rndArray["style"] == "letter"){
-               $sTaskText= $task->sName ." ".$rndArray["rnd"]."! <br> Der Letzte Spieler der etwas was mit dem Buchstaben ".$rndArray["rnd"]." beginnt berührt trinkt einen Killer!";
+               $sTaskText= $task->sName ." ".$rndArray["rnd"]."! <br> Der Letzte Spieler der etwas was mit dem Buchstaben ".$rndArray["rnd"]." beginnt berührt - trinkt einen Killer!";
+            }
+            elseif($rndArray["style"] == "direction"){
+               $sTaskText= $task->sName ." ".$rndArray["rnd"]."! <br> Der Letzte Spieler der seinen Nachbarn der ".$rndArray["rnd"]." sitzt berührt - trinkt einen Killer!";
             }
         }
 
         return $sTaskText;
     }
-    public function generateRandomColorLetter(){
+    public function generateRandomColorLetterDirection(){
         $colors =array("schwarz","rot","gelb","blau","grün","weiß");
         $letters = array("A","B","D","E","F","G","H","I","K","L","M","N","O","R","P","S","T","U","W");
+        $direction= array("rechts","links");
         $chosenRandom=array();
-        $colorLetter = array("color","letter");
-        $chosen = $colorLetter[rand(0,1)];
+        $colorLetter = array("color","letter","direction");
+        $chosen = $colorLetter[rand(0,2)];
         if($chosen == "color"){
             $rnd = $colors[rand(0,(count($colors)-1))];
             $chosenRandom["style"] ="color";
@@ -186,6 +190,11 @@ class sg_game
         elseif($chosen == "letter"){
             $rnd = $letters[rand(0,(count($letters)-1))];
             $chosenRandom["style"] ="letter";
+            $chosenRandom["rnd"] ="$rnd";
+        }
+        elseif($chosen == "direction"){
+            $rnd = $direction[rand(0,(count($direction)-1))];
+            $chosenRandom["style"] ="direction";
             $chosenRandom["rnd"] ="$rnd";
         }
 
