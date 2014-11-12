@@ -3,7 +3,7 @@ header("Content-Type: text/html; charset=utf-8");
 //error_reporting(E_ALL);
 //ini_set("display_errors", 1);
 ?>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
 <link rel="stylesheet" type="text/css" href="src/css/style.css">
 <script language="javascript" type="text/javascript" src="src/js/jquery-1.11.0.min.js"></script>
 <script language="javascript" type="text/javascript" src="src/js/base_js.js"></script>
@@ -20,7 +20,10 @@ if (isset($_COOKIE['gameID'])) {
     $oGame = new sg_game();
     $oGame->load($gameid);
     ?>
-    <div id="gameLabel" onclick="showInfo();"><div id="gamelogo"><img src="src/img/sg.gif"></div>Sauf-Generator ver. 2.1<br>Big Thx to:<br>"Flower Dude"<br>"Makrele"<br>"Eure Pestilens"<br>"Big Marv"<br>"Owl-Man"<br>"Oldman"</div>
+    <div id="gameLabel" onclick="showInfo();">
+        <div id="gamelogo"><img src="src/img/sg.gif"></div>
+        Sauf-Generator ver. 2.1<br>Big Thx to:<br>"Flower Dude"<br>"Makrele"<br>"Eure Pestilens"<br>"Big Marv"<br>"Owl-Man"<br>"Oldman"<br>"Das Neinhorn"
+    </div>
     <div id="gameboard">
         <div id="messageboard">
             <div id="scrollpane">
@@ -30,22 +33,29 @@ if (isset($_COOKIE['gameID'])) {
                 <button onclick="hideAlert();">OKAY</button>
             </div>
         </div>
+        <div id="messageboard_delete">
+            <div id="scrollpane_delete">
+                <div id="msg_messageboard_delete"> Soll der Spieler wirklich gelöscht werden ?</div>
+            </div>
+            <div id="msgDeleteButton">
+            </div>
+        </div>
         <div id="fog"></div>
         <div class="header" onclick="hide_show_players();">PLAYER</div>
         <div id="playersInfo">
             <?php
             foreach ($oGame->playerList as $player) {
-                $items=$player->getItemHtmlBoard();
+                $items = $player->getItemHtmlBoard();
                 echo "<div class='player clearfix'>
                 <div class='playerItems' id='items" . $player->iPlayerID . "'>
                 <div class='closeItems'onclick='hideItems(\"" . $player->iPlayerID . "\");'><img src='src/img/minus.png'></div>
-                <div class='items'>".$items."<div class='clear'></div></div>
+                <div class='items'>" . $items . "<div class='clear'></div></div>
                 </div>
                 <div class='showItems'  onclick='showItems(\"" . $player->iPlayerID . "\");'><img src='src/img/add.png'></div>
                 <div class='playerName'><input type='text' id='player_" . $player->iPlayerID . "' value='" . $player->sName . "' disabled='disabled'></div>
                 <div class='playerPoints'>" . $player->iPoints . "</div>
                 <div class='playerEdit' onclick='editPlayer(\"" . $player->iPlayerID . "\");'></div>
-                <div class='playerDelete' onclick='deletePlayer(\"" . $player->iPlayerID . "\");'></div>
+                <div class='playerDelete' onclick='showDeletePanel(\"" . $player->iPlayerID . "\");'></div>
             </div>";
             }
             echo "<div id='idAddPlayer' class='player clearfix'><div class='addPlayer'  onclick='addPlayer();'><img src='src/img/add.png'></div></div>";

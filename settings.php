@@ -8,7 +8,7 @@ header("Content-Type: text/html; charset=utf-8");
 <?php
 include_once("core/dB.php");
 ?>
-<div id="gameLabel" onclick="showInfo();"><div id="gamelogo"><img src="src/img/sg.gif"></div>Sauf-Generator ver. 2.1<br>Big Thx to:<br>"Flower Dude"<br>"Makrele"<br>"Eure Pestilens"<br>"Big Marv"<br>"Owl-Man"<br>"Oldman"</div>
+<div id="gameLabel" onclick="showInfo();"><div id="gamelogo"><img src="src/img/sg.gif"></div>Sauf-Generator ver. 2.1<br>Big Thx to:<br>"Flower Dude"<br>"Makrele"<br>"Eure Pestilens"<br>"Big Marv"<br>"Owl-Man"<br>"Oldman"<br>"Das Neinhorn"</div>
 <div id="fog"></div>
 <form action="savesettings.php" method="POST" onsubmit="return chkFormular()">
     <div class="topSettings">

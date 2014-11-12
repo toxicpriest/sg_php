@@ -452,6 +452,22 @@ body {
     padding: 10px;
     font-family: monospace;
 }
+#messageboard_delete {
+    height: 160px;
+    left: 50%;
+    margin: -80px auto 0 -200px;
+    position: absolute;
+    top: 50%;
+    width: 400px;
+    z-index: 5;
+    background: none repeat scroll 0 0 darkred;
+    border: 1px solid #666;
+    color: white;
+    box-shadow: 7px 8px 7px 0 #000;
+    display: none;
+    padding: 10px;
+    font-family: monospace;
+}
 
 #msgOkayButton {
     text-align: center;
@@ -460,6 +476,13 @@ body {
     margin-left: -50px;
     position: absolute;
 }
+#msgDeleteButton {
+    bottom: 10px;
+    left: 50%;
+    margin-left: -105px;
+    position: absolute;
+    text-align: center;
+}
 
 #msgOkayButton button {
     font-family: monospace;
@@ -467,8 +490,19 @@ body {
     height: 30px;
     width: 100px;
 }
+#msgDeleteButton button {
+    font-family: monospace;
+    font-size: 22px;
+    height: 30px;
+    margin-right: 10px;
+    width: 100px;
+}
 
 #scrollpane {
+    height: 125px;
+    overflow: auto;
+}
+#scrollpane_delete {
     height: 125px;
     overflow: auto;
 }

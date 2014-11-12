@@ -149,6 +149,7 @@ function editDrink(sOiD){
     }
 }
 function deletePlayer(sOiD){
+    hideDeleteAlert();
     $.ajax({
         url: "player_handler.php",
         context: document.body,
@@ -161,6 +162,16 @@ function deletePlayer(sOiD){
                 messageAlert(obj.msg);
             }
         });
+}
+function showDeletePanel(sOiD){
+    showFog();
+    $("#messageboard_delete").css("display","block");
+    $("#msgDeleteButton").html("<button onclick=\"hideDeleteAlert();\">NO</button><button onclick=\"deletePlayer('"+sOiD+"');\">Yes</button>");
+}
+
+function hideDeleteAlert(){
+    hideFog();
+    $("#messageboard_delete").css("display","none");
 }
 function editPlayer(sOiD){
     var id="#player_"+sOiD;

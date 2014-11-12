@@ -6,7 +6,7 @@
 include_once("core/dB.php");
 $db = new dB();
 ?>
-<div id="gameLabel" onclick="showInfo();"><div id="gamelogo"><img src="src/img/sg.gif"></div>Sauf-Generator ver. 2.1<br>Big Thx to:<br>"Flower Dude"<br>"Makrele"<br>"Eure Pestilens"<br>"Big Marv"<br>"Owl-Man"<br>"Oldman"</div>
+<div id="gameLabel" onclick="showInfo();"><div id="gamelogo"><img src="src/img/sg.gif"></div>Sauf-Generator ver. 2.1<br>Big Thx to:<br>"Flower Dude"<br>"Makrele"<br>"Eure Pestilens"<br>"Big Marv"<br>"Owl-Man"<br>"Oldman"<br>"Das Neinhorn"</div>
 <div id="fog"></div>
 <div class="menu">
     <a href="settings.php">
