@@ -14,7 +14,7 @@ $db = new dB();
     </a>
     <?php
     if (isset($_COOKIE['gameID'])) {
-        echo "<a href='game.php'><button name='ContinueGame' id='continue'>CONTINUE</button></a>";
+        echo "<a href='game.php'><button name='ContinueGame' id='continue'>WEITER</button></a>";
     }
     ?>
 </div>
