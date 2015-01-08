@@ -14,7 +14,7 @@ include_once("core/dB.php");
     <div class="topSettings">
     <label>Anzahl der Spieler:</label>
     <select name="playerCount" id="playerCountDrop">
-        <option value="Please Choose">Please Choose</option>
+        <option value="Please Choose">Bitte wählen</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
@@ -30,7 +30,7 @@ include_once("core/dB.php");
 
     <label>Anzahl der Getränke:</label>
     <select name="drinkCount" id="drinkCountDrop">
-        <option value="Please Choose">Please Choose</option>
+        <option value="Please Choose">Bitte wählen</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -40,7 +40,7 @@ include_once("core/dB.php");
     </select>
     <label>Max Anzahl der zu trinkenden Einheiten:</label>
     <select name="maxAmount" id="maxAmountDrop">
-        <option value="Please Choose">Please Choose</option>
+        <option value="Please Choose">Bitte wählen</option>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
@@ -51,7 +51,7 @@ include_once("core/dB.php");
     </select>
     <label>Punkteanzahl bei der das Spiel endet :</label>
     <select name="wonAt" id="wonAtDrop">
-        <option value="Please Choose">Please Choose</option>
+        <option value="Please Choose">Bitte wählen</option>
         <option value="15">15</option>
         <option value="20">20</option>
         <option value="30">30</option>
@@ -63,7 +63,7 @@ include_once("core/dB.php");
     </select>
     <label>Aufgaben-Rate in % :</label>
     <select name="tasks" id="tasksDrop">
-        <option value="Please Choose">Please Choose</option>
+        <option value="Please Choose">Bitte wählen</option>
         <option value="0">0</option>
         <option value="10">10</option>
         <option value="20">20</option>
@@ -78,7 +78,7 @@ include_once("core/dB.php");
     </select>
     <label>Gegenstands-Rate in % :</label>
     <select name="items" id="itemsDrop">
-        <option value="Please Choose">Please Choose</option>
+        <option value="Please Choose">Bitte wählen</option>
         <option value="0">0</option>
         <option value="10">10</option>
         <option value="20">20</option>

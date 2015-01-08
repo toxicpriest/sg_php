@@ -6,10 +6,10 @@ $(document).ready(function () {
             var playerID = "#Player" + i + " input";
             if ($(playerID).length) {
                 var PlayerName = $(playerID).val();
-                playerCountHtml += "<div id='Player" + i + "'><label>Player: " + i + "</label><input id='playerInput" + i + "'  name='Player" + i + "' type='text' value='" + PlayerName + "'></div>";
+                playerCountHtml += "<div id='Player" + i + "'><label>Spieler: " + i + "</label><input id='playerInput" + i + "'  name='Player" + i + "' type='text' value='" + PlayerName + "'></div>";
             }
             else {
-                playerCountHtml += "<div id='Player" + i + "'><label>Player: " + i + "</label><input id='playerInput" + i + "' name='Player" + i + "' type='text'></div>";
+                playerCountHtml += "<div id='Player" + i + "'><label>Spieler: " + i + "</label><input id='playerInput" + i + "' name='Player" + i + "' type='text'></div>";
             }
         }
         $("#players").html(playerCountHtml);
@@ -24,10 +24,10 @@ $(document).ready(function () {
             if ($(drinkID).length) {
                 var drinkName = $(drinkID).val();
                 var drinkAmount = $(drinkAmountID).val();
-                drinkCountHtml += "<div id='Drink" + i + "'><label>Drink: " + i + "</label><input class='drinkinput' id='drinkInput" + i + "' name='Drink" + i + "' type='text' value='" + drinkName + "'><div class='clear'></div><label>Einheit:</label><input class='drinkamountinput' id='drinkAmountInput" + i + "' name='DrinkAmount" + i + "' type='text' value='" + drinkAmount + "'></div>";
+                drinkCountHtml += "<div id='Drink" + i + "'><label>Getränk: " + i + "</label><input class='drinkinput' id='drinkInput" + i + "' name='Drink" + i + "' type='text' value='" + drinkName + "'><div class='clear'></div><label>Einheit:</label><input class='drinkamountinput' id='drinkAmountInput" + i + "' name='DrinkAmount" + i + "' type='text' value='" + drinkAmount + "'></div>";
             }
             else {
-                drinkCountHtml += "<div id='Drink" + i + "'><label>Drink: " + i + "</label><input class='drinkinput' id='drinkInput" + i + "' name='Drink" + i + "' type='text'><div class='clear'></div><label>Einheit:</label><input class='drinkamountinput' id='drinkAmountInput" + i + "' name='DrinkAmount" + i + "' type='text'></div></div>";
+                drinkCountHtml += "<div id='Drink" + i + "'><label>Getränk: " + i + "</label><input class='drinkinput' id='drinkInput" + i + "' name='Drink" + i + "' type='text'><div class='clear'></div><label>Einheit:</label><input class='drinkamountinput' id='drinkAmountInput" + i + "' name='DrinkAmount" + i + "' type='text'></div></div>";
             }
         }
         $("#drinks").html(drinkCountHtml);
@@ -166,7 +166,7 @@ function deletePlayer(sOiD){
 function showDeletePanel(sOiD){
     showFog();
     $("#messageboard_delete").css("display","block");
-    $("#msgDeleteButton").html("<button onclick=\"hideDeleteAlert();\">NO</button><button onclick=\"deletePlayer('"+sOiD+"');\">Yes</button>");
+    $("#msgDeleteButton").html("<button onclick=\"hideDeleteAlert();\">Nein</button><button onclick=\"deletePlayer('"+sOiD+"');\">Ja</button>");
 }
 
 function hideDeleteAlert(){
@@ -258,31 +258,31 @@ function playerSave(){
 
 function chkFormular(){
     var formularSuccess = true;
-    if($("#playerCountDrop").val() == "Please Choose"){
+    if($("#playerCountDrop").val() == "Bitte wählen"){
         $("#playerCountDrop").css("color","red");
         formularSuccess=false;
     }
-    if($("#drinkCountDrop").val() == "Please Choose"){
+    if($("#drinkCountDrop").val() == "Bitte wählen"){
             $("#drinkCountDrop").css("color","red");
             formularSuccess=false;
     }
-    if($("#maxAmountDrop").val() == "Please Choose"){
+    if($("#maxAmountDrop").val() == "Bitte wählen"){
         $("#maxAmountDrop").css("color","red");
         formularSuccess=false;
     }
-    if($("#wonAtDrop").val() == "Please Choose"){
+    if($("#wonAtDrop").val() == "Bitte wählen"){
         $("#wonAtDrop").css("color","red");
         formularSuccess=false;
     }
-    if($("#tasksDrop").val() == "Please Choose"){
+    if($("#tasksDrop").val() == "Bitte wählen"){
         $("#tasksDrop").css("color","red");
         formularSuccess=false;
     }
-    if($("#itemsDrop").val() == "Please Choose"){
+    if($("#itemsDrop").val() == "Bitte wählen"){
         $("#itemsDrop").css("color","red");
         formularSuccess=false;
     }
-    if($("#playerCountDrop").val() != "Please Choose"){
+    if($("#playerCountDrop").val() != "Bitte wählen"){
         var playerCount2=parseInt($("#playerCountDrop").val());
         for (var i = 1; i <= playerCount2; i++) {
             var playerInputfield="#playerInput"+i;
@@ -292,7 +292,7 @@ function chkFormular(){
             }
         }
     }
-    if($("#drinkCountDrop").val() != "Please Choose"){
+    if($("#drinkCountDrop").val() != "Bitte wählen"){
         var drinkCount2=parseInt($("#drinkCountDrop").val());
         for (var i = 1; i <= drinkCount2; i++) {
             var drinkInputfield="#drinkInput"+i;
@@ -302,7 +302,7 @@ function chkFormular(){
             }
         }
     }
-    if($("#drinkCountDrop").val() != "Please Choose"){
+    if($("#drinkCountDrop").val() != "Bitte wählen"){
         var drinkCount3=parseInt($("#drinkCountDrop").val());
         for (var i = 1; i <= drinkCount3; i++) {
             var drinkAmountInputfield="#drinkAmountInput"+i;
