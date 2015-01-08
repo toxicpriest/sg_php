@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.5.27)
 # Datenbank: sg2014
-# Erstellungsdauer: 2014-11-07 14:08:33 +0000
+# Erstellungsdauer: 2015-01-08 12:25:24 +0000
 # ************************************************************
 
 
@@ -33,6 +33,18 @@ CREATE TABLE `drinks` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `drinks` WRITE;
+/*!40000 ALTER TABLE `drinks` DISABLE KEYS */;
+
+INSERT INTO `drinks` (`id`, `gameid`, `name`, `size`)
+VALUES
+	('54631a1e7c0cb','54631a1e7c07a','Drink 1','10cl'),
+	('54631a1e7c102','54631a1e7c07a','Drink 2','10cl'),
+	('54ae4a53d1b19','54ae4a53d1ad3','dsfsd','dfsdf'),
+	('54ae4a53d1b66','54ae4a53d1ad3','dsfs','dfssfs');
+
+/*!40000 ALTER TABLE `drinks` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle dumb_saying
@@ -101,6 +113,17 @@ CREATE TABLE `games` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `games` WRITE;
+/*!40000 ALTER TABLE `games` DISABLE KEYS */;
+
+INSERT INTO `games` (`id`, `game_state`, `save_key`, `maxamount`, `wonat`, `taskpercent`, `itempercent`, `lasttask`)
+VALUES
+	('54631a1e7c07a','WAITING','0',2,50,40,40,NULL),
+	('54ae4a53d1ad3','WAITING','0',1,30,10,10,NULL),
+	('54ae5fd6407a0','WAITING','0',0,0,0,0,NULL);
+
+/*!40000 ALTER TABLE `games` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle items
@@ -128,11 +151,11 @@ VALUES
 	(3,'Gold Karte','Schreibe dir 1 Punkt gut ','src/img/gold.png','points',1),
 	(4,'Diamant Karte','Schreibe dir 3 Punkte gut','src/img/diamond.png','points',3),
 	(5,'Killer!','Schicke jemanden einen Killer! vorbei.','src/img/killer.png',NULL,NULL),
-	(6,'ComboBreaker','Du darfst gegen bestehende Regeln ohne Bestrafung verstoßen.(3 min)','src/img/fist.png',NULL,NULL),
+	(6,'ComboBreaker','Du darfst gegen eine bestehende Regeln ohne Bestrafung verstoßen bis diese zuende ist.','src/img/fist.png',NULL,NULL),
 	(7,'Glücksrad','Weise eine Aufgabe oder ein gerade erhaltenens Getränk einem zufälligen Spieler zu.','src/img/wheel.jpg','randomplayer',NULL),
 	(8,'Dieb','Klaue dem Spieler mit den meisten Punkten 2 davon.','src/img/steal.png','randomsteal',2),
 	(9,'Drain','Lasse alle anderen Spieler 1 Punkt verlieren ','src/img/drain.jpg','drain',1),
-	(10,'Ex-ekutieren','Ein Spieler deiner Wahl muss eins seiner Getränke exen','src/img/execute.gif',NULL,NULL);
+	(10,'Ex-ekutieren','Ein Spieler deiner Wahl muss ALLE seine Getränke exen','src/img/execute.gif',NULL,NULL);
 
 /*!40000 ALTER TABLE `items` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -207,7 +230,7 @@ VALUES
 	(46,'Börsen-Crash','Jeder, der 2 oder mehr Getränke vor sich stehen hat, muss so lange Getränke exen, bis er nur noch eins vor sich stehen hat.',NULL,NULL,NULL,0),
 	(47,'Granate','Du hast eine alte Granate gefunden. Blöd nur, dass sie in 3 Runden explodiert und dem Halter einen Killer spendiert. Die Granate kann einmal pro Spieler in jeder Runde für 2 Finger Bier an einen beliebigen Nachbarn weitergegeben werden.','round',3,'1',1),
 	(48,'Revolverheld','Deine 5 Kugeln in der Trommel haben bisher noch nie ein Ziel verfehlt. Du darfst 5 Finger Bier frei verteilen.',NULL,NULL,NULL,1),
-	(49,'Schweine Hund','Wenn du willst, kansnt du einen Killer trinken. Hast du dies getan, kannst du würfeln. Jeder andere Spieler muss die Augenzahl an Fingern Bier trinken.','dice',NULL,NULL,1),
+	(49,'Schweine Hund','Wenn du willst, kannst du einen Killer trinken. Hast du dies getan, kannst du würfeln. Jeder andere Spieler muss die Augenzahl an Fingern Bier trinken.','dice',NULL,NULL,1),
 	(50,'Grobmotoriker','Spiele 3 Runden mit beiden Armen über Kreuz.','round',3,'1',1),
 	(51,'Super-GAU','ALLE Mitspieler exen ALLE Getränke, die sie vor sich stehen haben. Danach werden diese wieder aufgefüllt.',NULL,NULL,NULL,0),
 	(52,'Taktlos','Beleidige einen Mitspieler. Versöhnt euch danach wieder mit je 2 Fingern Bier.',NULL,NULL,'1',1),
@@ -249,7 +272,7 @@ VALUES
 	(88,'Motorboot','Sagt reihum verschiedene Begriffe für \"Busen\". Wer keins mehr weiß bekommt nen Killer.',NULL,NULL,'0',0),
 	(89,'Gentlemen\'s Club','Verteile 3 Finger Bier unter den Männern.',NULL,NULL,'0',1),
 	(90,'Lady\'s Night','Verteile 3 Finger Bier unter den Frauen.',NULL,NULL,'0',1),
-	(91,'Teamwork','Wähle eine Personen - setzt euch Rücken an Rücken auf den Boden - hakt eure arme ein und versucht aufzustehen - gelingt es dürft ihr je 3 Finger verteilen ansonsten trinkt ihr je 3.',NULL,NULL,'1',1),
+	(91,'Teamwork','Wähle eine Person - setzt euch Rücken an Rücken auf den Boden - hakt eure Arme ein und versucht aufzustehen - gelingt es dürft ihr je 3 Finger verteilen ansonsten trinkt ihr je 3.',NULL,NULL,'1',1),
 	(92,'Lippenlesen','\"Sag\" ein Wort nur dadurch das du deine Lippen bewegst wer es von den anderen errät darf 2 Finger Bier verteilen außer an dich.',NULL,NULL,'1',1),
 	(93,'Himmel','Der letzte der mit seinem Finger Richtung Himmel zeigt bekommt einen Killer.',NULL,NULL,'0',0),
 	(94,'Hölle','Der letzte der mit seinem Finger den Boden berührt bekommt einen Killer.',NULL,NULL,'0',0),
@@ -258,7 +281,8 @@ VALUES
 	(97,'Frostbeule','Der Spieler mit den meisten Kleidungsstücken an  - darf sich mit einem Killer wärmen.',NULL,NULL,'0',0),
 	(98,'Sonnengeküsst','Die Person mit der dunkelsten Hautfarbe darf 3 Finger Bier verteilen.',NULL,NULL,'0',0),
 	(99,'Blaue Eier','Die letzte Person die, die Hände im Schritt hat trinkt einen Killer.',NULL,NULL,'0',0),
-	(100,'Wer zu spät kommt, den bestraft der Killer','Die Person die als letztes zum \"Treff\" gekommen ist trinkt einen Killer.',NULL,NULL,'0',0);
+	(100,'Wer zu spät kommt, den bestraft der Killer','Die Person die als letztes zum \"Treff\" gekommen ist trinkt einen Killer.',NULL,NULL,'0',0),
+	(101,'Opferlamm','Bestimme ein Opferlamm - derjenige muss jedesmal wenn jemand was trinken muss 1 Finger Bier trinken (8 Runden)','round',8,'0',1);
 
 /*!40000 ALTER TABLE `tasks` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -279,6 +303,18 @@ CREATE TABLE `user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+
+INSERT INTO `user` (`id`, `name`, `gameid`, `points`, `timesplayed`, `timestasked`)
+VALUES
+	('54631a1e7c12f','Player 1','54631a1e7c07a',0,0,0),
+	('54631e927fece','hdghgfhghd','54631a1e7c07a',0,0,0),
+	('54ae4a53d1b87','fsfdf','54ae4a53d1ad3',0,0,0),
+	('54ae4a53d1ba2','dsfsd','54ae4a53d1ad3',0,0,0);
+
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Export von Tabelle user2item
