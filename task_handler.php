@@ -1,4 +1,6 @@
 <?php
+header("Content-Type: text/html; charset=utf-8");
+
 include_once("core/dB.php");
 include_once("core/sg_game.php");
 include_once("core/sg_player.php");

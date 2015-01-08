@@ -154,10 +154,10 @@ class sg_game
         }
         $this->save(false);
         if (!$task->isPlayerTask) {
-            $sTaskText = $task->sName . "!<br>" . $task->sText;
+            $sTaskText = $task->sName . "!<br>" . utf8_encode($task->sText);
         }
         else {
-            $sTaskText = $randomPlayer->sName . ", " . $task->sName . "!<br>" . $task->sText;
+            $sTaskText = $randomPlayer->sName . ", " . $task->sName . "!<br>" . utf8_encode($task->sText);
         }
 
         if ($task->sAction == "random") {
@@ -251,7 +251,7 @@ class sg_game
         $html = "";
         foreach ($this->playerList as $player) {
             $items = $player->getItemHtmlBoard();
-            $html .= "<div class='player clearfix'><div class='playerItems' id='items" . $player->iPlayerID . "'><div class='closeItems'onclick='hideItems(&quot;" . $player->iPlayerID . "&quot;);'><img src='src/img/minus.png'></div><div class='items'>" . $items . "<div class='clear'></div></div></div><div class='showItems'  onclick='showItems(&quot;" . $player->iPlayerID . "&quot;);'><img src='src/img/add.png'></div><div class='playerName'><input type='text' id='player_" . $player->iPlayerID . "' value='" . $player->sName . "' disabled='disabled'></div><div class='playerPoints'>" . $player->iPoints . "</div><div class='playerEdit' onclick='editPlayer(&quot;" . $player->iPlayerID . "&quot;);'></div><div class='playerDelete' onclick='showDeletePanel(&quot;" . $player->iPlayerID . "&quot;);'></div></div>";
+            $html .= "<div class='player clearfix'><div class='playerItems' id='items" . $player->iPlayerID . "'><div class='closeItems'onclick='hideItems(&quot;" . $player->iPlayerID . "&quot;);'><img src='src/img/minus.png'></div><div class='items'>" . $items . "<div class='clear'></div></div></div><div class='showItems'  onclick='showItems(&quot;" . $player->iPlayerID . "&quot;);'><img src='src/img/add.png'></div><div class='playerName'><input type='text' id='player_" . $player->iPlayerID . "' value='" . utf8_decode($player->sName). "' disabled='disabled'></div><div class='playerPoints'>" . $player->iPoints . "</div><div class='playerEdit' onclick='editPlayer(&quot;" . $player->iPlayerID . "&quot;);'></div><div class='playerDelete' onclick='showDeletePanel(&quot;" . $player->iPlayerID . "&quot;);'></div></div>";
         }
         $html .= "<div id='idAddPlayer' class='player clearfix'><div class='addPlayer' onclick='addPlayer();'><img src='src/img/add.png'></div></div>";
         $html .= "<div class='clear'></div>";
@@ -306,7 +306,7 @@ class sg_game
             else {
                 $taskplayer = "";
             }
-            $html .= "<div class='" . $actions->sAction . " activeAction' title='" . $actions->sName . "'><img src='../src/img/" . $actions->sAction . ".png'><div class='hiddenActionInfo'>Runden: " . $actions->sTaskstate . "/" . $actions->iActionParam . "<br>" . $taskplayer . $actions->sName . "<br>" . $actions->sText . "</div></div>";
+            $html .= "<div class='" . $actions->sAction . " activeAction' title='" . $actions->sName . "'><img src='../src/img/" . $actions->sAction . ".png'><div class='hiddenActionInfo'>Runden: " . $actions->sTaskstate . "/" . $actions->iActionParam . "<br>" . $taskplayer . $actions->sName . "<br>" . utf8_encode($actions->sText) . "</div></div>";
         }
         return $html;
     }
@@ -317,7 +317,7 @@ class sg_game
         $i = 0;
         foreach ($this->activeTasks as $oTask) {
             if (!$oTask->update($this->gameID)) {
-                $endedActions[] = "Die Aufgabe:<br> " . $oTask->sText . " <br>ist jetzt beendet!<br>";
+                $endedActions[] = "Die Aufgabe:<br> " . utf8_encode($oTask->sText) . " <br>ist jetzt beendet!<br>";
                 unset($this->activeTasks[$i]);
             }
             $i++;

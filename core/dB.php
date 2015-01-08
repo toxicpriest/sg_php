@@ -20,7 +20,7 @@ class dB {
         if (!$db_selected) {
             die ('Kann foo nicht benutzen : ' . mysql_error());
         }
-        mysql_set_charset('utf8',$this->dbConn);
+        mysqli_set_charset( $this->dbConn, 'utf-8');
 
     }
 
