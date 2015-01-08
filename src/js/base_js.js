@@ -258,31 +258,31 @@ function playerSave(){
 
 function chkFormular(){
     var formularSuccess = true;
-    if($("#playerCountDrop").val() == "Bitte wählen"){
+    if($("#playerCountDrop").val() == "Please Choose"){
         $("#playerCountDrop").css("color","red");
         formularSuccess=false;
     }
-    if($("#drinkCountDrop").val() == "Bitte wählen"){
+    if($("#drinkCountDrop").val() == "Please Choose"){
             $("#drinkCountDrop").css("color","red");
             formularSuccess=false;
     }
-    if($("#maxAmountDrop").val() == "Bitte wählen"){
+    if($("#maxAmountDrop").val() == "Please Choose"){
         $("#maxAmountDrop").css("color","red");
         formularSuccess=false;
     }
-    if($("#wonAtDrop").val() == "Bitte wählen"){
+    if($("#wonAtDrop").val() == "Please Choose"){
         $("#wonAtDrop").css("color","red");
         formularSuccess=false;
     }
-    if($("#tasksDrop").val() == "Bitte wählen"){
+    if($("#tasksDrop").val() == "Please Choose"){
         $("#tasksDrop").css("color","red");
         formularSuccess=false;
     }
-    if($("#itemsDrop").val() == "Bitte wählen"){
+    if($("#itemsDrop").val() == "Please Choose"){
         $("#itemsDrop").css("color","red");
         formularSuccess=false;
     }
-    if($("#playerCountDrop").val() != "Bitte wählen"){
+    if($("#playerCountDrop").val() != "Please Choose"){
         var playerCount2=parseInt($("#playerCountDrop").val());
         for (var i = 1; i <= playerCount2; i++) {
             var playerInputfield="#playerInput"+i;
@@ -292,7 +292,7 @@ function chkFormular(){
             }
         }
     }
-    if($("#drinkCountDrop").val() != "Bitte wählen"){
+    if($("#drinkCountDrop").val() != "Please Choose"){
         var drinkCount2=parseInt($("#drinkCountDrop").val());
         for (var i = 1; i <= drinkCount2; i++) {
             var drinkInputfield="#drinkInput"+i;
@@ -302,7 +302,7 @@ function chkFormular(){
             }
         }
     }
-    if($("#drinkCountDrop").val() != "Bitte wählen"){
+    if($("#drinkCountDrop").val() != "Please Choose"){
         var drinkCount3=parseInt($("#drinkCountDrop").val());
         for (var i = 1; i <= drinkCount3; i++) {
             var drinkAmountInputfield="#drinkAmountInput"+i;
